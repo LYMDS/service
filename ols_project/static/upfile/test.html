@@ -1,0 +1,18 @@
+<script language="javascript">
+	function change_payload(){
+		var dom = document.getElementById("txt");
+		if (dom.value[1] == 'c'){
+			dom.value = "Sqa0000000000000000T";
+			alert("已改为取车命令，请按您的需要稍加修改");
+		}
+		else{
+			dom.value = "Sc00000000000000000T";
+			alert("已改为查询命令，请按您的需要稍加修改");
+		}
+	}
+</script>
+
+<form>
+	负载：<input id="txt" type="text" value="C/gds100001/P" />
+	<input type="button" value="更换命令（取车/查询）" onclick="change_payload();"/>
+</form>

@@ -1,0 +1,24 @@
+{% load static %}
+<meta http-equiv="refresh" content="10">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充电桩调试页面</title>
+	<link rel="stylesheet" href="{% static 'css/charge_test.css' %}">
+</head>
+	
+
+<body>
+	<script type="text/javascript" src="{% static 'js/charge_test.js' %}"></script>
+	<p>充电瓦数：{{ wallage }}</p>
+	<p>充电状态：{{ charge_state }}</p>
+	<p>充电控制：{{ control_state }}</p>
+	<form action="/charge_t/" method="post">
+		{% csrf_token %}
+		<input type="radio" value='0' name="control">停止充电
+		<input type="radio" value='1' name="control">开始充电
+		<input class="button" type="submit" value="立即发送">
+	</form>
+
+</body>

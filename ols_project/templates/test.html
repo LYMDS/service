@@ -1,0 +1,83 @@
+{% load static %}<!--<meta http-equiv="refresh" content="10">-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MQTT调试页面</title>
+	<link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+
+<body>
+<br><br>
+<div align="left"></div>
+<form action="/publish/" method="post">
+    {% csrf_token %}
+    
+    <p>发布主题:</p> 
+    <p><input type="text" class="tw" name="topic" value="C/gds100001/P"></p>
+    <p>发送字符串的内容:</p>
+    
+    <p><input id="payload" class="tw" type="text" name="payload" value="Sc00000000000000000T"></p>
+    <p>
+		<input class="button" type="submit" value="立即发送">
+		<input class="button" type="button" value="更换命令（取车/查询）" onclick="change_payload();"/>
+		<input class="button" type="button" value="刷新日志" onclick="refresh();"/>
+	</p>
+    <p>取车选择：
+		<input class="hide" type="button" value="1号车位" onclick="T('a');">
+		<input class="hide" type="button" value="2号车位" onclick="T('b');">
+		<input class="hide" type="button" value="3号车位" onclick="T('c');">
+		<input class="hide" type="button" value="4号车位" onclick="T('d');">
+		<input class="hide" type="button" value="5号车位" onclick="T('e');">
+		<input class="hide" type="button" value="6号车位" onclick="T('f');">
+		<input class="hide" type="button" value="7号车位" onclick="T('g');">
+		<input class="hide" type="button" value="8号车位" onclick="T('h');">
+		<input class="hide" type="button" value="9号车位" onclick="T('i');">
+		<input class="hide" type="button" value="10号车位" onclick="T('j');">
+		<input class="hide" type="button" value="11号车位" onclick="T('k');">
+		<input class="hide" type="button" value="12号车位" onclick="T('l');">
+		<input class="hide" type="button" value="13号车位" onclick="T('m');">
+		<input class="hide" type="button" value="14号车位" onclick="T('n');">
+		<input class="hide" type="button" value="15号车位" onclick="T('o');">
+		<input class="hide" type="button" value="16号车位" onclick="T('p');">	
+	</p>
+	<p>充电信息选择：
+		<input class="charge" type="button" value="1号车位" onclick="C(3);">
+		<input class="charge" type="button" value="2号车位" onclick="C(4);">
+		<input class="charge" type="button" value="3号车位" onclick="C(5);">
+		<input class="charge" type="button" value="4号车位" onclick="C(6);">
+		<input class="charge" type="button" value="5号车位" onclick="C(7);">
+		<input class="charge" type="button" value="6号车位" onclick="C(8);">
+		<input class="charge" type="button" value="7号车位" onclick="C(9);">
+		<input class="charge" type="button" value="8号车位" onclick="C(10);">
+		<input class="charge" type="button" value="9号车位" onclick="C(11);">
+		<input class="charge" type="button" value="10号车位" onclick="C(12);">
+		<input class="charge" type="button" value="11号车位" onclick="C(13);">
+		<input class="charge" type="button" value="12号车位" onclick="C(14);">
+		<input class="charge" type="button" value="13号车位" onclick="C(15);">
+		<input class="charge" type="button" value="14号车位" onclick="C(16);">
+		<input class="charge" type="button" value="15号车位" onclick="C(17);">
+		<input class="charge" type="button" value="16号车位" onclick="C(18);">	
+	</p>
+</form>
+<br><br><br>
+<table border="3" align="left">
+    <caption>日志表格</caption>
+    <tr>
+        <td>主题</td>
+        <td>内容</td>
+        <td>时间</td>
+        <td>发送状态</td>
+    </tr>
+    {% for l in logfile %}
+    <tr>
+        <td>{{ l.topic }}</td>
+        <td>{{ l.payload }}</td>
+        <td>{{ l.time }}</td>
+        <td>{{ l.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+</body>
+</html>

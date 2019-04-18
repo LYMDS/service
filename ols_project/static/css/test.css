@@ -1,0 +1,39 @@
+.tw{
+	width : 80%;
+}
+
+#payload{
+	height : 80px;
+}
+
+.button{
+	width : 200px;
+	height : 50px;
+	font-size : 115%;
+}
+
+body{
+	background-color : #a38b7a;
+}
+
+.button{
+	opacity :0.7;
+}
+
+.tw{
+	opacity :0.7;
+}
+
+.hide{
+	display:none;
+	width:50px;
+	height:25px;
+	font-size : 55%;
+}
+
+.charge{
+	display:inline;
+	width:50px;
+	height:25px;
+	font-size : 55%;
+}

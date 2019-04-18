@@ -1,0 +1,98 @@
+
+
+INSERT INTO garage_info_table(
+investor_num,
+garage_code,
+pub_code,
+garage_name,
+longitude,
+latitude,
+address,
+operation_state,
+running_state,
+door_state)
+
+VALUES(
+'Gank_Y',
+'gds100001',
+'C/gds100001/S',
+'仲恺校门库机',
+113.2818961143,
+23.1045527781,
+'广州市海珠区仲恺路',
+'营运中',
+'自动运行中',
+'L0:M1:R0')
+
+INSERT INTO garage_info_table(investor_num,garage_code,pub_code,garage_name,longitude,latitude,address,operation_state,running_state,door_state)
+VALUES('Gank_Y','gds100002','C/gds100002/S','仲恺宿舍库机',113.2813918591,23.1078092709,'广州市海珠区仲恺学生宿舍','营运中','自动运行中','L1:M1:R0')
+
+INSERT INTO garage_parking_state_table(
+garage_num_id,
+parking_num,
+exist_car,
+parking_start_time,
+charge_wattage,
+charge_state,
+lock_state,
+charge_key,
+control_state,
+user_num_id)
+
+VALUES
+(1,1,1,now(),79.22,1,0,'WECSD8SDSDSDADWWE',0,null),
+(1,2,0,now(),0,0,1,'WECSD8SDSDSDADWWE',1,null),
+(1,3,0,now(),0,0,0,'WECSD8SDSDSDADWWE',2,null),
+(1,4,1,now(),67.45,1,1,'WECSD8SDSDSDADWWE',3,null),
+(1,5,0,now(),0,0,1,'WECSD8SDSDSDADWWE',1,null),
+(1,6,0,now(),0,0,1,'WECSD8SDSDSDADWWE',2,null),
+(1,7,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',3,null),
+(1,8,0,now(),0,0,1,'WECSD8SDSDSDADWWE',0,null),
+(1,9,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',3,null),
+(1,10,0,now(),0,0,1,'WECSD8SDSDSDADWWE',2,null),
+(1,11,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',1,null),
+(1,12,0,now(),0,0,1,'WECSD8SDSDSDADWWE',0,null),
+(1,13,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',1,null);
+
+
+INSERT INTO garage_parking_state_table(
+garage_num_id,
+parking_num,
+exist_car,
+parking_start_time,
+charge_wattage,
+charge_state,
+lock_state,
+charge_key,
+control_state,
+user_num_id)
+
+VALUES
+(2,1,1,now(),79.22,1,0,'WECSD8SDSDSDADWWE',0,null),
+(2,2,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
+(2,3,0,now(),67.45,0,0,'WECSD8SDSDSDADWWE',2,null),
+(2,4,1,now(),67.45,1,1,'WECSD8SDSDSDADWWE',3,null),
+(2,5,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
+(2,6,0,now(),67.45,1,1,'WECSD8SDSDSDADWWE',2,null),
+(2,7,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',3,null),
+(2,8,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
+(2,9,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',3,null),
+(2,10,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',2,null),
+(2,11,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',1,null),
+(2,12,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
+(2,13,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',1,null);
+
+
+
+UPDATE garage_parking_state_table
+SET
+charge_state = 0,
+charge_wattage = 0,
+control_state = null
+where state_num = 1;
+
+
+
+
+
+
