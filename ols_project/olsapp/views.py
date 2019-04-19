@@ -229,11 +229,18 @@ def information(request):
 		records=Recharge_record_table.objects.filter(user_num=user).order_by("-recharge_time") #所有充值表
 		count1=parking_financials.count()
 		count2=records.count()
-		if count1>=count2：
-			count=count1
-		else
-			count=count2
-		for index in count：
+		count=count1+count2
+		if (count1<=count2):
+			for index in range(count1):
+				for index2 in range(count2):
+					if (parking_financials[index].parking_end_time>records[index2].recharge_time):
+						print(1)
+						break
+					elif:
+						#shunxupailie
+					
+						
+			
 		
 
 		
