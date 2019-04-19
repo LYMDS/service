@@ -28,3 +28,16 @@ def merge(A, B):
     result += A[i:]
     result += B[j:]
     return result
+
+
+count=count1+count2
+        llist=[]
+        for i in range(0,count1):
+            ttuple=(parking_financials[i].paring_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garage_name)
+            llist.append(ttuple)
+        for j in range(count1+1,count)
+            ttuple2=(records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
+            llist.append(ttuple2)
+        end_list=sorted(llist,key=itemgetter(0),reverse=True)
+        for k in range(0,count):
+            end_list[k]=list(endlist[k])

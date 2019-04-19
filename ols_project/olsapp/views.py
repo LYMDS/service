@@ -211,7 +211,7 @@ def write_state(request):
 	return redirect("/charge_test")
 
 
-
+from operator import itemgetter
 from .models import Parking_financial_table
 from .models import Recharge_record_table
 def information(request):
@@ -228,41 +228,32 @@ def information(request):
 		records=Recharge_record_table.objects.filter(user_num=user).order_by("-recharge_time") #所有充值表
 		count1=parking_financials.count()
 		count2=records.count()
-<<<<<<< HEAD
 		count=count1+count2
-		if (count1<=count2):
-			for index in range(count1):
-				for index2 in range(count2):
-					if (parking_financials[index].parking_end_time>records[index2].recharge_time):
-						print(1)
-						break
-					elif:
-						#shunxupailie
-					
-						
-			
-=======
-		if count1>=count2:
-			count=count1
-		else:
-			count=count2
-		for index in count:
-			pass
-
->>>>>>> b2a0a0b663a7410197e910e8dbfc6298cad0e122
+        llist=[]
+        for i in range(0,count1):
+            ttuple=(parking_financials[i].paring_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garage_name)
+            llist.append(ttuple)
+        for j in range(count1+1,count)
+            ttuple2=(records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
+            llist.append(ttuple2)
+        end_list=sorted(llist,key=itemgetter(0),reverse=True)
+        for k in range(0,count):
+            end_list[k]=list(endlist[k])
+        
 		
 
 		
 	except:
 		print('有错误-------------------------------')
 	return JsonResponse({
+        end_list
 		#'all_record':llist[0],
 		#'garage_name':garage_name,
 		#'total_price':total_price,
 		#'charge_cost':charge_cost,
 		#'parking_cost':parking_cost,
 		#'red_packet_expense':red_packet_expense,
-		'parking_time':count
+		#'parking_time':count
 	})
 
 
