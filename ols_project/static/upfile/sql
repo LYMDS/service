@@ -89,7 +89,7 @@ SET
 charge_state = 0,
 charge_wattage = 0,
 control_state = null
-where state_num = 1;
+where state_num = 53;
 
 
 
