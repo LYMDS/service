@@ -183,7 +183,6 @@ def upload(request):
 	return JsonResponse({
 		"state" : "ok"
 	})
-	
 
 def show_charge(request):
 	g = Garage_parking_state_table.objects.get(state_num = 1)
@@ -229,11 +228,13 @@ def information(request):
 		records=Recharge_record_table.objects.filter(user_num=user).order_by("-recharge_time") #所有充值表
 		count1=parking_financials.count()
 		count2=records.count()
-		if count1>=count2：
+		if count1>=count2:
 			count=count1
-		else
+		else:
 			count=count2
-		for index in count：
+		for index in count:
+			pass
+
 		
 
 		
@@ -248,6 +249,9 @@ def information(request):
 		#'red_packet_expense':red_packet_expense,
 		'parking_time':count
 	})
+
+
+
 
 
 

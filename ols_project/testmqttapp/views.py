@@ -20,7 +20,6 @@ def send(topic,context):
                auth=U_P)
 # Create your views here.
 def send_message(request):
-    
     topic = request.POST.get('topic')
     payload = request.POST.get('payload')
     #publish
