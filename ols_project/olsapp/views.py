@@ -212,7 +212,7 @@ def write_state(request):
 	return redirect("/charge_test")
 
 
-
+from operator import itemgetter
 from .models import Parking_financial_table
 from .models import Recharge_record_table
 def information(request):
@@ -221,39 +221,28 @@ def information(request):
 	try:
 		user = User_info_table.objects.get(user_num = which_user).user_num
 		garage = Garage_info_table.objects.get(garage_num = which_garage).garage_num
-		print(user)
-		print(garage)
 		garage_name = Garage_info_table.objects.get(garage_num = garage).garage_name
-		print(garage_name)
 		parking_financials=Parking_financial_table.objects.filter(garage_num = garage,user_num = user).order_by("-parking_end_time")#所有消费表 车位财务表
 		records=Recharge_record_table.objects.filter(user_num=user).order_by("-recharge_time") #所有充值表
 		count1=parking_financials.count()
 		count2=records.count()
 		count=count1+count2
-		if (count1<=count2):
-			for index in range(count1):
-				for index2 in range(count2):
-					if (parking_financials[index].parking_end_time>records[index2].recharge_time):
-						print(1)
-						break
-					elif:
-						#shunxupailie
-					
-						
-			
-		
-
-		
+		llist=[]
+		end_list=[]
+		for i in range(0,count1):
+			parking_time=parking_financials[i].parking_end_time-parking_financials[i].parking_start_time
+			#智能化显示时长后期算法处理预留parking_time.days seconds microseconds milliseconds minutes hours weeks
+			pktime=parking_time.seconds
+			ttuple=(parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,pktime,garage_name)
+			llist.append(ttuple)
+		for j in range(0,count2):
+			ttuple2=(records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
+			llist.append(ttuple2)
+			end_list=sorted(llist,key=itemgetter(0),reverse=True)	
 	except:
 		print('有错误-------------------------------')
 	return JsonResponse({
-		#'all_record':llist[0],
-		#'garage_name':garage_name,
-		#'total_price':total_price,
-		#'charge_cost':charge_cost,
-		#'parking_cost':parking_cost,
-		#'red_packet_expense':red_packet_expense,
-		'parking_time':count
+        'all':end_list
 	})
 
 
