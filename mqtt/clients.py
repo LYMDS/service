@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as pub
-HOST="127.0.0.1"
+HOST = "127.0.0.1"
 
-Host="120.77.156.184"
-U_P={"username":"olswxmqtt",
-      "password":"olswxappmqtt32219"}
+Host = "120.77.156.184"
+U_P = {"username": "olswxmqtt",
+       "password": "olswxappmqtt32219"}
 
 def send(topic,context):
     pub.single(topic,context,
