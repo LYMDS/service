@@ -239,23 +239,19 @@ def information(request):
         end_list=sorted(llist,key=itemgetter(0),reverse=True)
         for k in range(0,count):
             end_list[k]=list(endlist[k])
-        
-		
-
-		
+            
 	except:
 		print('有错误-------------------------------')
 	return JsonResponse({
-        end_list
-		#'all_record':llist[0],
-		#'garage_name':garage_name,
-		#'total_price':total_price,
-		#'charge_cost':charge_cost,
-		#'parking_cost':parking_cost,
-		#'red_packet_expense':red_packet_expense,
-		#'parking_time':count
-	})
-
+                        end_list
+                })
+#'all_record':llist[0],
+#'garage_name':garage_name,
+#'total_price':total_price,
+#'charge_cost':charge_cost,
+#'parking_cost':parking_cost,
+#'red_packet_expense':red_packet_expense,
+#'parking_time':count
 
 
 
