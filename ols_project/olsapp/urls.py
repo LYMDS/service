@@ -20,13 +20,13 @@ from . import views
 
 urlpatterns = [
     url(r'^getCode/$',views.getCode),
-	url(r'^login/$',views.login),
-	url(r'^onLaunch/$',views.check_time),
-	url(r'^map_init/$',views.map_init),
-	url(r'^charge_msg/$',views.charge_msg),
-	url(r'^exception/$',views.exception),
-	url(r'^except_upload/$',views.upload),	
-	url(r'^charge_test/$',views.show_charge),#测试视图
-	url(r'^charge_t/$',views.write_state),
-	url(r'^information/$',views.information),	
+    url(r'^login/$',views.login),
+    url(r'^onLaunch/$',views.check_time),
+    url(r'^map_init/$',views.map_init),
+    url(r'^charge_msg/$',views.charge_msg),
+    url(r'^exception/$',views.exception),
+    url(r'^except_upload/$',views.upload),	
+    url(r'^charge_test/$',views.show_charge),#测试视图
+    url(r'^charge_t/$',views.write_state),
+    url(r'^information/$',views.information),	
 ]
