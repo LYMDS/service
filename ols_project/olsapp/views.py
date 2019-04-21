@@ -96,8 +96,8 @@ def charge_msg(request):
     iface = request.GET.get('iface')
     csid = request.GET.get('csid')
     pno = request.GET.get('pno')
-    qty = float(request.GET.get('qty'))
-    state = int(request.GET.get('state'))
+    qty = request.GET.get('qty')
+    state = request.GET.get('state')
     stamp = request.GET.get('stamp')
     stime = request.GET.get('stime')
     hash_str = request.GET.get('hash')
@@ -109,19 +109,26 @@ def charge_msg(request):
         new_str = hashlib.md5(my_str.encode()).hexdigest().upper()
         if new_str == hash_str:
             print('\n接口名称：%s\n充电桩的key：%s\n车库编号：%s\n车位号：%s\n电量：%s\n状态：%s\n时间戳：%s\n充电开始时间：%s'%(iface,i,csid,pno,qty,state,stamp,stime))
+            qty = float(qty)
+            state = int(state)
+            print(qty,"    ",state)
             which_gar = Garage_parking_state_table.objects.get(state_num = 53)
+            zeroc = which_gar.exist_car
+            if zeroc:
+                zeroc = "0"
+            else:
+                zeroc = "1"
             which_gar.charge_state = state
-            which_gar.charge_wattage += qty
+            which_gar.charge_wattage = qty
             which_gar.save()
-            if state == 0 and which_gar.control_state == 1:
-                #读取控制态
-                which_gar.control_state = None
-                which_gar.save()
-                return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok'})
-            if state == 1 and which_gar.control_state == 0:
-                return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok'})
-            if state in (3,4) or state == 0 and which_gar.control_state in (0,None) or state == 0 and which_gar.control_state in (None,1):
-                return JsonResponse({'rcode':0,'cmd':0,'rmsg':'ok'})
+            control_tuple=(state,which_gar.control_state)
+            if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None) or control_tuple == (1,0) or control_tuple == (1,1) or control_tuple == (2,1) or control_tuple == (3,1):
+                return JsonResponse({'rcode':0,'cmd':0,'rmsg':'ok','zeroc':zeroc})
+            if control_tuple == (0,0) or control_tuple == (2,0) or control_tuple == (3,0):
+                return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
+            if control_tuple == (0,1):
+                return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
+
             break
     return JsonResponse({'rcode':101,'cmd':0,'rmsg':'unknown error'})
 	
@@ -187,6 +194,7 @@ def upload(request):
 
 def show_charge(request):
     g = Garage_parking_state_table.objects.get(state_num = 53)
+    state = "错误状态"
     if g.charge_state == 0:
         state = "待机状态"
     elif g.charge_state == 1:
@@ -219,12 +227,9 @@ from .models import Parking_financial_table
 from .models import Recharge_record_table
 def information(request):
     which_user = request.GET.get('user_num')
-    which_garage = request.GET.get('garage_code')
     try:
         user = User_info_table.objects.get(user_num = which_user).user_num
-        garage = Garage_info_table.objects.get(garage_num = which_garage).garage_num
-        garage_name = Garage_info_table.objects.get(garage_num = garage).garage_name
-        parking_financials=Parking_financial_table.objects.filter(garage_num = garage,user_num = user)#所有消费表 车位财务表
+        parking_financials=Parking_financial_table.objects.filter(user_num = user)#所有消费表 车位财务表
         records=Recharge_record_table.objects.filter(user_num=user) #所有充值表
         count1=parking_financials.count()
         count2=records.count()
@@ -235,7 +240,7 @@ def information(request):
             parking_time=parking_financials[i].parking_end_time-parking_financials[i].parking_start_time
             #智能化显示时长后期算法处理预留parking_time.days seconds microseconds milliseconds minutes hours weeks
             pktime=parking_time.seconds
-            ttuple=(parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,pktime,garage_name)
+            ttuple=(parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,pktime)
             llist.append(ttuple)
         for j in range(0,count2):
             ttuple2=(records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
