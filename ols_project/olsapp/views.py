@@ -215,7 +215,9 @@ from django.shortcuts import redirect
 @csrf_exempt
 def write_state(request):
     control = request.POST.get('control')
-    print(type(control))
+    print("------------------------------------------------------")
+    print("改变了状态：",control)
+    print("------------------------------------------------------")
     g = Garage_parking_state_table.objects.get(state_num = 53)
     g.control_state = int(control)
     g.save()
