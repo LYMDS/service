@@ -122,11 +122,11 @@ def charge_msg(request):
             which_gar.charge_wattage = qty
             which_gar.save()
             control_tuple=(state,which_gar.control_state)
-            if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None)  or control_tuple == (1,1) or control_tuple == (2,1) or control_tuple == (3,1):
+            if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None) or control_tuple == (1,1) or control_tuple == (3,1):
                 return JsonResponse({'rcode':0,'cmd':0,'rmsg':'ok','zeroc':zeroc})
             if control_tuple == (0,0) or control_tuple == (2,0) or control_tuple == (3,0) or control_tuple == (1,0):
                 return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
-            if control_tuple == (0,1):
+            if control_tuple == (0,1) or control_tuple == (2,1):
                 return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
 
             break
@@ -194,6 +194,7 @@ def upload(request):
 
 def show_charge(request):
     g = Garage_parking_state_table.objects.get(state_num = 53)
+    zero = "不清零"
     state = "错误状态"
     if g.charge_state == 0:
         state = "待机状态"
@@ -209,7 +210,9 @@ def show_charge(request):
         control = '开始充电'
     elif g.control_state == None:
         control = '不控制'
-    return render(request,'charge_test.html',{'wallage':g.charge_wattage,'charge_state':state,'control_state':control})
+    if g.exist_car == 0:
+        zero = '清零'
+    return render(request,'charge_test.html',{'wallage':g.charge_wattage,'charge_state':state,'control_state':control,'zero':zero})
 
 from django.shortcuts import redirect
 @csrf_exempt

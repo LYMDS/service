@@ -11,14 +11,15 @@
 
 <body>
 	<script type="text/javascript" src="{% static 'js/charge_test.js' %}"></script>
-	<p>充电瓦数：{{ wallage }}</p>
+	<p>已充电电量：{{ wallage }}</p>
 	<p>充电状态：{{ charge_state }}</p>
-	<p>充电控制：{{ control_state }}</p>
+	<p>充电控制状态：{{ control_state }}</p>
 	<form action="/charge_t/" method="post">
 		{% csrf_token %}
 		<input type="radio" value='0' name="control">停止充电
 		<input type="radio" value='1' name="control">开始充电
 		<input class="button" type="submit" value="立即发送">
 	</form>
+    <p>充电电量清零：{{ zero }}</p>
 
 </body>
