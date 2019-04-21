@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d50df50-8c80-4e0a-8500-67929947865f" name="默认" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/charge_test.html" afterPath="$PROJECT_DIR$/templates/charge_test.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/olsapp/views.py" afterPath="$PROJECT_DIR$/olsapp/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/olsapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-520">
-              <caret line="214" column="131" lean-forward="true" selection-start-line="214" selection-start-column="131" selection-end-line="214" selection-end-column="131" />
+            <state relative-caret-position="312">
+              <caret line="129" column="82" lean-forward="true" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="82" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -40,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="charge_test.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="charge_test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/charge_test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="475">
@@ -77,8 +78,8 @@
         <option value="$PROJECT_DIR$/testmqttapp/views.py" />
         <option value="$PROJECT_DIR$/../mqtt/clients.py" />
         <option value="$PROJECT_DIR$/static/js/test.js" />
-        <option value="$PROJECT_DIR$/olsapp/views.py" />
         <option value="$PROJECT_DIR$/templates/charge_test.html" />
+        <option value="$PROJECT_DIR$/olsapp/views.py" />
       </list>
     </option>
   </component>
@@ -403,7 +404,7 @@
         <state relative-caret-position="988">
           <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -431,7 +432,7 @@
         <state relative-caret-position="988">
           <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -457,17 +458,7 @@
         <state relative-caret-position="931">
           <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/olsapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-520">
-          <caret line="214" column="131" lean-forward="true" selection-start-line="214" selection-start-column="131" selection-end-line="214" selection-end-column="131" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,6 +476,16 @@
         <state relative-caret-position="475">
           <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/olsapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="129" column="82" lean-forward="true" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
