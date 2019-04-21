@@ -16,8 +16,8 @@
 	<p>充电控制状态：{{ control_state }}</p>
 	<form action="/charge_t/" method="post">
 		{% csrf_token %}
-		<input type="radio" value='0' name="control">停止充电
-		<input type="radio" value='1' name="control">开始充电
+        <input type="radio" value='1' name="control">允许充电
+		<input type="radio" value='0' name="control">不允许充电
 		<input class="button" type="submit" value="立即发送">
 	</form>
     <p>充电电量清零：{{ zero }}</p>
