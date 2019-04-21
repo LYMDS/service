@@ -122,9 +122,9 @@ def charge_msg(request):
             which_gar.charge_wattage = qty
             which_gar.save()
             control_tuple=(state,which_gar.control_state)
-            if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None) or control_tuple == (1,0) or control_tuple == (1,1) or control_tuple == (2,1) or control_tuple == (3,1):
+            if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None)  or control_tuple == (1,1) or control_tuple == (2,1) or control_tuple == (3,1):
                 return JsonResponse({'rcode':0,'cmd':0,'rmsg':'ok','zeroc':zeroc})
-            if control_tuple == (0,0) or control_tuple == (2,0) or control_tuple == (3,0):
+            if control_tuple == (0,0) or control_tuple == (2,0) or control_tuple == (3,0) or control_tuple == (1,0):
                 return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
             if control_tuple == (0,1):
                 return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
@@ -251,6 +251,8 @@ def information(request):
     return JsonResponse({
         'all':end_list
     })
+def tisnns(requset):
+    print()
 #'all_record':llist[0],
 #'garage_name':garage_name,
 #'total_price':total_price,

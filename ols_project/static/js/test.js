@@ -1,7 +1,7 @@
 function change_payload(){
 	var dom = document.getElementById("payload");
 	var hide = document.querySelectorAll(".hide");
-	if (dom.value[1] == 'c'){
+	if (dom.value[1]=='c'){
 		dom.value = "Sqa0000000000000000T";
 		for (i=0;i<16;i+=1){
 		hide[i].style.display="inline";}
