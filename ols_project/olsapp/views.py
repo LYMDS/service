@@ -107,7 +107,9 @@ def charge_msg(request):
     for i in key:
         my_str = iface + i + add
         new_str = hashlib.md5(my_str.encode()).hexdigest().upper()
+        print('new_str')
         if new_str == hash_str:
+            print('ssssssssssssssssssssssssssssssssssssssssss')
             print('\n接口名称：%s\n充电桩的key：%s\n车库编号：%s\n车位号：%s\n电量：%s\n状态：%s\n时间戳：%s\n充电开始时间：%s'%(iface,i,csid,pno,qty,state,stamp,stime))
             qty = float(qty)
             state = int(state)
