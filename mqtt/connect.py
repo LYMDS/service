@@ -45,9 +45,8 @@ def sql_not_roll(sql):
 
 def insert_data(message_topic,message_payload):
     sql = """
-    INSERT INTO test_log(topic,payload,status,time) VALUES("%s","%s","%s",CURTIME())
-    """%(message_topic,message_payload,"阿斗阿斯顿发啊阿岁风光好代码服务器已收到")
-    print(sql)
+    INSERT INTO test_log(topic,payload,status) VALUES(%s,%s,%s)
+    """%(message_topic,message_payload,"MQTT代码服务器已收到")
     sql_need_roll(sql)
 
 insert_data(message_topic,message_payload)
