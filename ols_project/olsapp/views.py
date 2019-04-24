@@ -229,30 +229,31 @@ def write_state(request):
 
 from operator import itemgetter
 from .models import Parking_financial_table
-from .models import Recharge_record_table
+from .models import Recharge_record_table,Garage_info_table
 def information(request):
     which_user = request.GET.get('user_num')
     try:
         user = User_info_table.objects.get(user_num = which_user).user_num
-        parking_financials=Parking_financial_table.objects.filter(user_num = user)#所有消费表 车位财务表
-        garagenum=Garage_parking_state_table.objects.get(user_num=user).garage_num
-        garagename=Garage_info_table.objects.get(garage_num=garagenum).garage_name
-        records=Recharge_record_table.objects.filter(user_num=user,garage_num=garagenum) #所有充值表
-        count1=parking_financials.count()
-        count2=records.count()
-        count=count1+count2
-        llist=[]
-        end_list=[]
+        parking_financials = Parking_financial_table.objects.filter(user_num = user)#所有消费表 车位财务表
+        records = Recharge_record_table.objects.filter(user_num=user) #所有充值表
+        count1 = parking_financials.count()
+        count2 = records.count()
+        count = count1+count2
+        llist = []
+        end_list = []
         for i in range(0,count1):
-            parking_time=parking_financials[i].parking_end_time-parking_financials[i].parking_start_time
+            parking_time = parking_financials[i].parking_end_time-parking_financials[i].parking_start_time
             #智能化显示时长后期算法处理预留parking_time.days seconds microseconds milliseconds minutes hours weeks
-            pktime=parking_time.seconds
-            ttuple=(parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garagename,pktime)
+            pktime = parking_time.seconds
+            garagenum=parking_financials[i].garage_num.garage_num #这是什么几把 什么几把为 什么结果集拿一次还是结果集 拿两次就是数值
+            print(garagenum)
+            garagename = Garage_info_table.objects.get(garage_num=garagenum).garage_name
+            ttuple = (parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garagename,pktime)
             llist.append(ttuple)
         for j in range(0,count2):
-            ttuple2=(records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
+            ttuple2 = (records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
             llist.append(ttuple2)
-            end_list=sorted(llist,key=itemgetter(0),reverse=True)	
+        end_list = sorted(llist,key=itemgetter(0),reverse=True)	
     except:
         print('有错误-------------------------------')
     return JsonResponse({
@@ -268,6 +269,7 @@ def tisnns(requset):
 #'red_packet_expense':red_packet_expense,
 #'parking_time':count
     
+
 
 
 
