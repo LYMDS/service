@@ -851,3 +851,4 @@ spawned uWSGI http 1 (pid: 2321)
 [pid: 2317|app: 0|req: 51/128] 82.221.105.6 () {30 vars in 489 bytes} [Wed Apr 24 13:43:55 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
 [pid: 2318|app: 0|req: 31/129] 82.221.105.6 () {32 vars in 412 bytes} [Wed Apr 24 13:43:56 2019] GET /favicon.ico => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
 [uwsgi-http key:  client_addr: 49.72.127.103 client_port: 46385] hr_read(): Connection reset by peer [plugins/http/http.c line 917]
+[pid: 2317|app: 0|req: 52/130] 172.104.92.166 () {28 vars in 359 bytes} [Wed Apr 24 14:51:57 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
