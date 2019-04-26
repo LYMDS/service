@@ -245,9 +245,7 @@ def information(request):
             parking_time = parking_financials[i].parking_end_time-parking_financials[i].parking_start_time
             #智能化显示时长后期算法处理预留parking_time.days seconds microseconds milliseconds minutes hours weeks
             pktime = parking_time.seconds
-            garagenum=parking_financials[i].garage_num.garage_num #这是什么几把 什么几把为 什么结果集拿一次还是结果集 拿两次就是数值
-            print(garagenum)
-            garagename = Garage_info_table.objects.get(garage_num=garagenum).garage_name
+            garagename=parking_financials[i].garage_num.garage_name #Django查询子表时若子表里有外键，则该外键对象是其主表的对象（所以此处是可以直接拿Garage_info_table里的garage_name）
             ttuple = (parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garagename,pktime)
             llist.append(ttuple)
         for j in range(0,count2):
@@ -259,15 +257,7 @@ def information(request):
     return JsonResponse({
         'all':end_list
     })
-def tisnns(requset):
-    print()
-#'all_record':llist[0],
-#'garage_name':garage_name,
-#'total_price':total_price,
-#'charge_cost':charge_cost,
-#'parking_cost':parking_cost,
-#'red_packet_expense':red_packet_expense,
-#'parking_time':count
+
     
 
 
