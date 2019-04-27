@@ -278,7 +278,7 @@ def garage_msg(request):
     park_msg = Garage_parking_state_table.objects.get(garage_num = garage)
     ready_load = []
     for i in park_msg：
-        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_num]
+        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state]
         ready_load.append(load)
     ready_load = sorted(ready_load,key=itemgetter(0))
     m = 0
