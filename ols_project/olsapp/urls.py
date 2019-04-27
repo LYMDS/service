@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^except_upload/$',views.upload),	
     url(r'^charge_test/$',views.show_charge),#测试视图
     url(r'^charge_t/$',views.write_state),
-    url(r'^information/$',views.information),	
+    url(r'^information/$',views.information),
+    url(r'^garage_msg/$',views.garage_msg)
 ]

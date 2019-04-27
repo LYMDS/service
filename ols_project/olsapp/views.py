@@ -246,7 +246,12 @@ def information(request):
             #智能化显示时长后期算法处理预留parking_time.days seconds microseconds milliseconds minutes hours weeks
             pktime = parking_time.seconds
             garagename=parking_financials[i].garage_num.garage_name #Django查询子表时若子表里有外键，则该外键对象是其主表的对象（所以此处是可以直接拿Garage_info_table里的garage_name）
-            ttuple = (parking_financials[i].parking_end_time,parking_financials[i].charge_cost,parking_financials[i].parking_cost,parking_financials[i].total_price,garagename,pktime)
+            ttuple = (parking_financials[i].parking_end_time,
+                      parking_financials[i].charge_cost,
+                      parking_financials[i].parking_cost,
+                      parking_financials[i].total_price,
+                      garagename,
+                      pktime)
             llist.append(ttuple)
         for j in range(0,count2):
             ttuple2 = (records[j].recharge_time,records[j].recharge_num,records[j].red_packet)
@@ -257,6 +262,33 @@ def information(request):
     return JsonResponse({
         'all':end_list
     })
+
+def status2list(status):
+    dic = {'1':[2,1,2,2,0,2,2,0,2,2,2,0,2,0,2,2,2,2],
+           '2':[2,1,2,2,0,2,2,0,2,2,0,2,0,2,2,2,2,2],
+           '3':[2,1,2,2,0,2,2,0,2,2,2,0,2,0,2,2,2,2],
+           '4':[2,1,2,2,0,2,2,0,2,2,2,0,2,0,2,2,2,2],}
+    return dic[status]
+    
+def garage_msg(request):
+    which_gar = request.GET.get("garage_code")
+    garage = Garage_info_table.objects.get(garage_code = which_gar)
+    status = garage.running_state#解出控制码
+    control = status2list("1")#先不拿数据库的，模拟一下
+    park_msg = Garage_parking_state_table.objects.get(garage_num = garage)
+    ready_load = []
+    for i in park_msg：
+        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_num]
+        ready_load.append(load)
+    ready_load = sorted(ready_load,key=itemgetter(0))
+    m = 0
+    for i in range(0,18):
+        if control[i] == 2:
+            control[i] = ready_load[m]
+            m+=1
+    return JsonResponse({"gar_msg": control})
+    
+    
 
     
 
