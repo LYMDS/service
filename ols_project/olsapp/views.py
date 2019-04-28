@@ -271,14 +271,16 @@ def status2list(status):
     return dic[status]
     
 def garage_msg(request):
+    print("ssadsadasasdsadsadsdsadsa")
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     status = garage.running_state#解出控制码
     control = status2list("1")#先不拿数据库的，模拟一下
-    park_msg = Garage_parking_state_table.objects.get(garage_num = garage)
+    print(control)
+    park_msg = Garage_parking_state_table.objects.filter(garage_num = garage)
     ready_load = []
     for i in park_msg:
-        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state]
+        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, "粤M 68595"]#模拟车牌号先
         ready_load.append(load)
     ready_load = sorted(ready_load,key=itemgetter(0))
     m = 0
