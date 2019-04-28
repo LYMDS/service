@@ -288,6 +288,15 @@ def garage_msg(request):
             m+=1
     return JsonResponse({"gar_msg": control})
     
+from django.http import FileResponse
+def download(request):
+    file = open('../static/upfile/10.png','rb')
+    response = FileResponse(file)
+    response['Content-Type']='application/octet-stream'
+    #response['Content-Disposition']='attachment;filename="你的图片.png"'
+    return response
+    
+    
     
 
     
