@@ -30,5 +30,8 @@ urlpatterns = [
     url(r'^charge_t/$',views.write_state),
     url(r'^information/$',views.information),
     url(r'^garage_msg/$',views.garage_msg),
+<<<<<<< HEAD
     url(r'^show_img/$',views.download),
+=======
+>>>>>>> 1d005a26c04ac00223826f6f831d349e981c4183
 ]

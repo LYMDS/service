@@ -4474,3 +4474,495 @@ spawned uWSGI http 1 (pid: 1820)
 1
 1
 [pid: 1819|app: 0|req: 1/1] 120.77.156.184 () {40 vars in 772 bytes} [Wed Apr 24 18:52:25 2019] GET /information/?user_num=1 => generated 441 bytes in 78 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 2/2] 120.77.156.184 () {38 vars in 708 bytes} [Wed Apr 24 19:18:09 2019] GET /admin/ => generated 0 bytes in 11 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 1/3] 120.77.156.184 () {38 vars in 745 bytes} [Wed Apr 24 19:18:09 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 71 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 2/4] 120.77.156.184 () {38 vars in 733 bytes} [Wed Apr 24 19:18:09 2019] GET /static/admin/css/login.css => generated 77 bytes in 4 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 3/5] 120.77.156.184 () {38 vars in 731 bytes} [Wed Apr 24 19:18:09 2019] GET /static/admin/css/base.css => generated 77 bytes in 17 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 1/6] 120.77.156.184 () {38 vars in 743 bytes} [Wed Apr 24 19:18:09 2019] GET /static/admin/css/responsive.css => generated 77 bytes in 33 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 4/7] 120.77.156.184 () {36 vars in 634 bytes} [Wed Apr 24 19:18:09 2019] GET /favicon.ico => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 3/8] 120.77.156.184 () {40 vars in 803 bytes} [Wed Apr 24 19:19:07 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 1/9] 120.77.156.184 () {40 vars in 805 bytes} [Wed Apr 24 19:19:07 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 29 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 5/10] 120.77.156.184 () {40 vars in 809 bytes} [Wed Apr 24 19:19:07 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 4/11] 120.77.156.184 () {40 vars in 811 bytes} [Wed Apr 24 19:19:07 2019] GET /information/?user_num=1 => generated 441 bytes in 55 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 6/12] 120.77.156.184 () {40 vars in 803 bytes} [Wed Apr 24 19:19:53 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 2/13] 120.77.156.184 () {40 vars in 805 bytes} [Wed Apr 24 19:19:53 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 7/14] 120.77.156.184 () {40 vars in 809 bytes} [Wed Apr 24 19:19:53 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1817|app: 0|req: 2/15] 120.77.156.184 () {40 vars in 811 bytes} [Wed Apr 24 19:19:53 2019] GET /information/?user_num=1 => generated 441 bytes in 45 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 8/16] 120.77.156.184 () {40 vars in 803 bytes} [Wed Apr 24 19:20:06 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 3/17] 120.77.156.184 () {40 vars in 805 bytes} [Wed Apr 24 19:20:06 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 5/18] 120.77.156.184 () {40 vars in 809 bytes} [Wed Apr 24 19:20:06 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1819|app: 0|req: 9/19] 120.77.156.184 () {40 vars in 811 bytes} [Wed Apr 24 19:20:06 2019] GET /information/?user_num=1 => generated 441 bytes in 48 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 10/20] 120.77.156.184 () {30 vars in 396 bytes} [Wed Apr 24 19:29:20 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 11/21] 120.77.156.184 () {40 vars in 803 bytes} [Wed Apr 24 19:33:50 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 6/22] 120.77.156.184 () {40 vars in 805 bytes} [Wed Apr 24 19:33:50 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 3/23] 120.77.156.184 () {40 vars in 782 bytes} [Wed Apr 24 19:33:50 2019] GET /map_init => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 4/24] 120.77.156.184 () {40 vars in 784 bytes} [Wed Apr 24 19:33:50 2019] GET /map_init/ => generated 906 bytes in 13 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 12/25] 120.77.156.184 () {40 vars in 803 bytes} [Wed Apr 24 19:33:52 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 4/26] 120.77.156.184 () {40 vars in 805 bytes} [Wed Apr 24 19:33:52 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 3 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 7/27] 120.77.156.184 () {40 vars in 782 bytes} [Wed Apr 24 19:33:52 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 13/28] 120.77.156.184 () {40 vars in 784 bytes} [Wed Apr 24 19:33:53 2019] GET /map_init/ => generated 906 bytes in 11 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 14/29] 120.77.156.184 () {38 vars in 696 bytes} [Wed Apr 24 19:35:54 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 8/30] 120.77.156.184 () {38 vars in 675 bytes} [Wed Apr 24 19:35:54 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 5/31] 120.77.156.184 () {38 vars in 698 bytes} [Wed Apr 24 19:35:54 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 5/32] 120.77.156.184 () {38 vars in 677 bytes} [Wed Apr 24 19:35:54 2019] GET /map_init/ => generated 906 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 15/33] 120.77.156.184 () {38 vars in 715 bytes} [Wed Apr 24 21:25:16 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 9/34] 120.77.156.184 () {38 vars in 715 bytes} [Wed Apr 24 21:25:24 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 6/35] 120.77.156.184 () {38 vars in 715 bytes} [Wed Apr 24 21:25:33 2019] GET / => generated 77 bytes in 9 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 16/36] 120.77.156.184 () {38 vars in 737 bytes} [Wed Apr 24 21:26:01 2019] GET /charge_test => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 118 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 6/37] 120.77.156.184 () {38 vars in 739 bytes} [Wed Apr 24 21:26:01 2019] GET /charge_test/ => generated 826 bytes in 9 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 17/38] 120.77.156.184 () {38 vars in 739 bytes} [Wed Apr 24 21:26:01 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 7/39] 120.77.156.184 () {38 vars in 720 bytes} [Wed Apr 24 21:26:01 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 10/40] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:26:12 2019] GET /charge_test/ => generated 826 bytes in 7 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 18/41] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:26:12 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 7/42] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:26:12 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 8/43] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:26:32 2019] GET /charge_test/ => generated 826 bytes in 9 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 19/44] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:26:32 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 11/45] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:26:32 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 8/46] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:26:45 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 20/47] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:26:45 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 12/48] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:26:45 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 9/49] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:26:55 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 21/50] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:26:56 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 13/51] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:26:56 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 9/52] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:27:07 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 22/53] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:27:08 2019] GET /static/css/charge_test.css => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 14/54] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:27:08 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 10/55] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:27:18 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 23/56] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:27:18 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 15/57] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:27:18 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 10/58] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:27:28 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 24/59] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:27:29 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 16/60] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:27:29 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 11/61] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:27:39 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 25/62] 120.77.156.184 () {40 vars in 768 bytes} [Wed Apr 24 21:27:39 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 11/63] 120.77.156.184 () {40 vars in 750 bytes} [Wed Apr 24 21:27:39 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 17/64] 120.77.156.184 () {42 vars in 821 bytes} [Wed Apr 24 21:27:50 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 12/65] 120.77.156.184 () {40 vars in 769 bytes} [Wed Apr 24 21:27:50 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 26/66] 120.77.156.184 () {40 vars in 750 bytes} [Wed Apr 24 21:27:50 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 12/67] 120.77.156.184 () {42 vars in 821 bytes} [Wed Apr 24 21:28:00 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 27/68] 120.77.156.184 () {40 vars in 769 bytes} [Wed Apr 24 21:28:00 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 13/69] 120.77.156.184 () {40 vars in 750 bytes} [Wed Apr 24 21:28:00 2019] GET /static/js/charge_test.js => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 18/70] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:28:11 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 28/71] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:28:11 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 14/72] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:28:11 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 13/73] 120.77.156.184 () {42 vars in 822 bytes} [Wed Apr 24 21:28:21 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 29/74] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 21:28:21 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 19/75] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 21:28:21 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 30/76] 120.77.156.184 () {36 vars in 633 bytes} [Wed Apr 24 21:30:21 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 31/77] 120.77.156.184 () {42 vars in 1000 bytes} [Wed Apr 24 21:39:52 2019] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 20/78] 120.77.156.184 () {42 vars in 1037 bytes} [Wed Apr 24 21:39:52 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 6 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 32/79] 120.77.156.184 () {42 vars in 821 bytes} [Wed Apr 24 22:47:36 2019] GET /charge_test/ => generated 826 bytes in 8 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 21/80] 120.77.156.184 () {40 vars in 769 bytes} [Wed Apr 24 22:47:36 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 15/81] 120.77.156.184 () {40 vars in 750 bytes} [Wed Apr 24 22:47:36 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 14/82] 120.77.156.184 () {42 vars in 821 bytes} [Wed Apr 24 22:47:46 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 22/83] 120.77.156.184 () {40 vars in 770 bytes} [Wed Apr 24 22:47:46 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 16/84] 120.77.156.184 () {40 vars in 751 bytes} [Wed Apr 24 22:47:46 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 33/85] 120.77.156.184 () {30 vars in 377 bytes} [Wed Apr 24 23:45:16 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 34/86] 120.77.156.184 () {36 vars in 633 bytes} [Thu Apr 25 02:33:59 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 35/87] 120.77.156.184 () {38 vars in 566 bytes} [Thu Apr 25 03:07:37 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 36/88] 120.77.156.184 () {32 vars in 407 bytes} [Thu Apr 25 03:25:56 2019] GET / => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 23/89] 120.77.156.184 () {32 vars in 467 bytes} [Thu Apr 25 03:25:58 2019] GET /http%3A%2F%2Fwww%2Eolswxapp%2Etop%2F => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 37/90] 120.77.156.184 () {30 vars in 439 bytes} [Thu Apr 25 04:06:14 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 38/91] 80.82.70.187 () {28 vars in 425 bytes} [Thu Apr 25 04:54:00 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 39/92] 47.92.101.29 () {30 vars in 437 bytes} [Thu Apr 25 05:38:01 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 24/93] 47.92.126.167 () {30 vars in 440 bytes} [Thu Apr 25 05:38:27 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 40/94] 120.77.156.184 () {30 vars in 420 bytes} [Thu Apr 25 05:39:38 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 41/95] 120.77.156.184 () {34 vars in 524 bytes} [Thu Apr 25 06:48:27 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 42/96] 120.77.156.184 () {36 vars in 581 bytes} [Thu Apr 25 07:34:53 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 43/97] 120.77.156.184 () {30 vars in 443 bytes} [Thu Apr 25 13:01:31 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 44/98] 47.92.144.188 () {30 vars in 440 bytes} [Thu Apr 25 13:05:19 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 25/99] 120.77.156.184 () {30 vars in 463 bytes} [Thu Apr 25 13:08:32 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 45/100] 120.77.156.184 () {30 vars in 469 bytes} [Thu Apr 25 13:08:32 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 32 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 26/101] 120.77.156.184 () {30 vars in 465 bytes} [Thu Apr 25 13:08:32 2019] GET /information/?user_num=1 => generated 441 bytes in 48 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 46/102] 120.77.156.184 () {30 vars in 436 bytes} [Thu Apr 25 13:28:06 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 27/103] 120.77.156.184 () {30 vars in 438 bytes} [Thu Apr 25 13:28:06 2019] GET /map_init/ => generated 906 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 47/104] 120.77.156.184 () {30 vars in 430 bytes} [Thu Apr 25 13:32:11 2019] GET /admin => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 28/105] 120.77.156.184 () {30 vars in 432 bytes} [Thu Apr 25 13:32:11 2019] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 15/106] 120.77.156.184 () {30 vars in 469 bytes} [Thu Apr 25 13:32:11 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 39 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 48/107] 120.77.156.184 () {30 vars in 431 bytes} [Thu Apr 25 13:51:53 2019] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 29/108] 120.77.156.184 () {30 vars in 441 bytes} [Thu Apr 25 13:51:53 2019] GET /charge_test => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 118 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 16/109] 120.77.156.184 () {30 vars in 468 bytes} [Thu Apr 25 13:51:53 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 12 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 49/110] 120.77.156.184 () {30 vars in 443 bytes} [Thu Apr 25 13:51:53 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 30/111] 101.132.182.68 () {30 vars in 453 bytes} [Thu Apr 25 13:56:47 2019] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.1 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 50/112] 101.132.182.68 () {30 vars in 490 bytes} [Thu Apr 25 13:56:46 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 7 msecs (HTTP/1.1 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 31/113] 101.132.182.68 () {30 vars in 490 bytes} [Thu Apr 25 13:56:47 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 5 msecs (HTTP/1.1 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 51/114] 120.77.156.184 () {30 vars in 436 bytes} [Thu Apr 25 14:11:58 2019] GET /charge_t => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 32/115] 101.132.98.159 () {30 vars in 451 bytes} [Thu Apr 25 14:11:58 2019] GET /admin => generated 0 bytes in 0 msecs (HTTP/1.1 301) 3 headers in 112 bytes (1 switches on core 0)
+------------------------------------------------------
+改变了状态： None
+------------------------------------------------------
+[pid: 1817|app: 0|req: 17/116] 120.77.156.184 () {30 vars in 437 bytes} [Thu Apr 25 14:11:58 2019] GET /charge_t/ => generated 27 bytes in 19 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 52/117] 101.132.98.159 () {30 vars in 453 bytes} [Thu Apr 25 14:11:58 2019] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.1 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 17/118] 101.132.98.159 () {30 vars in 490 bytes} [Thu Apr 25 14:11:59 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 43 msecs (HTTP/1.1 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 53/119] 47.92.144.188 () {30 vars in 438 bytes} [Thu Apr 25 14:17:41 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 54/120] 120.77.156.184 () {30 vars in 441 bytes} [Thu Apr 25 14:22:26 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 55/121] 118.31.15.238 () {30 vars in 461 bytes} [Thu Apr 25 14:23:10 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 33/122] 120.77.156.184 () {30 vars in 457 bytes} [Thu Apr 25 14:23:23 2019] GET /onlaunch?user_num=1 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 56/123] 80.82.70.187 () {28 vars in 425 bytes} [Thu Apr 25 15:01:10 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[uwsgi-http key:  client_addr: 124.166.240.130 client_port: 30349] hr_read(): Connection reset by peer [plugins/http/http.c line 917]
+[pid: 1819|app: 0|req: 57/124] 120.77.156.184 () {32 vars in 433 bytes} [Thu Apr 25 21:27:56 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 34/125] 120.77.156.184 () {32 vars in 460 bytes} [Thu Apr 25 21:27:57 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 58/126] 80.82.70.187 () {28 vars in 426 bytes} [Fri Apr 26 01:08:32 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 59/127] 120.77.156.184 () {30 vars in 439 bytes} [Fri Apr 26 03:29:13 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 60/128] 120.77.156.184 () {32 vars in 407 bytes} [Fri Apr 26 05:19:53 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 35/129] 120.77.156.184 () {32 vars in 467 bytes} [Fri Apr 26 05:19:54 2019] GET /http%3A%2F%2Fwww%2Eolswxapp%2Etop%2F => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 61/130] 120.79.184.41 () {30 vars in 438 bytes} [Fri Apr 26 09:52:13 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 62/131] 120.77.156.184 () {30 vars in 420 bytes} [Fri Apr 26 09:59:08 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 63/132] 47.92.101.29 () {30 vars in 438 bytes} [Fri Apr 26 10:04:21 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 64/133] 80.82.70.187 () {28 vars in 426 bytes} [Fri Apr 26 11:15:12 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 65/134] 172.104.92.166 () {28 vars in 359 bytes} [Fri Apr 26 15:25:04 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 66/135] 120.77.156.184 () {30 vars in 441 bytes} [Fri Apr 26 17:09:13 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[uwsgi-http key:  client_addr: 223.252.173.144 client_port: 51626] hr_read(): Connection reset by peer [plugins/http/http.c line 917]
+[pid: 1819|app: 0|req: 67/136] 120.77.156.184 () {40 vars in 803 bytes} [Fri Apr 26 18:34:23 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 36/137] 120.77.156.184 () {40 vars in 805 bytes} [Fri Apr 26 18:34:23 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 5 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 68/138] 120.77.156.184 () {40 vars in 782 bytes} [Fri Apr 26 18:34:23 2019] GET /map_init => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 18/139] 120.77.156.184 () {40 vars in 784 bytes} [Fri Apr 26 18:34:23 2019] GET /map_init/ => generated 906 bytes in 15 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 69/140] 120.77.156.184 () {40 vars in 802 bytes} [Fri Apr 26 18:44:19 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 37/141] 120.77.156.184 () {40 vars in 804 bytes} [Fri Apr 26 18:44:19 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 18/142] 120.77.156.184 () {40 vars in 781 bytes} [Fri Apr 26 18:44:19 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 19/143] 120.77.156.184 () {40 vars in 783 bytes} [Fri Apr 26 18:44:19 2019] GET /map_init/ => generated 906 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 70/144] 120.77.156.184 () {40 vars in 809 bytes} [Fri Apr 26 18:44:22 2019] GET /information?user_num=1 => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1817|app: 0|req: 19/145] 120.77.156.184 () {40 vars in 811 bytes} [Fri Apr 26 18:44:22 2019] GET /information/?user_num=1 => generated 441 bytes in 43 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 71/146] 120.77.156.184 () {40 vars in 803 bytes} [Fri Apr 26 18:45:43 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 38/147] 120.77.156.184 () {40 vars in 805 bytes} [Fri Apr 26 18:45:43 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 3 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 20/148] 120.77.156.184 () {40 vars in 782 bytes} [Fri Apr 26 18:45:43 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 72/149] 120.77.156.184 () {40 vars in 784 bytes} [Fri Apr 26 18:45:43 2019] GET /map_init/ => generated 906 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 39/150] 120.77.156.184 () {40 vars in 809 bytes} [Fri Apr 26 18:45:46 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1818|app: 0|req: 21/151] 120.77.156.184 () {40 vars in 811 bytes} [Fri Apr 26 18:45:46 2019] GET /information/?user_num=1 => generated 441 bytes in 49 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 73/152] 120.77.156.184 () {40 vars in 802 bytes} [Fri Apr 26 20:04:34 2019] GET /onLaunch?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 40/153] 120.77.156.184 () {40 vars in 804 bytes} [Fri Apr 26 20:04:34 2019] GET /onLaunch/?user_num=1 => generated 17 bytes in 5 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 74/154] 120.77.156.184 () {40 vars in 781 bytes} [Fri Apr 26 20:04:34 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 22/155] 120.77.156.184 () {40 vars in 783 bytes} [Fri Apr 26 20:04:34 2019] GET /map_init/ => generated 906 bytes in 13 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 75/156] 120.77.156.184 () {40 vars in 815 bytes} [Fri Apr 26 20:04:53 2019] GET /getCode?phone=15217451050 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 132 bytes (1 switches on core 0)
+15217451050
+找不到该用户
+[pid: 1817|app: 0|req: 20/157] 120.77.156.184 () {40 vars in 817 bytes} [Fri Apr 26 20:04:53 2019] GET /getCode/?phone=15217451050 => generated 18 bytes in 18 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 76/158] 120.77.156.184 () {40 vars in 835 bytes} [Fri Apr 26 20:05:03 2019] GET /login?phone=15217451050&code=040939 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 142 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 41/159] 120.77.156.184 () {40 vars in 837 bytes} [Fri Apr 26 20:05:03 2019] GET /login/?phone=15217451050&code=040939 => generated 46 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 23/160] 120.77.156.184 () {40 vars in 803 bytes} [Fri Apr 26 20:05:38 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 77/161] 120.77.156.184 () {40 vars in 803 bytes} [Fri Apr 26 20:05:38 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 24/162] 120.77.156.184 () {40 vars in 781 bytes} [Fri Apr 26 20:05:38 2019] GET /map_init => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 25/163] 120.77.156.184 () {40 vars in 783 bytes} [Fri Apr 26 20:05:38 2019] GET /map_init/ => generated 906 bytes in 11 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 78/164] 120.77.156.184 () {40 vars in 814 bytes} [Fri Apr 26 20:05:58 2019] GET /getCode?phone=15217451050 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 132 bytes (1 switches on core 0)
+15217451050
+用户已注册
+[pid: 1817|app: 0|req: 21/165] 120.77.156.184 () {40 vars in 816 bytes} [Fri Apr 26 20:05:58 2019] GET /getCode/?phone=15217451050 => generated 18 bytes in 7 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 79/166] 120.77.156.184 () {40 vars in 834 bytes} [Fri Apr 26 20:06:08 2019] GET /login?phone=15217451050&code=599757 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 142 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 42/167] 120.77.156.184 () {40 vars in 836 bytes} [Fri Apr 26 20:06:08 2019] GET /login/?phone=15217451050&code=599757 => generated 46 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 80/168] 120.77.156.184 () {40 vars in 782 bytes} [Fri Apr 26 20:06:08 2019] GET /map_init => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 26/169] 120.77.156.184 () {40 vars in 784 bytes} [Fri Apr 26 20:06:08 2019] GET /map_init/ => generated 906 bytes in 14 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 81/170] 120.77.156.184 () {40 vars in 809 bytes} [Fri Apr 26 20:41:09 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 43/171] 120.77.156.184 () {40 vars in 811 bytes} [Fri Apr 26 20:41:09 2019] GET /information/?user_num=1 => generated 441 bytes in 46 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 82/172] 80.82.70.187 () {28 vars in 426 bytes} [Fri Apr 26 21:25:18 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 83/173] 120.77.156.184 () {40 vars in 714 bytes} [Fri Apr 26 22:48:38 2019] GET /robots.txt => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 44/174] 120.77.156.184 () {40 vars in 683 bytes} [Fri Apr 26 22:48:44 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 22/175] 120.77.156.184 () {32 vars in 398 bytes} [Fri Apr 26 22:48:45 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 84/176] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 00:01:42 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 45/177] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 00:01:42 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 5 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 23/178] 120.77.156.184 () {40 vars in 782 bytes} [Sat Apr 27 00:01:42 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 27/179] 120.77.156.184 () {40 vars in 784 bytes} [Sat Apr 27 00:01:42 2019] GET /map_init/ => generated 906 bytes in 10 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 85/180] 120.77.156.184 () {40 vars in 809 bytes} [Sat Apr 27 00:01:49 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1817|app: 0|req: 24/181] 120.77.156.184 () {40 vars in 811 bytes} [Sat Apr 27 00:01:49 2019] GET /information/?user_num=1 => generated 441 bytes in 43 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 86/182] 120.77.156.184 () {40 vars in 809 bytes} [Sat Apr 27 00:05:17 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 46/183] 120.77.156.184 () {40 vars in 811 bytes} [Sat Apr 27 00:05:17 2019] GET /information/?user_num=1 => generated 441 bytes in 46 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 87/184] 120.77.156.184 () {40 vars in 678 bytes} [Sat Apr 27 00:29:29 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 47/185] 120.77.156.184 () {40 vars in 678 bytes} [Sat Apr 27 00:29:29 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 25/186] 120.77.156.184 () {40 vars in 678 bytes} [Sat Apr 27 00:29:29 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[uwsgi-http key:  client_addr: 5.188.206.166 client_port: 14121] hr_read(): Connection reset by peer [plugins/http/http.c line 917]
+[pid: 1819|app: 0|req: 88/187] 120.77.156.184 () {30 vars in 439 bytes} [Sat Apr 27 03:46:20 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 89/188] 120.77.156.184 () {30 vars in 418 bytes} [Sat Apr 27 04:13:09 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 90/189] 71.6.158.166 () {30 vars in 488 bytes} [Sat Apr 27 04:14:17 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 48/190] 71.6.158.166 () {32 vars in 412 bytes} [Sat Apr 27 04:14:18 2019] GET /favicon.ico => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 91/191] 80.82.70.187 () {28 vars in 426 bytes} [Sat Apr 27 07:33:58 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 92/192] 47.92.138.160 () {30 vars in 440 bytes} [Sat Apr 27 08:16:06 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 93/193] 120.77.156.184 () {30 vars in 416 bytes} [Sat Apr 27 08:20:30 2019] HEAD / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 94/194] 106.15.186.63 () {30 vars in 438 bytes} [Sat Apr 27 08:21:03 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 95/195] 120.77.156.184 () {30 vars in 420 bytes} [Sat Apr 27 08:37:30 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 96/196] 120.77.156.184 () {32 vars in 461 bytes} [Sat Apr 27 09:02:29 2019] HEAD / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 97/197] 120.77.156.184 () {30 vars in 463 bytes} [Sat Apr 27 10:15:24 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 49/198] 120.77.156.184 () {30 vars in 465 bytes} [Sat Apr 27 10:15:24 2019] GET /information/?user_num=1 => generated 441 bytes in 46 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 98/199] 120.77.156.184 () {30 vars in 469 bytes} [Sat Apr 27 10:43:56 2019] GET /getcode?phone=15217451050 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 99/200] 184.154.74.66 () {30 vars in 442 bytes} [Sat Apr 27 10:48:51 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 100/201] 120.77.156.184 () {30 vars in 489 bytes} [Sat Apr 27 10:50:15 2019] GET /login?phone=15217451050&code=599757 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 142 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 50/202] 120.77.156.184 () {30 vars in 491 bytes} [Sat Apr 27 10:50:15 2019] GET /login/?phone=15217451050&code=599757 => generated 46 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 101/203] 120.77.156.184 () {30 vars in 489 bytes} [Sat Apr 27 12:08:50 2019] GET /login?phone=15217451050&code=040939 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 142 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 51/204] 120.77.156.184 () {30 vars in 491 bytes} [Sat Apr 27 12:08:50 2019] GET /login/?phone=15217451050&code=040939 => generated 46 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 102/205] 120.77.156.184 () {30 vars in 436 bytes} [Sat Apr 27 12:18:09 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 52/206] 120.77.156.184 () {30 vars in 438 bytes} [Sat Apr 27 12:18:09 2019] GET /map_init/ => generated 906 bytes in 12 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 103/207] 120.77.156.184 () {30 vars in 507 bytes} [Sat Apr 27 12:26:31 2019] GET /login?phone=15217451050&code=040939 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 142 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 53/208] 120.77.156.184 () {30 vars in 509 bytes} [Sat Apr 27 12:26:31 2019] GET /login/?phone=15217451050&code=040939 => generated 46 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 104/209] 120.77.156.184 () {30 vars in 457 bytes} [Sat Apr 27 12:38:57 2019] GET /onlaunch?user_num=1 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 105/210] 120.77.156.184 () {30 vars in 457 bytes} [Sat Apr 27 13:01:54 2019] GET /onlaunch?user_num=2 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 106/211] 121.40.130.66 () {28 vars in 320 bytes} [Sat Apr 27 14:44:15 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 107/212] 80.82.70.187 () {28 vars in 426 bytes} [Sat Apr 27 17:40:45 2019] GET http://www.baidu.com/cache/global/img/gs.gif => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 108/213] 120.77.156.184 () {30 vars in 441 bytes} [Sat Apr 27 17:49:53 2019] GET / => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 109/214] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:19:04 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 54/215] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:19:04 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 26/216] 120.77.156.184 () {40 vars in 782 bytes} [Sat Apr 27 19:19:04 2019] GET /map_init => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 115 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 28/217] 120.77.156.184 () {40 vars in 784 bytes} [Sat Apr 27 19:19:04 2019] GET /map_init/ => generated 906 bytes in 11 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 110/218] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:19:51 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 27/219] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:19:51 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 111/220] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:20:53 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 55/221] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:20:53 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 28/222] 120.77.156.184 () {40 vars in 809 bytes} [Sat Apr 27 19:20:55 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1818|app: 0|req: 29/223] 120.77.156.184 () {40 vars in 811 bytes} [Sat Apr 27 19:20:55 2019] GET /information/?user_num=1 => generated 441 bytes in 47 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 112/224] 120.77.156.184 () {40 vars in 809 bytes} [Sat Apr 27 19:23:27 2019] GET /information?user_num=1 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 129 bytes (1 switches on core 0)
+1
+1
+1
+[pid: 1816|app: 0|req: 56/225] 120.77.156.184 () {40 vars in 811 bytes} [Sat Apr 27 19:23:27 2019] GET /information/?user_num=1 => generated 441 bytes in 46 msecs (HTTP/1.0 200) 3 headers in 101 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 113/226] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:46:00 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 57/227] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:46:00 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 29/228] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 19:46:01 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 30/229] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 19:46:03 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 114/230] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:46:54 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 30/231] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:46:54 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 31/232] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 19:46:56 2019] GET /garage_msg/?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 58/233] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 19:46:59 2019] GET /garage_msg/?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 115/234] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 19:50:46 2019] GET /garage_msg/?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 59/235] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:50:58 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 31/236] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:50:58 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 32/237] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 19:50:59 2019] GET /garage_msg/?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 116/238] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 19:51:07 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 1 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 60/239] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 19:51:07 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 4 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 33/240] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 19:51:09 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 117/241] 120.77.156.184 () {40 vars in 827 bytes} [Sat Apr 27 19:55:44 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 61/242] 120.77.156.184 () {40 vars in 828 bytes} [Sat Apr 27 19:55:45 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 32/243] 120.77.156.184 () {40 vars in 828 bytes} [Sat Apr 27 19:55:45 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 118/244] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:05 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1816|app: 0|req: 62/245] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:06 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 33/246] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:06 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 34/247] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:07 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1818|app: 0|req: 35/248] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:07 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1817|app: 0|req: 34/249] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:07 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1819|app: 0|req: 119/250] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 20:08:07 2019] GET /garage_msg?garage_code=gds100001 => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+gateway "uWSGI http 1" has been buried (pid: 1820)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /root/Desktop/Django/ols_project
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 6 mapped to socket 0 (127.0.0.1:43784)
+running /usr/local/bin/uwsgi
+[uWSGI] getting INI configuration from django-uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Sat Apr 27 20:16:06 2019] ***
+compiled with version: 5.4.0 20160609 on 23 April 2019 09:05:08
+os: Linux-4.4.0-143-generic #169-Ubuntu SMP Thu Feb 7 07:56:38 UTC 2019
+nodename: iZwz9c88sbllf3xisnpxb9Z
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/Desktop/Django/ols_project
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/Desktop/Django/ols_project
+your processes number limit is 7833
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 9
+uwsgi socket 0 bound to TCP address 127.0.0.1:36969 (port auto-assigned) fd 8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+Python main interpreter initialized at 0x1f47390
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364520 bytes (355 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1f47390 pid: 1814 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 1814)
+spawned uWSGI worker 1 (pid: 7092, cores: 1)
+spawned uWSGI worker 2 (pid: 7093, cores: 1)
+spawned uWSGI worker 3 (pid: 7094, cores: 1)
+spawned uWSGI worker 4 (pid: 7095, cores: 1)
+spawned uWSGI http 1 (pid: 7096)
+*** Starting uWSGI 2.0.18 (64bit) on [Sat Apr 27 21:28:47 2019] ***
+compiled with version: 5.4.0 20160609 on 23 April 2019 09:05:08
+os: Linux-4.4.0-143-generic #169-Ubuntu SMP Thu Feb 7 07:56:38 UTC 2019
+nodename: iZwz9c88sbllf3xisnpxb9Z
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/Desktop/Django/ols_project
+writing pidfile to /root/Desktop/Django/ols_project/pid/uwsgi-8000.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/Desktop/Django/ols_project
+your processes number limit is 7833
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 7
+uwsgi socket 0 bound to TCP address 127.0.0.1:46579 (port auto-assigned) fd 6
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+Python main interpreter initialized at 0x175f110
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364520 bytes (355 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x175f110 pid: 1560 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1560)
+spawned uWSGI worker 1 (pid: 1562, cores: 1)
+spawned uWSGI worker 2 (pid: 1563, cores: 1)
+spawned uWSGI worker 3 (pid: 1564, cores: 1)
+spawned uWSGI worker 4 (pid: 1565, cores: 1)
+spawned uWSGI http 1 (pid: 1566)
+[pid: 1562|app: 0|req: 1/1] 120.77.156.184 () {36 vars in 629 bytes} [Sat Apr 27 21:33:01 2019] GET /admin => generated 0 bytes in 44 msecs (HTTP/1.0 301) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 1/2] 120.77.156.184 () {36 vars in 631 bytes} [Sat Apr 27 21:33:01 2019] GET /admin/ => generated 0 bytes in 40 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 2/3] 120.77.156.184 () {36 vars in 668 bytes} [Sat Apr 27 21:33:01 2019] GET /admin/login/?next=/admin/ => generated 1821 bytes in 102 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 2/4] 120.77.156.184 () {38 vars in 732 bytes} [Sat Apr 27 21:33:01 2019] GET /static/admin/css/base.css => generated 77 bytes in 36 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 1/5] 120.77.156.184 () {38 vars in 734 bytes} [Sat Apr 27 21:33:01 2019] GET /static/admin/css/login.css => generated 77 bytes in 75 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 1/6] 120.77.156.184 () {38 vars in 744 bytes} [Sat Apr 27 21:33:01 2019] GET /static/admin/css/responsive.css => generated 77 bytes in 66 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 3/7] 120.77.156.184 () {38 vars in 714 bytes} [Sat Apr 27 21:33:02 2019] GET /favicon.ico => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 3/8] 120.77.156.184 () {38 vars in 730 bytes} [Sat Apr 27 21:33:10 2019] GET /charge_test => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 118 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 4/9] 120.77.156.184 () {38 vars in 732 bytes} [Sat Apr 27 21:33:10 2019] GET /charge_test/ => generated 826 bytes in 54 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 4/10] 120.77.156.184 () {38 vars in 702 bytes} [Sat Apr 27 21:33:10 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 2/11] 120.77.156.184 () {38 vars in 721 bytes} [Sat Apr 27 21:33:10 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 2/12] 120.77.156.184 () {40 vars in 784 bytes} [Sat Apr 27 21:33:22 2019] GET /charge_test/ => generated 826 bytes in 14 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 5/13] 120.77.156.184 () {38 vars in 721 bytes} [Sat Apr 27 21:33:23 2019] GET /static/css/charge_test.css => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 5/14] 120.77.156.184 () {38 vars in 702 bytes} [Sat Apr 27 21:33:23 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 3/15] 120.77.156.184 () {42 vars in 815 bytes} [Sat Apr 27 21:33:33 2019] GET /charge_test/ => generated 826 bytes in 14 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 6/16] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:33:33 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 3/17] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:33:33 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 6/18] 120.77.156.184 () {42 vars in 815 bytes} [Sat Apr 27 21:33:43 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 7/19] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:33:43 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 4/20] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:33:44 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 4/21] 120.77.156.184 () {40 vars in 806 bytes} [Sat Apr 27 21:33:54 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 8/22] 120.77.156.184 () {38 vars in 721 bytes} [Sat Apr 27 21:33:54 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 5/23] 120.77.156.184 () {38 vars in 702 bytes} [Sat Apr 27 21:33:54 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 7/24] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:34:04 2019] GET /charge_test/ => generated 826 bytes in 6 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 9/25] 120.77.156.184 () {40 vars in 750 bytes} [Sat Apr 27 21:34:04 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 5/26] 120.77.156.184 () {40 vars in 732 bytes} [Sat Apr 27 21:34:04 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 6/27] 120.77.156.184 () {42 vars in 836 bytes} [Sat Apr 27 21:34:14 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 6/28] 120.77.156.184 () {40 vars in 751 bytes} [Sat Apr 27 21:34:14 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 10/29] 120.77.156.184 () {40 vars in 732 bytes} [Sat Apr 27 21:34:14 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 8/30] 14.23.183.95 () {38 vars in 759 bytes} [Sat Apr 27 21:34:21 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 11/31] 14.23.183.95 () {38 vars in 740 bytes} [Sat Apr 27 21:34:21 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 7/32] 14.23.183.95 () {38 vars in 721 bytes} [Sat Apr 27 21:34:21 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 7/33] 14.23.183.95 () {36 vars in 651 bytes} [Sat Apr 27 21:34:21 2019] GET /favicon.ico => generated 77 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 8/34] 120.77.156.184 () {42 vars in 836 bytes} [Sat Apr 27 21:34:27 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 12/35] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:34:27 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 9/36] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:34:27 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 8/37] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:34:37 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 10/38] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:34:37 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 13/39] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:34:37 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 9/40] 120.77.156.184 () {40 vars in 803 bytes} [Sat Apr 27 21:34:41 2019] GET /onLaunch?user_num=2 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 126 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 11/41] 120.77.156.184 () {40 vars in 805 bytes} [Sat Apr 27 21:34:41 2019] GET /onLaunch/?user_num=2 => generated 17 bytes in 6 msecs (HTTP/1.0 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 14/42] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 21:34:43 2019] GET /garage_msg?garage_code=gds100001 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 139 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 10/43] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 21:34:43 2019] GET /garage_msg/?garage_code=gds100001 => generated 27 bytes in 48 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 15/44] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:34:47 2019] GET /charge_test/ => generated 826 bytes in 13 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 9/45] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:34:47 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 12/46] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:34:47 2019] GET /static/css/charge_test.css => generated 77 bytes in 3 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 11/47] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:01 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 13/48] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:01 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 10/49] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:01 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 16/50] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:11 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 14/51] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:12 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 11/52] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:12 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 12/53] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:22 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 12/54] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:23 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 15/55] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:23 2019] GET /static/js/charge_test.js => generated 77 bytes in 3 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 17/56] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:35 2019] GET /charge_test/ => generated 826 bytes in 4 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 16/57] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:35 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 13/58] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:35 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 13/59] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:45 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 17/60] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:45 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 14/61] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:45 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 18/62] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:35:55 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 15/63] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:35:55 2019] GET /static/css/charge_test.css => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 18/64] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:35:55 2019] GET /static/js/charge_test.js => generated 77 bytes in 3 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 14/65] 120.77.156.184 () {40 vars in 806 bytes} [Sat Apr 27 21:36:06 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 19/66] 120.77.156.184 () {38 vars in 721 bytes} [Sat Apr 27 21:36:06 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 16/67] 120.77.156.184 () {38 vars in 702 bytes} [Sat Apr 27 21:36:06 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 19/68] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 21:36:07 2019] GET /garage_msg?garage_code=gds100001 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 139 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 20/69] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 21:36:07 2019] GET /garage_msg/?garage_code=gds100001 => generated 27 bytes in 18 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 20/70] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:36:16 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 17/71] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:36:16 2019] GET /static/css/charge_test.css => generated 77 bytes in 3 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 15/72] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:36:16 2019] GET /static/js/charge_test.js => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 21/73] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:36:26 2019] GET /charge_test/ => generated 826 bytes in 4 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 18/74] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:36:26 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 16/75] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:36:26 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 21/76] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:36:39 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 19/77] 120.77.156.184 () {40 vars in 751 bytes} [Sat Apr 27 21:36:39 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 17/78] 120.77.156.184 () {40 vars in 732 bytes} [Sat Apr 27 21:36:39 2019] GET /static/js/charge_test.js => generated 77 bytes in 2 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 22/79] 120.77.156.184 () {42 vars in 836 bytes} [Sat Apr 27 21:36:49 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 18/80] 120.77.156.184 () {40 vars in 732 bytes} [Sat Apr 27 21:36:49 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 20/81] 120.77.156.184 () {40 vars in 751 bytes} [Sat Apr 27 21:36:49 2019] GET /static/css/charge_test.css => generated 77 bytes in 3 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 22/82] 120.77.156.184 () {42 vars in 836 bytes} [Sat Apr 27 21:36:59 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 21/83] 120.77.156.184 () {40 vars in 751 bytes} [Sat Apr 27 21:36:59 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 19/84] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:36:59 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 23/85] 120.77.156.184 () {40 vars in 806 bytes} [Sat Apr 27 21:37:11 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 22/86] 120.77.156.184 () {38 vars in 721 bytes} [Sat Apr 27 21:37:11 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 20/87] 120.77.156.184 () {38 vars in 702 bytes} [Sat Apr 27 21:37:11 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 23/88] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:37:21 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 23/89] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:37:21 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 21/90] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:37:21 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 24/91] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:37:31 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 24/92] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:37:32 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 22/93] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:37:32 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 24/94] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 21:37:43 2019] GET /garage_msg?garage_code=gds100001 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 139 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 23/95] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 21:37:43 2019] GET /garage_msg/?garage_code=gds100001 => generated 27 bytes in 18 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 25/96] 120.77.156.184 () {42 vars in 837 bytes} [Sat Apr 27 21:37:43 2019] GET /charge_test/ => generated 826 bytes in 5 msecs (HTTP/1.0 200) 5 headers in 291 bytes (1 switches on core 0)
+[pid: 1564|app: 0|req: 25/97] 120.77.156.184 () {40 vars in 752 bytes} [Sat Apr 27 21:37:43 2019] GET /static/css/charge_test.css => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 25/98] 120.77.156.184 () {40 vars in 733 bytes} [Sat Apr 27 21:37:43 2019] GET /static/js/charge_test.js => generated 77 bytes in 1 msecs (HTTP/1.0 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 24/99] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 21:38:05 2019] GET /garage_msg?garage_code=gds100001 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 139 bytes (1 switches on core 0)
+[pid: 1563|app: 0|req: 26/100] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 21:38:05 2019] GET /garage_msg/?garage_code=gds100001 => generated 27 bytes in 33 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1562|app: 0|req: 26/101] 120.77.156.184 () {40 vars in 829 bytes} [Sat Apr 27 21:38:15 2019] GET /garage_msg?garage_code=gds100001 => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 139 bytes (1 switches on core 0)
+[pid: 1565|app: 0|req: 25/102] 120.77.156.184 () {40 vars in 831 bytes} [Sat Apr 27 21:38:15 2019] GET /garage_msg/?garage_code=gds100001 => generated 27 bytes in 16 msecs (HTTP/1.0 500) 4 headers in 126 bytes (1 switches on core 0)
