@@ -1,12 +1,16 @@
 import requests
-import time
-i = 0
-client=requests.session()
+import json
+
 headers = {'Content-Type': 'text/plain;charset=UTF-8',
            #'Connection': 'Keep-Alive',
            'Cache-Control':'no-cache'}
-url='http://120.77.156.184:80/charge_msg/?iface=rptState&csid=gds100001&pno=C&qty=1123&state=1&stamp=1488335833&stime=1488335500&hash=4BE5EBDE63EE38374D02A372EAB353D2'
+url='http://www.olswxapp.top/information?user_num=1'
 
-for i in range(0,1000):
-    r=client.get(url,headers=headers)
-    print(r.status_code)
+r=requests.get(url,headers=headers)
+print("状态码：",r.status_code)
+json_data = json.loads(r.text)
+print("内容：",json_data["all"][1][0])
+
+print("++++++++++++++++++++++++++++++++++++")
+print(type(r))
+print(type(json_data))
