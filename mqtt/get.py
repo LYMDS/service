@@ -1,10 +1,43 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import requests
 import json
 
 headers = {'Content-Type': 'text/plain;charset=UTF-8',
            #'Connection': 'Keep-Alive',
            'Cache-Control':'no-cache'}
-url='http://www.olswxapp.top/information?user_num=1'
+url='http://127.0.0.1/information?user_num=1'
 
 r=requests.get(url,headers=headers)
 print("状态码：",r.status_code)
