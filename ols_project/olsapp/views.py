@@ -101,6 +101,9 @@ def charge_msg(request):
     stamp = request.GET.get('stamp')
     stime = request.GET.get('stime')
     hash_str = request.GET.get('hash')
+    #更新的充电桩信息
+    power = request.GET.get('Power')#充电桩的功率
+    voltage = request.GET.get('Voltage')#充电桩的电压
     print(iface,csid , pno , qty , state, stamp, stime)
     key=['gfegfdgfdgdfgdgg','dfgfdgfdgfdgfdg','WECSD8SDSDSDADWWE','gfegfdgfdgjjgdfg']
     add = csid + pno + qty + state + stamp + stime
@@ -109,7 +112,7 @@ def charge_msg(request):
         new_str = hashlib.md5(my_str.encode()).hexdigest().upper()
         if new_str == hash_str:
             print('\n接口名称：%s\n充电桩的key：%s\n车库编号：%s\n车位号：%s\n电量：%s\n状态：%s\n时间戳：%s\n充电开始时间：%s'%(iface,i,csid,pno,qty,state,stamp,stime))
-            qty = float(qty)
+            qty = float(qty)/10
             state = int(state)
             print(qty,"    ",state)
             which_gar = Garage_parking_state_table.objects.get(state_num = 53)
@@ -292,7 +295,7 @@ def garage_msg(request):
     
 from django.http import FileResponse
 def download(request):
-    file = open('../static/upfile/10.png','rb')
+    file = open('./static/upfile/10.png','rb')
     response = FileResponse(file)
     response['Content-Type']='application/octet-stream'
     #response['Content-Disposition']='attachment;filename="你的图片.png"'
