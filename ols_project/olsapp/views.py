@@ -300,9 +300,18 @@ def download(request):
     response['Content-Type']='application/octet-stream'
     #response['Content-Disposition']='attachment;filename="你的图片.png"'
     return response
-    
-    
-    
+
+@csrf_exempt   
+def carid(request):
+    path = request.POST['car_plate']
+    color = request.POST['color']
+    Type = request.POST['type']
+    park_id = request.POST['park_id']
+    camera_id = request.POST['camera_id']
+    start_time = request.POST['start_time']
+    method = request.method
+    print(path,method,color,Type,park_id,start_time,camera_id)  
+    return JsonResponse("{'s':'sdsada'}",safe = False)
 
     
 
