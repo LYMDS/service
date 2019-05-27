@@ -105,7 +105,7 @@ def charge_msg(request):
     power = request.GET.get('Power')#充电桩的功率
     voltage = request.GET.get('Voltage')#充电桩的电压
     print(iface,csid , pno , qty , state, stamp, stime)
-    key=['gfegfdgfdgdfgdgg','dfgfdgfdgfdgfdg','WECSD8SDSDSDADWWE','gfegfdgfdgjjgdfg']
+    key=['gfegfdgfdgdfgdgg','dfgfdgfdgfdgfdg','WECSD8SDSDSDADWWE','gfegfdgfdgjjgdfg']#用发过来的csid车库号去与车位号找该车库Key来解，没通过则返回错误
     add = csid + pno + qty + state + stamp + stime
     for i in key:
         my_str = iface + i + add
@@ -131,7 +131,6 @@ def charge_msg(request):
                 return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
             if control_tuple == (0,1) or control_tuple == (2,1) or control_tuple == (3,1):
                 return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
-
             break
     return JsonResponse({'rcode':101,'cmd':0,'rmsg':'unknown error'})
 	
