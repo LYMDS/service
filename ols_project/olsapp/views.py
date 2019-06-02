@@ -334,14 +334,18 @@ def download(request):
 
 @csrf_exempt   
 def carid(request):
-    path = request.POST['car_plate']
-    color = request.POST['color']
-    Type = request.POST['type']
-    park_id = request.POST['park_id']
-    camera_id = request.POST['camera_id']
-    start_time = request.POST['start_time']
-    method = request.method
-    print(path,method,color,Type,park_id,start_time,camera_id)  
+    Type = request.POST['type']                 #是否在线传输 online/offline
+    plate_num = request.POST['plate_num']       #车牌号码
+    plate_color = request.POST['plate_color']   #车牌颜色
+    car_logo = request.POST['car_logo']         #车辆品牌
+    car_color = request.POST['car_color']       #车辆颜色
+    vehicle_type = request.POST['vehicle_type'] #车辆类型       
+    start_time = request.POST['start_time']     #车牌识别时间,1970/01/01 到现在的秒数目
+    park_id = request.POST['park_id']           #车库ID 最大支持 60 个字符 
+    cam_id = request.POST['camera_id']          #相机ID 相机ID号根据配置决定是使用MAC还是UID
+    #picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
+    method = request.method                     #获取该请求的方法 获取他干嘛？？？
+    print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)  
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
     
