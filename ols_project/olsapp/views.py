@@ -345,8 +345,8 @@ def carid(request):
     cam_id = request.POST['cam_id']          #相机ID 相机ID号根据配置决定是使用MAC还是UID
     picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
     method = request.method                     #获取该请求的方法 获取他干嘛？？？
-    with open('/root/Desktop/Django/ols_project/olsapp/picture.txt','w') as file: 
-        file.write(picture)
+    #with open('/root/Desktop/Django/ols_project/olsapp/picture.txt','w') as file: 
+    #    file.write(picture)
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
