@@ -103,7 +103,7 @@ def mqtt_publish(topic,context):
                
 import hashlib
 def charge_msg(request):
-    
+
     iface = request.GET.get('iface')
     csid = request.GET.get('csid')
     pno = request.GET.get('pno')
@@ -145,17 +145,20 @@ def charge_msg(request):
             return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
     
     
-    #mqtt发布工作
-    gar_list = Garage_parking_state_table.objects.filter(garage_num=which_gar).order_by('id')
+    #mqtt发布工作(tip:不能发在这里)
+    gar_list = Garage_parking_state_table.objects.filter(garage_num=which_gar).order_by('parking_num')
     state_list = ["Sc0"]
     for i in gar_list:
         if i.charge_state in (0,1):
             state_list.append('0')
         elif i.charge_state in (2,3):
             state_list.append('1')
+    a_gar = Garage_info_table.objects.get(garage_code=csid)
+    no_cars = Garage_parking_state_table.objects.filter(garage_num=a_gar, exist_car=0)
+    cache.keys(csid+'-*')
     state_list.append('T')
     send_msg = "".join(state_list)
-    mqtt_publish(which_side.charge_key,send_msg)
+    mqtt_publish('哪个车库的发布码',pub_code,send_msg)
     return JsonResponse({'rcode':101,'cmd':0,'rmsg':'unknown error'})
 	
 from .models import Garage_exception_table
@@ -351,12 +354,22 @@ def dsad(request):
     gar_code = request.GET['car_plate']
     which_gar = Garage_info_table.objects.get(garage_code=gar_code)
     side_list = Garage_parking_state_table.objects.filter(garage_num=which_gar,exist_car=0)
-    if side_list.count() == 1:
+    nops = side_list.count()
+    key_list = cache.keys(gar_code+"-*")
+    if nops - len(key_list) < 2:
+        #可以细分情况
         return JsonResponse("最后一位不能预约")
-    elif !side_list.exists():
-        return JsonResponse("已经预约满了")
-    key_list = cache.keys(which_gar)
-    
+    elif not side_list.exists():
+        return JsonResponse("存满了呦！客官")
+    #通过上面两个过滤，现在为客户预约
+    key = ''
+    for i in range(1,51):
+        test_key = gar_code+"-%d"%i
+        if test_key not in key_list:
+            key = test_key
+            break
+    cache.set(key,gar_code,timeout=30*60)
+    return JsonResponse("预约成功")
 """
 """
 
