@@ -26,6 +26,8 @@ class Garage_info_table(models.Model):#库机信息表
     operation_state = models.CharField(max_length=3)#运营状态（运营中、维护中）
     running_state = models.CharField(max_length=20)#车库运行状态
     door_state = models.CharField(max_length=8)#库门开关状态（L0.M1.R0）
+    side_control = models.CharField(max_length=1,default="a")#添加车位控制信号，“a”-“k”的显示控制
+    camera_id = models.CharField(max_length=12,default="000000000000")
 
 class Parking_financial_table(models.Model):#车位财务表
     class Meta():
@@ -66,7 +68,11 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     user_num = models.ForeignKey('User_info_table',on_delete=models.CASCADE,null=True)#用户编号外键
     parking_num = models.IntegerField()#车位号
     exist_car = models.BooleanField()#是否有车
-    parking_start_time = models.DateTimeField(blank=True)#开始停车时间
+    car_id = models.CharField(max_length=10,null=True,default=None)#车牌号
+    car_logo = models.CharField(max_length=6,null=True,default=None)#车辆品牌（logo）
+    car_color = models.CharField(max_length=3,null=True,default=None)#车辆颜色
+    car_type = models.CharField(max_length=5,null=True,default=None)#车辆类型
+    parking_start_time = models.DateTimeField(null=True)#开始停车时间
     charge_wattage = models.DecimalField(max_digits=5,decimal_places=2)#充电瓦数
     charge_state = models.IntegerField()#充电状态
     lock_state = models.BooleanField()#车位与用户的锁定态

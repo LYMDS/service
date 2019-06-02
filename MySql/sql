@@ -10,7 +10,8 @@ latitude,
 address,
 operation_state,
 running_state,
-door_state)
+door_state,
+side_control)
 
 VALUES(
 'Gank_Y',
@@ -22,15 +23,17 @@ VALUES(
 '广州市海珠区仲恺路',
 '营运中',
 '自动运行中',
-'L0:M1:R0')
+'L0:M1:R0',
+'a')
 
-INSERT INTO garage_info_table(investor_num,garage_code,pub_code,garage_name,longitude,latitude,address,operation_state,running_state,door_state)
-VALUES('Gank_Y','gds100002','C/gds100002/S','仲恺宿舍库机',113.2813918591,23.1078092709,'广州市海珠区仲恺学生宿舍','营运中','自动运行中','L1:M1:R0')
+INSERT INTO garage_info_table(investor_num,garage_code,pub_code,garage_name,longitude,latitude,address,operation_state,running_state,door_state,side_control)
+VALUES('Gank_Y','gds100002','C/gds100002/S','仲恺宿舍库机',113.2813918591,23.1078092709,'广州市海珠区仲恺学生宿舍','营运中','自动运行中','L1:M1:R0','b')
 
 INSERT INTO garage_parking_state_table(
 garage_num_id,
 parking_num,
 exist_car,
+car_id,
 parking_start_time,
 charge_wattage,
 charge_state,
@@ -40,25 +43,26 @@ control_state,
 user_num_id)
 
 VALUES
-(1,1,1,now(),79.22,1,0,'WECSD8SDSDSDADWWE',0,null),
-(1,2,0,now(),0,0,1,'WECSD8SDSDSDADWWE',1,null),
-(1,3,0,now(),0,0,0,'WECSD8SDSDSDADWWE',2,null),
-(1,4,1,now(),67.45,1,1,'WECSD8SDSDSDADWWE',3,null),
-(1,5,0,now(),0,0,1,'WECSD8SDSDSDADWWE',1,null),
-(1,6,0,now(),0,0,1,'WECSD8SDSDSDADWWE',2,null),
-(1,7,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',3,null),
-(1,8,0,now(),0,0,1,'WECSD8SDSDSDADWWE',0,null),
-(1,9,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',3,null),
-(1,10,0,now(),0,0,1,'WECSD8SDSDSDADWWE',2,null),
-(1,11,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',1,null),
-(1,12,0,now(),0,0,1,'WECSD8SDSDSDADWWE',0,null),
-(1,13,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',1,null);
+(1,1,1,'粤M 182838',now(),79.22,1,0,'3GPR4WKEWIDVIL99E0',0,null),
+(1,2,0,'粤M 182838',now(),0,0,1,'TVQAA5FJJBP5TKUCFA',1,null),
+(1,3,0,'粤M 182838',now(),0,0,0,'XYBEGSHMJGDCJBWL2H',2,null),
+(1,4,1,'粤M 182838',now(),67.45,1,1,'RST1T7R9IRTFXBG2EW',3,null),
+(1,5,0,'粤M 182838',now(),0,0,1,'6ORO8KV8SYF8MG9QGE',1,null),
+(1,6,0,'粤M 182838',now(),0,0,1,'MV0LIRW88XT29PSXTY',2,null),
+(1,7,1,'粤M 182838',now(),67.45,0,0,'KHV2GN6GZ41FMAC9IO',3,null),
+(1,8,0,'粤M 182838',now(),0,0,1,'NRULMHCOTZA9UA7X32',0,null),
+(1,9,1,'粤M 182838',now(),67.45,1,0,'M6P786YJLX7HYGDQ0P',3,null),
+(1,10,0,null,now(),0,0,1,'FYOJXU3X88HBYFZ7X9',2,null),
+(1,11,1,null,now(),67.45,1,0,'910T0Q1HC4NQZOIZ4H',1,null),
+(1,12,0,'粤M 182838',now(),0,0,1,'QP1LUDHL6XESW5LXK5',0,null),
+(1,13,1,'粤M 182838',now(),67.45,0,0,'JLUHLF7H45O0XAT480',1,null);
 
 
 INSERT INTO garage_parking_state_table(
 garage_num_id,
 parking_num,
 exist_car,
+car_id,
 parking_start_time,
 charge_wattage,
 charge_state,
@@ -68,19 +72,19 @@ control_state,
 user_num_id)
 
 VALUES
-(2,1,1,now(),79.22,1,0,'WECSD8SDSDSDADWWE',0,null),
-(2,2,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
-(2,3,0,now(),67.45,0,0,'WECSD8SDSDSDADWWE',2,null),
-(2,4,1,now(),67.45,1,1,'WECSD8SDSDSDADWWE',3,null),
-(2,5,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
-(2,6,0,now(),67.45,1,1,'WECSD8SDSDSDADWWE',2,null),
-(2,7,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',3,null),
-(2,8,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
-(2,9,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',3,null),
-(2,10,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',2,null),
-(2,11,1,now(),67.45,1,0,'WECSD8SDSDSDADWWE',1,null),
-(2,12,0,now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
-(2,13,1,now(),67.45,0,0,'WECSD8SDSDSDADWWE',1,null);
+(2,1,1,'粤M 182838',now(),79.22,1,0,'WECSD8SDSDSDADWWE',0,null),
+(2,2,0,'粤M 182838',now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
+(2,3,0,'粤M 182838',now(),67.45,0,0,'WECSD8SDSDSDADWWE',2,null),
+(2,4,1,'粤M 182838',now(),67.45,1,1,'WECSD8SDSDSDADWWE',3,null),
+(2,5,0,'粤M 182838',now(),67.45,0,1,'WECSD8SDSDSDADWWE',1,null),
+(2,6,0,'粤M 182838',now(),67.45,1,1,'WECSD8SDSDSDADWWE',2,null),
+(2,7,1,'粤M 182838',now(),67.45,0,0,'WECSD8SDSDSDADWWE',3,null),
+(2,8,0,'粤M 182838',now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
+(2,9,1,'粤M 182838',now(),67.45,1,0,'WECSD8SDSDSDADWWE',3,null),
+(2,10,0,'粤M 182838',now(),67.45,0,1,'WECSD8SDSDSDADWWE',2,null),
+(2,11,1,'粤M 182838',now(),67.45,1,0,'WECSD8SDSDSDADWWE',1,null),
+(2,12,0,'粤M 182838',now(),67.45,0,1,'WECSD8SDSDSDADWWE',0,null),
+(2,13,1,'粤M 182838',now(),67.45,0,0,'WECSD8SDSDSDADWWE',1,null);
 
 
 

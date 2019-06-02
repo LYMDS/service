@@ -103,7 +103,6 @@ def mqtt_publish(topic,context):
                
 import hashlib
 def charge_msg(request):
-
     iface = request.GET.get('iface')
     csid = request.GET.get('csid')
     pno = request.GET.get('pno')
@@ -116,10 +115,10 @@ def charge_msg(request):
     power = request.GET.get('Power')#充电桩的功率
     voltage = request.GET.get('Voltage')#充电桩的电压
     print(iface,csid , pno , qty , state, stamp, stime)
-    
     #用发过来的csid车库号去与车位号找该车库Key来解，没通过则返回错误
-    which_gar = Garage_info_table.objects.get(garage_code = csid).garage_num
-    which_side = Garage_parking_state_table.objects.filter(garage_num=which_gar,parking_num=ascii_to_garint(pno))
+    which_gar = Garage_info_table.objects.get(garage_code = csid)
+    gar_num = which_gar.garage_num
+    which_side = Garage_parking_state_table.objects.filter(garage_num=gar_num,parking_num=ascii_to_garint(pno))
     key = which_side.charge_key
     my_str = iface + key + csid + pno + qty + state + stamp + stime
     new_str = hashlib.md5(my_str.encode()).hexdigest().upper()
@@ -143,10 +142,9 @@ def charge_msg(request):
             return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
         if control_tuple == (0,1) or control_tuple == (2,1) or control_tuple == (3,1):
             return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
-    
-    
+
     #mqtt发布工作(tip:不能发在这里)
-    gar_list = Garage_parking_state_table.objects.filter(garage_num=which_gar).order_by('parking_num')
+    gar_list = Garage_parking_state_table.objects.filter(garage_num=gar_num).order_by('parking_num')
     state_list = ["Sc0"]
     for i in gar_list:
         if i.charge_state in (0,1):
@@ -349,6 +347,7 @@ def carid(request):
     
 
 #仿真：客户预约触发函数,需要挑选车库出来
+"""
 def dsad(request):
     car_num = request.GET['car_plate']
     gar_code = request.GET['car_plate']
@@ -357,8 +356,7 @@ def dsad(request):
     nops = side_list.count()
     key_list = cache.keys(gar_code+"-*")
     if nops - len(key_list) < 2:
-        #可以细分情况
-        return JsonResponse("最后一位不能预约")
+        return JsonResponse("最后一位不能预约")#可以细分情况
     elif not side_list.exists():
         return JsonResponse("存满了呦！客官")
     #通过上面两个过滤，现在为客户预约
@@ -370,7 +368,6 @@ def dsad(request):
             break
     cache.set(key,gar_code,timeout=30*60)
     return JsonResponse("预约成功")
-"""
 """
 
 
