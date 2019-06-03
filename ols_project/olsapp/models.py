@@ -68,10 +68,10 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     user_num = models.ForeignKey('User_info_table',on_delete=models.CASCADE,null=True)#用户编号外键
     parking_num = models.IntegerField()#车位号
     exist_car = models.BooleanField()#是否有车
-    car_id = models.CharField(max_length=10,null=True,default=None)#车牌号
-    car_logo = models.CharField(max_length=6,null=True,default=None)#车辆品牌（logo）
-    car_color = models.CharField(max_length=3,null=True,default=None)#车辆颜色
-    car_type = models.CharField(max_length=5,null=True,default=None)#车辆类型
+    car_id = models.CharField(max_length=10,null=True)#车牌号
+    car_logo = models.CharField(max_length=6,null=True)#车辆品牌（logo）
+    car_color = models.CharField(max_length=3,null=True)#车辆颜色
+    car_type = models.CharField(max_length=5,null=True)#车辆类型
     parking_start_time = models.DateTimeField(null=True)#开始停车时间
     charge_wattage = models.DecimalField(max_digits=5,decimal_places=2)#充电瓦数
     charge_state = models.IntegerField()#充电状态
