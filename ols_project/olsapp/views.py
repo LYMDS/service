@@ -291,17 +291,19 @@ def information(request):
     })
 
 def status2list(status):
-    dic = {'a':[2,1,2,0,2,2,2,0,2,2,0,2,2],
-           'b':[2,1,2,2,2,0,2,0,2,2,0,2,2],
-           'c':[2,1,2,2,0,2,0,2,2,2,0,2,2],
-           'd':[2,1,2,2,0,2,2,2,0,2,0,2,2],
-           'e':[2,1,2,2,0,2,2,0,2,0,2,2,2],
-           'f':[2,1,2,2,0,2,2,0,2,2,2,0,2],
-           'g':[2,1,2,2,0,2,2,0,2,2,0,2,0],
-           'h':[2,1,2,2,0,2,2,0,2,2,0,2,2],
-           'i':[1,2,2,0,2,2,0,2,2,0,2,2,0],
-           'j':[2,1,2,2,0,2,2,0,2,2,0,2,2],
-           'k':[2,2,1,2,2,0,2,2,0,2,2,0,2]}
+    dic = {
+            'a':[2,1,2,0,2,2,2,0,2,2,0,2,2,0,2,2,2,2],
+            'b':[2,1,2,2,2,0,2,0,2,2,0,2,2,0,2,2,2,2],
+            'c':[2,1,2,2,0,2,0,2,2,2,0,2,2,0,2,2,2,2],
+            'd':[2,1,2,2,0,2,2,2,0,2,0,2,2,0,2,2,2,2],
+            'e':[2,1,2,2,0,2,2,0,2,0,2,2,2,0,2,2,2,2],
+            'f':[2,1,2,2,0,2,2,0,2,2,2,0,2,0,2,2,2,2],
+            'g':[2,1,2,2,0,2,2,0,2,2,0,2,0,2,2,2,2,2],
+            'h':[2,1,2,2,0,2,2,0,2,2,0,2,2,2,0,2,2,2],
+            'i':[1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2,2,2],
+            'j':[2,1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2,2],
+            'k':[2,2,1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2]
+    }
     return dic[status]
     
 def garage_msg(request):
@@ -309,7 +311,7 @@ def garage_msg(request):
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     status = garage.running_state#解出控制码
-    control = status2list("1")#先不拿数据库的，模拟一下
+    control = status2list("a")#先不拿数据库的，模拟一下
     print(control)
     park_msg = Garage_parking_state_table.objects.filter(garage_num = garage)
     ready_load = []
@@ -332,6 +334,28 @@ def download(request):
     #response['Content-Disposition']='attachment;filename="你的图片.png"'
     return response
 
+
+def base64_to_img(base64_str,file_name):
+    base64_str = re.sub("(-)", "+", base64_str)
+    base64_str = re.sub("(_)", "/", base64_str)
+    base64_str = re.sub("(\.)", "=", base64_str)
+    with open("./static/upfile/%s.jpg"%file_name, "wb") as f:
+        f.write(base64.b64decode(base64_str))
+
+def decipher_side(side_code,door_state):
+    m = 0
+    for i in door_state:
+        if i == "1":
+            for j in range(0,16,3):
+                k = m + j
+                if side_code[k] == 2:
+                    return side_code[0:k+1].count(2)
+        m += 1
+
+
+import os
+import re
+import base64
 @csrf_exempt   
 def carid(request):
     Type = request.POST['type']                 #是否在线传输 online/offline
@@ -342,11 +366,23 @@ def carid(request):
     vehicle_type = request.POST['vehicle_type'] #车辆类型       
     start_time = request.POST['start_time']     #车牌识别时间,1970/01/01 到现在的秒数目
     park_id = request.POST['park_id']           #车库ID 最大支持 60 个字符 
-    cam_id = request.POST['cam_id']          #相机ID 相机ID号根据配置决定是使用MAC还是UID
+    cam_id = request.POST['cam_id']             #相机ID 相机ID号根据配置决定是使用MAC还是UID
     picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
-    method = request.method                     #获取该请求的方法 获取他干嘛？？？
-    with open('/root/Desktop/Django/ols_project/olsapp/picture.txt','w') as file: 
-        file.write(picture)
+    closeup_pic = request.POST['closeup_pic']   #每张车牌的特写照
+    #method = request.method                    #获取该请求的方法 获取他干嘛？？？
+    garage = Garage_info_table.objects.get(garage_code=park_id)
+    state = status2list(garage.side_control)    #返回前端控制的数组
+    parking_side = decipher_side(state,garage.door_state)#先当作“010”来计算，返回一个车位号
+    which_side = Garage_parking_state_table.objects.get(garage_num=garage.garage_num,parking_num=parking_side)
+    which_side.car_id = plate_num
+    which_side.car_logo = car_logo
+    which_side.car_color = plate_color
+    which_side.car_type = vehicle_type
+    which_side.save()
+
+
+    base64_to_img(picture, park_id)
+    base64_to_img(closeup_pic, park_id+parking_side)
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
