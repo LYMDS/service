@@ -367,7 +367,7 @@ def carid(request):
     cam_id = request.POST['cam_id']             #相机ID 相机ID号根据配置决定是使用MAC还是UID
     picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
     closeup_pic = request.POST['closeup_pic']   #每张车牌的特写照
-    #method = request.method                    #获取该请求的方法 获取他干嘛？？？
+    method = request.method                    #获取该请求的方法 获取他干嘛？？？
     garage = Garage_info_table.objects.get(garage_code=park_id)
     state = status2list(garage.side_control)    #返回前端控制的数组
     parking_side = decipher_side(state,garage.door_state)#先当作“010”来计算，返回一个车位号
@@ -380,7 +380,7 @@ def carid(request):
 
     
     base64_to_img(picture, park_id)
-    base64_to_img(closeup_pic, park_id+parking_side)
+    base64_to_img(closeup_pic, park_id + str(parking_side))
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
