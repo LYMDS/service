@@ -334,7 +334,9 @@ def download(request):
     #response['Content-Disposition']='attachment;filename="你的图片.png"'
     return response
 
-
+import os
+import re
+import base64
 def base64_to_img(base64_str,file_name):
     base64_str = re.sub("(-)", "+", base64_str)
     base64_str = re.sub("(_)", "/", base64_str)
@@ -352,10 +354,6 @@ def decipher_side(side_code,door_state):
                     return side_code[0:k+1].count(2)
         m += 1
 
-
-import os
-import re
-import base64
 @csrf_exempt   
 def carid(request):
     Type = request.POST['type']                 #是否在线传输 online/offline
@@ -380,7 +378,7 @@ def carid(request):
     which_side.car_type = vehicle_type
     which_side.save()
 
-
+    
     base64_to_img(picture, park_id)
     base64_to_img(closeup_pic, park_id+parking_side)
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)
