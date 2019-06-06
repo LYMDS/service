@@ -153,7 +153,7 @@ def charge_msg(request):
             state_list.append('1')
     a_gar = Garage_info_table.objects.get(garage_code=csid)
     no_cars = Garage_parking_state_table.objects.filter(garage_num=a_gar, exist_car=0)
-    cache.keys(csid+'-*')
+    #cache.keys(csid+'-*')
     state_list.append('T')
     send_msg = "".join(state_list)
     mqtt_publish('哪个车库的发布码',pub_code,send_msg)
@@ -306,8 +306,7 @@ def status2list(status):
     }
     return dic[status]
     
-def garage_msg(request):
-    print("ssadsadasasdsadsadsdsadsa")
+def garage_msg(request):#前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     status = garage.running_state#解出控制码
@@ -318,16 +317,16 @@ def garage_msg(request):
     for i in park_msg:
         load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, "粤M 68595"]#模拟车牌号先
         ready_load.append(load)
-    ready_load = sorted(ready_load,key=itemgetter(0))
+    ready_load = sorted(ready_load,key=itemgetter(0))#为什么要在这里排序
     m = 0
-    for i in range(0,18):
+    for i in range(0,18):#对数值为2的填装数据
         if control[i] == 2:
             control[i] = ready_load[m]
             m+=1
     return JsonResponse({"gar_msg": control})
     
 from django.http import FileResponse
-def download(request):
+def download(request):#传送图片给客户端的方法
     file = open('./static/upfile/10.png','rb')
     response = FileResponse(file)
     response['Content-Type']='application/octet-stream'
@@ -337,14 +336,14 @@ def download(request):
 import os
 import re
 import base64
-def base64_to_img(base64_str,file_name):
+def base64_to_img(base64_str,file_name):#Base64特殊图片保存算法
     base64_str = re.sub("(-)", "+", base64_str)
     base64_str = re.sub("(_)", "/", base64_str)
     base64_str = re.sub("(\.)", "=", base64_str)
     with open("./static/upfile/%s.jpg"%file_name, "wb") as f:
         f.write(base64.b64decode(base64_str))
 
-def decipher_side(side_code,door_state):
+def decipher_side(side_code,door_state):#升降横移的位状态转译算法
     m = 0
     for i in door_state:
         if i == "1":
@@ -355,7 +354,7 @@ def decipher_side(side_code,door_state):
         m += 1
 
 @csrf_exempt   
-def carid(request):
+def camera_post(request):
     Type = request.POST['type']                 #是否在线传输 online/offline
     plate_num = request.POST['plate_num']       #车牌号码
     plate_color = request.POST['plate_color']   #车牌颜色
@@ -367,27 +366,27 @@ def carid(request):
     cam_id = request.POST['cam_id']             #相机ID 相机ID号根据配置决定是使用MAC还是UID
     picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
     closeup_pic = request.POST['closeup_pic']   #每张车牌的特写照
-    method = request.method                    #获取该请求的方法 获取他干嘛？？？
-    garage = Garage_info_table.objects.get(garage_code=park_id)
-    state = status2list(garage.side_control)    #返回前端控制的数组
-    parking_side = decipher_side(state,garage.door_state)#先当作“010”来计算，返回一个车位号
-    which_side = Garage_parking_state_table.objects.get(garage_num=garage.garage_num,parking_num=parking_side)
-    which_side.car_id = plate_num
-    which_side.car_logo = car_logo
-    which_side.car_color = plate_color
-    which_side.car_type = vehicle_type
-    which_side.save()
 
-    
-    base64_to_img(picture, park_id)
-    base64_to_img(closeup_pic, park_id + str(parking_side))
-    print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id,method)
+    garage = Garage_info_table.objects.get(garage_code=park_id)
+    state = status2list(garage.side_control)                #返回前端控制的数组
+    parking_side = decipher_side(state,garage.door_state)   #返回一个车位号
+    which_side = Garage_parking_state_table.objects.get(garage_num=garage.garage_num,parking_num=parking_side)#找出那个车位
+
+    if which_side.exist_car == 0:
+        which_side.car_id = plate_num
+        which_side.car_logo = car_logo
+        which_side.car_color = plate_color
+        which_side.car_type = vehicle_type
+        which_side.save()
+        base64_to_img(picture, park_id)
+        base64_to_img(closeup_pic, park_id + str(parking_side))
+
+    print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id)
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
     
 
-#仿真：客户预约触发函数,需要挑选车库出来
-"""
+"""预约算法暂时停用，因为与不能远程遥控的安全逻辑想冲突！
 def dsad(request):
     car_num = request.GET['car_plate']
     gar_code = request.GET['car_plate']

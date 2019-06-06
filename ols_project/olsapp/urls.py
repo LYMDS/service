@@ -31,5 +31,5 @@ urlpatterns = [
     url(r'^information/$',views.information),
     url(r'^garage_msg/$',views.garage_msg),
     url(r'^show_img/$',views.download),
-    url(r'^cartest/$',views.carid),
+    url(r'^camera_post/$',views.camera_post),
 ]
