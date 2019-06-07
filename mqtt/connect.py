@@ -2,12 +2,12 @@ import pymysql
 import paho.mqtt.publish as pub
 
 HOST="localhost"
-message_topic="C/gds100002/P"
-message_payload="SqbbbbbbbbbbbbbbbbbT"
+#HOST="120.77.156.184"
+#由于测试方便，可选HOST
+U_P = {'username': "olswxmqtt",
+           'password': "olswxappmqtt32219"}
 
 def send(topic,context): # MQTT的连接函数
-    U_P = {'username': "olswxmqtt",
-           'password': "olswxappmqtt32219"}
     pub.single(topic,context,
              hostname=HOST,
              port=1883,
@@ -27,9 +27,10 @@ def sql_need_roll(sql):
         cursor.execute(sql)# 执行sql语句
         db.commit()# 提交到数据库执行
     except:
-        print("sadfsaf")
+        print("SQL语句出错，自动回滚")
         db.rollback()# 如果发生错误则回滚
         cursor.close()
+        print("回滚完毕")
         db.close()
 
 def sql_not_roll(sql):
@@ -43,6 +44,7 @@ def sql_not_roll(sql):
     return results
 
 
+'''
 def insert_data(message_topic,message_payload):
     sql = """
     INSERT INTO test_log(topic,payload,status) VALUES(%s,%s,%s)
@@ -50,3 +52,4 @@ def insert_data(message_topic,message_payload):
     sql_need_roll(sql)
 
 insert_data(message_topic,message_payload)
+'''

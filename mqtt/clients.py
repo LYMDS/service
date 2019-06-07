@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as pub
-HOST = "127.0.0.1"
+import connect
+HOST = "localhost"
 
 Host = "120.77.156.184"
 U_P = {"username": "olswxmqtt",
@@ -8,7 +9,7 @@ U_P = {"username": "olswxmqtt",
 
 def send(topic,context):
     pub.single(topic,context,
-               hostname="localhost",
+               hostname=HOST,
                qos=2,
                retain=False,
                port=1883,
@@ -17,12 +18,16 @@ def send(topic,context):
 def on_connect(client,userdata,flags,rc):
     print("connect succes")
 def on_message(client,userdata,msg):
-	print("-------------------------------------------------")
-	topic = msg.topic   
-	mess = msg.payload.decode()
-	print(topic)
-	print(mess)
-	print("-------------------------------------------------")
+    topic = msg.topic
+    message = msg.payload.decode()
+    if message[0] == 'S' and message[-1] == 'T':
+        message = message.strip('ST')
+        SQL = "SELECT garage_type FROM garage_info_table WHERE pub_code=%s"%topic
+        data = connect.sql_not_roll(SQL)
+        data
+
+
+    #取数据库的车库类型匹对
 
 
 client = mqtt.Client()
