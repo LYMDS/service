@@ -39,6 +39,8 @@ def sql_not_roll(sql):
                          "609586869",
                          "olsdatabase")
     cursor = db.cursor()
+    cursor.execute(sql)
+    results = cursor.fetchall()
     cursor.close()
     db.close()
     return results
