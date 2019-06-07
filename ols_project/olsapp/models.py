@@ -16,7 +16,7 @@ class Garage_info_table(models.Model):#库机信息表
     class Meta():
         db_table = 'garage_info_table'
     garage_num = models.AutoField(primary_key=True)#库机序列编号(主键)
-    garage_type = models.IntegerField(default=0)#车库类型
+    garage_type = models.IntegerField()#车库类型
     investor_num = models.CharField(max_length=20)#投资商编号
     garage_code = models.CharField(max_length=14)#库机编码（如：GDS100001）
     pub_code = models.CharField(max_length=14)#MQTT发布主题码（如：C/gds100001/S）
@@ -28,7 +28,7 @@ class Garage_info_table(models.Model):#库机信息表
     running_state = models.CharField(max_length=20)#车库运行状态
     door_state = models.CharField(max_length=8)#库门开关状态（L0.M1.R0）
     side_control = models.CharField(max_length=1)#添加车位控制信号，“a”-“k”的显示控制
-    camera_id = models.CharField(max_length=12)
+    camera_id = models.CharField(max_length=12)#相机的MAC物理地址的注册
 
 class Parking_financial_table(models.Model):#车位财务表
     class Meta():
