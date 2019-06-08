@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as pub
 import connect
+from get import send_to_django
 HOST = "localhost"
 
 Host = "120.77.156.184"
@@ -22,11 +23,16 @@ def on_message(client,userdata,msg):
     message = msg.payload.decode()
     if message[0] == 'S' and message[-1] == 'T':
         message = message.strip('ST')
-        SQL = "SELECT garage_type FROM garage_info_table WHERE pub_code=%s"%topic
+        topic = topic.rstrip("P") + "S"
+        SQL = "SELECT garage_type FROM garage_info_table WHERE pub_code='%s'"%topic
         data = connect.sql_not_roll(SQL)
-        data
-
-
+        if len(data) == 1:
+            if data[0][0] == 0:     #升降横移车库
+                send_to_django()
+            elif data[0][0] == 1:   #垂直循环车库
+                send_to_django()
+        else:
+            print("warning:数据重叠错误！")
     #取数据库的车库类型匹对
 
 
