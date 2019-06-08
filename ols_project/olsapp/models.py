@@ -76,6 +76,8 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     parking_start_time = models.DateTimeField(null=True)#开始停车时间
     charge_wattage = models.DecimalField(max_digits=5,decimal_places=2)#充电瓦数
     charge_state = models.IntegerField()#充电状态
+    charge_power = models.DecimalField(max_digits=3,decimal_places=1,default=1.8)#充电桩的电功率
+    charge_voltage = models.DecimalField(max_digits=4,decimal_places=1,default=233.8)#充电桩的电压
     lock_state = models.BooleanField()#车位与用户的锁定态
     charge_key = models.CharField(max_length=32)#充电桩的KEY
     control_state = models.NullBooleanField()#充电桩控制态

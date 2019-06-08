@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^garage_msg/$',views.garage_msg),
     url(r'^show_img/$',views.download),
     url(r'^camera_post/$',views.camera_post),
+    url(r'^mqtt_receive/$',views.mqtt_to_django),
 ]

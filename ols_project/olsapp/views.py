@@ -111,22 +111,30 @@ def charge_msg(request):
     stamp = request.GET.get('stamp')
     stime = request.GET.get('stime')
     hash_str = request.GET.get('hash')
-    #更新的充电桩信息
-    power = request.GET.get('Power')#充电桩的功率
-    voltage = request.GET.get('Voltage')#充电桩的电压
-    print(iface,csid , pno , qty , state, stamp, stime)
-    #用发过来的csid车库号去与车位号找该车库Key来解，没通过则返回错误
-    which_gar = Garage_info_table.objects.get(garage_code = csid)
+    power = request.GET.get('Power')
+    voltage = request.GET.get('Voltage')
+    print(iface, csid , pno , qty , state, stamp, stime, power, voltage)
+    which_gar = Garage_info_table.objects.get(garage_code = csid)#用发过来的csid车库号去与车位号找该车库Key来解，没通过则返回错误
     gar_num = which_gar.garage_num
     which_side = Garage_parking_state_table.objects.filter(garage_num=gar_num,parking_num=ascii_to_garint(pno))
     key = which_side.charge_key
     my_str = iface + key + csid + pno + qty + state + stamp + stime
     new_str = hashlib.md5(my_str.encode()).hexdigest().upper()
     if new_str == hash_str:
+        # mqtt发布工作，本需核对车库类型（算法兼容可以不核对分流）
+        state_list = ["Sc0"]
+        gar_list = Garage_parking_state_table.objects.filter(garage_num=gar_num).order_by('parking_num')
+        for i in gar_list:
+            if i.charge_state in (0, 1):
+                state_list.append('0')
+            elif i.charge_state in (2, 3):
+                state_list.append('b')
+        state_list.append('T')
+        send_msg = "".join(state_list)
+        mqtt_publish(which_gar.pub_code,send_msg)
         print('\n接口名称：%s\n充电桩的key：%s\n车库编号：%s\n车位号：%s\n电量：%s\n状态：%s\n时间戳：%s\n充电开始时间：%s'%(iface,key,csid,pno,qty,state,stamp,stime))
         qty = float(qty)/10
         state = int(state)
-        print(qty,"    ",state)
         zeroc = which_side.exist_car
         if zeroc:
             zeroc = "0"
@@ -134,6 +142,8 @@ def charge_msg(request):
             zeroc = "1"
         which_side.charge_state = state
         which_side.charge_wattage = qty
+        which_side.charge_power = float(power)
+        which_side.charge_voltage = float(voltage)
         which_side.save()
         control_tuple=(state,which_side.control_state)
         if control_tuple == (0,None) or control_tuple == (1,None) or control_tuple == (2,None) or control_tuple == (3,None) or control_tuple == (1,1):
@@ -142,21 +152,7 @@ def charge_msg(request):
             return JsonResponse({'rcode':0,'cmd':1,'rmsg':'ok','zeroc':zeroc})
         if control_tuple == (0,1) or control_tuple == (2,1) or control_tuple == (3,1):
             return JsonResponse({'rcode':0,'cmd':2,'rmsg':'ok','zeroc':zeroc})
-
-    #mqtt发布工作(tip:不能发在这里)
-    gar_list = Garage_parking_state_table.objects.filter(garage_num=gar_num).order_by('parking_num')
-    state_list = ["Sc0"]
-    for i in gar_list:
-        if i.charge_state in (0,1):
-            state_list.append('0')
-        elif i.charge_state in (2,3):
-            state_list.append('1')
-    a_gar = Garage_info_table.objects.get(garage_code=csid)
-    no_cars = Garage_parking_state_table.objects.filter(garage_num=a_gar, exist_car=0)
-    #cache.keys(csid+'-*')
-    state_list.append('T')
-    send_msg = "".join(state_list)
-    mqtt_publish('哪个车库的发布码',pub_code,send_msg)
+    print(csid,pno,"该充电桩KEY未通过")
     return JsonResponse({'rcode':101,'cmd':0,'rmsg':'unknown error'})
 	
 from .models import Garage_exception_table
@@ -315,7 +311,7 @@ def garage_msg(request):#前端需求的显示控制码
     park_msg = Garage_parking_state_table.objects.filter(garage_num = garage)
     ready_load = []
     for i in park_msg:
-        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, "粤M 68595"]#模拟车牌号先
+        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]#模拟车牌号先
         ready_load.append(load)
     ready_load = sorted(ready_load,key=itemgetter(0))#为什么要在这里排序
     m = 0
@@ -384,9 +380,18 @@ def camera_post(request):
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id)
     return JsonResponse("{'s':'sdsada'}",safe = False)
 
-    
 
-"""预约算法暂时停用，因为与不能远程遥控的安全逻辑想冲突！
+def mqtt_to_django(request):
+    topic = request.GET.get('topic')
+    type = request.GET.get('type')
+
+    runing_state = request.GET.get('runing_state')
+    side = request.GET.get('')
+    door = request.GET.get('')
+    request.GET.get()
+
+"""
+预约算法暂时停用，因为与不能远程遥控的安全逻辑冲突！
 def dsad(request):
     car_num = request.GET['car_plate']
     gar_code = request.GET['car_plate']
