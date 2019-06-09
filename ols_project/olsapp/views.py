@@ -305,8 +305,8 @@ def status2list(status):
 def garage_msg(request):#前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
-    status = garage.running_state#解出控制码
-    control = status2list("a")#先不拿数据库的，模拟一下
+    status = garage.side_control#解出控制码
+    control = status2list(status)#先不拿数据库的，模拟一下
     print(control)
     park_msg = Garage_parking_state_table.objects.filter(garage_num = garage)
     ready_load = []
