@@ -378,17 +378,17 @@ def camera_post(request):
         base64_to_img(closeup_pic, park_id + str(parking_side))
 
     print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id)
-    return JsonResponse("{'s':'sdsada'}",safe = False)
+    return JsonResponse({'s':'sdsada'})
 
 
 def mqtt_to_django(request):
     topic = request.GET.get('topic')
-    type = request.GET.get('type')
-
+    garage_type = request.GET.get('type')
     runing_state = request.GET.get('runing_state')
-    side = request.GET.get('')
-    door = request.GET.get('')
-    request.GET.get()
+    side = request.GET.get('sadasdsa')
+    door = request.GET.get('sadsdsa')
+    request.GET.get("asdsadas")
+    return JsonResponse({"1":"dsadsadsad"})
 
 """
 预约算法暂时停用，因为与不能远程遥控的安全逻辑冲突！
