@@ -415,6 +415,13 @@ def dsad(request):
 """
 
 
+#用户余额查询
+def balance_over(requset):
+    user = request.GET.get("user_num")
+    user = User_info_table.objects.get(user_num = user)
+    return JsonResponse({"money": user.prepaid_wallet})
+    
+
 
 
 
