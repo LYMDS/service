@@ -19,7 +19,7 @@ topic = "C/gds100001/P"
 topic = topic.rstrip("P")+"S"
 SQL = "SELECT garage_type,garage_num FROM garage_info_table WHERE pub_code='%s'"%topic
 data = connect.sql_not_roll(SQL)
-print(data)
+print(data[0][1])
 print(type(data))
 print(len(data))
 
