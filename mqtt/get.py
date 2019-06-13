@@ -1,6 +1,6 @@
 import requests
 import json
-url = "http://127.0.0.1:8000"
+url = "http://127.0.0.1:8000/mqtt_receive"
 headers = {'Content-Type': 'text/plain;charset=UTF-8',
            #'Connection': 'Keep-Alive',
            'Cache-Control':'no-cache'}

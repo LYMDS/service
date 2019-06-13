@@ -34,13 +34,22 @@ def on_message(client,userdata,msg):
                             all_exist_car += '0'
                         elif message[i] == 'y':
                             all_exist_car += '1'
-                all_door_state = str(message[14]) + str(message[15]) + str(message[16])#三个门状态组成的字符串
+                    else:
+                        break
+                all_door_state = str(message[14]) + str(message[15]) + str(message[16])#三个门状态组成的字符串,为毛不切片
+                """
+                不是本来就是字符串的吗，为何str()
+                字典也是只需要生成一个的，最终才是组装字典发送到Django,无需写两次的，
+                还有替换算法的实现完全有re模块可以承担，两堆字典+两堆算法堆得慌
+                算法需要整改
+                """
                 dict1 = {
-                  garage_type : 0,
-                  running_state : message[0],
-                  exist_car : all_exist_car,
-                  door_state : all_door_state,
-                  side_control : message[17],
+                  'garage': topic,
+                  'garage_type' : 0,
+                  'running_state' : message[0],
+                  'exist_car' : all_exist_car,
+                  'door_state' : all_door_state,
+                  'side_control' : message[17],
                 }
                 get.send_to_django(dict1)
             elif data[0][0] == 1:   #垂直循环车库
@@ -50,12 +59,15 @@ def on_message(client,userdata,msg):
                             all_exist_car += '0'
                         elif message[i] == 'y':
                             all_exist_car += '1'
+                    else:
+                        break
                 dict2 = {
-                    garage_type : 0,
-                    running_state : message[0],
-                    exist_car : all_exist_car,
-                    door_state : "",
-                    side_control : message[17],
+                    'garage': topic,
+                    'garage_type' : 1,
+                    'running_state' : message[0],
+                    'exist_car' : all_exist_car,
+                    'door_state' : "",
+                    'side_control' : message[17],
                 }
                 get.send_to_django(dict2)
         else:
@@ -69,6 +81,15 @@ client.on_connect = on_connect
 client.on_message = on_message
 client.connect(HOST,1883,60)
 client.subscribe("C/gds100001/P",2)
+'''
+
+client.subscribe([
+    ("C/gds100001/P",2),
+    ("C/gds100002/P",2)
+])
+
+'''#订阅多车库主题的方法
+
 client.loop_forever()
 
 
