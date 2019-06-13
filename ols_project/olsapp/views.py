@@ -382,13 +382,15 @@ def camera_post(request):
 
 
 def mqtt_to_django(request):
-    topic = request.GET.get('topic')
-    garage_type = request.GET.get('type')
-    runing_state = request.GET.get('runing_state')
-    side = request.GET.get('sadasdsa')
-    door = request.GET.get('sadsdsa')
-    request.GET.get("asdsadas")
-    return JsonResponse({"1":"dsadsadsad"})
+    garage = request.GET.get('garage')
+    garage_type = request.GET.get('garage_type')
+    runing_state = request.GET.get('running_state')
+    side = request.GET.get('exist_car')
+    door = request.GET.get('door_state')
+    control = request.GET.get("side_control")
+    print(garage,garage_type,runing_state,side,door,control)
+
+    return JsonResponse({"code":"ok"})
 
 """
 预约算法暂时停用，因为与不能远程遥控的安全逻辑冲突！
@@ -419,7 +421,10 @@ def dsad(request):
 def balance_over(requset):
     user = request.GET.get("user_num")
     user = User_info_table.objects.get(user_num = user)
-    return JsonResponse({"money": user.prepaid_wallet})
+    return JsonResponse({
+        "money": user.prepaid_wallet,
+        "red_packet": user.red_packet #讨论是否做成一体化
+    })
     
 
 
