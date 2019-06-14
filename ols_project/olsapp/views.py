@@ -382,7 +382,7 @@ def camera_post(request):
 
 
 def mqtt_to_django(request):
-    garage = request.GET.get('garage')
+    garage = request.GET.get('garage')#
     garage_type = request.GET.get('garage_type')
     runing_state = request.GET.get('running_state')
     side = request.GET.get('exist_car')

@@ -23,7 +23,7 @@ def on_message(client,userdata,msg):
     if message[0] == 'S' and message[-1] == 'T':
         message = message.strip('ST')
         topic = topic.rstrip("P") + "S"
-        SQL = "SELECT garage_type FROM garage_info_table WHERE pub_code='%s'"%topic
+        SQL = "SELECT garage_type,garage_num FROM garage_info_table WHERE pub_code='%s'"%topic
         data = connect.sql_not_roll(SQL)
         all_exist_car = ""  #所有车位是否存在车的状态组成的字符串
         if len(data) == 1:
@@ -34,8 +34,6 @@ def on_message(client,userdata,msg):
                             all_exist_car += '0'
                         elif message[i] == 'y':
                             all_exist_car += '1'
-                    else:
-                        break
                 all_door_state = str(message[14]) + str(message[15]) + str(message[16])#三个门状态组成的字符串,为毛不切片
                 """
                 不是本来就是字符串的吗，为何str()
@@ -44,7 +42,7 @@ def on_message(client,userdata,msg):
                 算法需要整改
                 """
                 dict1 = {
-                  'garage': topic,
+                  'garage': data[0][1],
                   'garage_type' : 0,
                   'running_state' : message[0],
                   'exist_car' : all_exist_car,
@@ -59,10 +57,8 @@ def on_message(client,userdata,msg):
                             all_exist_car += '0'
                         elif message[i] == 'y':
                             all_exist_car += '1'
-                    else:
-                        break
                 dict2 = {
-                    'garage': topic,
+                    'garage': data[0][1],
                     'garage_type' : 1,
                     'running_state' : message[0],
                     'exist_car' : all_exist_car,
