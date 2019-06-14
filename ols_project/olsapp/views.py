@@ -213,7 +213,6 @@ def upload(request):
     return JsonResponse({
         "state" : "ok"
     })
-	
 
 def show_charge(request):
     g = Garage_parking_state_table.objects.get(state_num = 53)
