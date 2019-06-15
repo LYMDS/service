@@ -213,7 +213,6 @@ def upload(request):
     return JsonResponse({
         "state" : "ok"
     })
-	
 
 def show_charge(request):
     g = Garage_parking_state_table.objects.get(state_num = 53)
@@ -301,24 +300,40 @@ def status2list(status):
             'k':[2,2,1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2]
     }
     return dic[status]
+
+def ascii_dirft_num(char):
+    return ord(char) - 97
+def dirft(olist,i):#该算法不允许溢出左右移位，溢出则是原数组
+    return olist[-i:]+olist[:-i]
     
-def garage_msg(request):#前端需求的显示控制码
+def garage_msg(request): # 前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
-    status = garage.side_control#解出控制码
-    control = status2list(status)#先不拿数据库的，模拟一下
-    print(control)
-    park_msg = Garage_parking_state_table.objects.filter(garage_num = garage)
-    ready_load = []
-    for i in park_msg:
-        load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]#模拟车牌号先
-        ready_load.append(load)
-    ready_load = sorted(ready_load,key=itemgetter(0))#为什么要在这里排序
-    m = 0
-    for i in range(0,18):#对数值为2的填装数据
-        if control[i] == 2:
-            control[i] = ready_load[m]
-            m+=1
+    park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
+    status = garage.side_control  # 拿出控制码
+    if garage.garage_type == 0: # 升降横移
+        control = status2list(status)   # 升降横移的专用显示转换
+        print(control)
+        ready_load = []
+        for i in park_msg:
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]     # 模拟车牌号先
+            ready_load.append(load)
+        # ready_load = sorted(ready_load,key=itemgetter(0))#为什么要在这里排序
+        m = 0
+        for i in range(0,18):#对数值为2的填装数据
+            if control[i] == 2:
+                control[i] = ready_load[m]
+                m+=1
+    elif garage.garage_type == 1: # 垂直循环车库的显示转换算法
+        con_list = [4, 6, 9, 12, 16, 14, 11, 8]#状态 'a' 时的填装下标，其他的都是相对于本列表来移位
+        dirft_num = ascii_dirft_num(status)
+        con_list = dirft(con_list,dirft_num)#取对应的循环移位控制码
+        control = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        k = 0
+        for i in park_msg:
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
+            control[con_list[k]] = load
+            k+=1
     return JsonResponse({"gar_msg": control})
     
 from django.http import FileResponse
@@ -382,12 +397,12 @@ def camera_post(request):
 
 
 def mqtt_to_django(request):
-    garage = request.GET.get('garage')
-    garage_type = request.GET.get('garage_type')
-    runing_state = request.GET.get('running_state')
-    side = request.GET.get('exist_car')
-    door = request.GET.get('door_state')
-    control = request.GET.get("side_control")
+    garage_num = request.GET.get('garage')#直接就是主键
+    garage_type = request.GET.get('garage_type')#类型
+    runing_state = request.GET.get('running_state')#车库运行状态，直接存起来
+    side = request.GET.get('exist_car')#车位的有无车状态
+    door = request.GET.get('door_state')#门状态，直接存起来
+    control = request.GET.get("side_control")#前端显示的控制态
     print(garage,garage_type,runing_state,side,door,control)
 
     return JsonResponse({"code":"ok"})
