@@ -403,7 +403,7 @@ def mqtt_to_django(request):
     side = request.GET.get('exist_car')#车位的有无车状态
     door = request.GET.get('door_state')#门状态，直接存起来
     control = request.GET.get("side_control")#前端显示的控制态
-    print(garage,garage_type,runing_state,side,door,control)
+    print(garage_num,garage_type,runing_state,side,door,control)
 
     return JsonResponse({"code":"ok"})
 
