@@ -396,15 +396,58 @@ def camera_post(request):
     return JsonResponse({'s':'sdsada'})
 
 
+def pay_algorithm(tspan,wattage):#财务算法
+    #一分钟一毛钱先，红包可以抵扣10%
+    #一瓦电两元
+    charge_cost = wattage*2
+    parked_cost = tspan/10
+    total = charge_cost + parked_cost
+    red = total/10
+    wallet = total - red
+    return [wallet, red, charge_cost, parked_cost, total]
+
 def mqtt_to_django(request):
-    garage_num = request.GET.get('garage')#直接就是主键
+    garage = request.GET.get('garage')#直接就是主键
     garage_type = request.GET.get('garage_type')#类型
     runing_state = request.GET.get('running_state')#车库运行状态，直接存起来
-    side = request.GET.get('exist_car')#车位的有无车状态
+    have = request.GET.get('exist_car')#车位的有无车状态
     door = request.GET.get('door_state')#门状态，直接存起来
     control = request.GET.get("side_control")#前端显示的控制态
-    print(garage_num,garage_type,runing_state,side,door,control)
-
+    which_gar = Garage_info_table.objects.get(garage_num=garage)
+    which_gar.running_state = runing_state
+    which_gar.door_state = door
+    which_gar.side_control = control
+    which_gar.save()
+    side = which_gar.garage_parking_state_table_set.all().order_by('parking_num')
+    for i in range(side.count()):
+        if side[i].exist_car == int(have[i]):
+            continue
+        elif side[i].exist_car == 0 and have[i] == '1':#车停好
+            side[i].exist_car = 1
+            side[i].parking_start_time = datetime.datetime.now()
+            side[i].save()
+        elif side[i].exist_car == 1 and have[i] == '0':#车开走
+            side[i].exist_car = 0
+            start_time = side[i].parking_start_time
+            howlong = time_span(start_time).minutes
+            wattage = side[i].charge_wattage
+            pay = pay_algorithm(howlong,wattage)
+            payer = User_info_table.objects.get(user_num=side[i].user_num)
+            payer.prepaid_wallet -= pay[0]
+            payer.red_packet -= pay[1]
+            financial_data = Parking_financial_table()
+            financial_data.garage_num = which_gar
+            financial_data.user_num = payer
+            financial_data.parking_num = side[i].parking_num
+            financial_data.parking_start_time = start_time
+            financial_data.charge_wattage = wattage
+            financial_data.charge_cost = pay[2]
+            financial_data.parking_cost = pay[3]
+            financial_data.total_price = pay[4]
+            financial_data.parking_end_time = datetime.datetime.now()
+            financial_data.red_packet_expense = pay[1]
+            financial_data.save()
+            side[i].save()
     return JsonResponse({"code":"ok"})
 
 """
