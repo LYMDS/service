@@ -23,8 +23,10 @@ print(data[0][1])
 print(type(data))
 print(len(data))
 '''
-import get
-url = "http://120.77.156.184/mqtt_receive"
+import requests
+url = "http://172.17.37.63:8000/mqtt_receive"
+headers = {'Content-Type': 'text/plain;charset=UTF-8',
+           'Cache-Control':'no-cache'}
 data = {
     'garage': 1,
     'garage_type' : 0,
