@@ -486,22 +486,58 @@ def balance_over(request):
     
 
 import requests
+import random
 def determine_money(request):
+    user_num = request.GET.get('user_num')
+    spbill_create_ip = request.META['REMOTE_ADDR'] #拿到终端ip
     appid = "wx1f4d8f20fadf2d8e"
     secret = "65fc833b87550d97525f6250914eebcc"
     code = request.GET.get("code")
-    grant_type = "authorization_code"
-    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type="+authorization_code
-    print(code)
-    res = requests.get(url)
-    print(res.json())
+    authorization_code = "authorization_code"
+    openid_url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type="+authorization_code
+    res = requests.get(openid_url)
+    openid = res.json()['openid'] #拿到openid  数据库要加字段！！！！！！还没加！！！勿删！！！
+    session_key = res.json()['session_key'] #拿到会话密钥 鬼知道什么时候用到
+    out_trade_no = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+    nonce_str = ""
+    for i in range(0,12):
+        out_trade_no += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-|*')
+    for i in range(0,32):
+        nonce_str += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
+    ret = {
+        "appid": appid,
+        "body": '撒打算',#body,      #商品描述 传入中文
+        "mch_id": '3457689wse',#mch_id,  #商户号 还没拿到
+        "nonce_str": nonce_str,  #随机字符串 上面生成了
+        "notify_url": 'w242e',#notify_url,  #通知地址 即是微信服务器通知支付结果的地址 我们可能不需要 自己做查询
+        "openid": openid, #上面拿到了直接用
+        "out_trade_no": out_trade_no,  #上面生成了直接传
+        "spbill_create_ip": spbill_create_ip,  #终端IP 上面拿到了
+        "total_fee": '20.13',#total_fee, #订单总金额 取到分 拿钱拿钱拿钱拿钱还没做
+        "trade_type": 'JSAPI' #交易类型 小程序支付默认为该值
+    };
+    Mch_key = "241242add" #商户密钥信息未拿到 快点申请公司注册商户搞定？？？
+    stringA = '&'.join(["{0}={1}".format(k, ret.get(k))for k in sorted(ret)])
+    stringSignTemp = '{0}&key={1}'.format(stringA,Mch_key)
+    sign = hashlib.md5(stringSignTemp.encode("utf-8")).hexdigest()
+    sign = sign.upper() #第一次签名完成
+    bodyData = '<xml>'     #开始封装xml                                      
+    bodyData += '<appid>' + ret['appid'] + '</appid>'              #小程序ID
+    bodyData += '<body>' + ret['body'] + '</body>'                        #商品描述
+    bodyData += '<mch_id>' + ret['mch_id'] + '</mch_id>'                  #商户号
+    bodyData += '<nonce_str>' + ret['nonce_str'] + '</nonce_str>'         #随机字符串
+    bodyData += '<notify_url>' + ret['notify_url'] + '</notify_url>'      #支付成功的回调地址
+    bodyData += '<openid>' + ret['openid'] + '</openid>'                  #用户标识
+    bodyData += '<out_trade_no>' + ret['out_trade_no'] + '</out_trade_no>'#商户订单号
+    bodyData += '<spbill_create_ip>' + ret['spbill_create_ip'] + '</spbill_create_ip>'#客户端终端IP
+    bodyData += '<total_fee>' + ret['total_fee'] + '</total_fee>'         #总金额 单位为分
+    bodyData += '<trade_type>JSAPI</trade_type>'                   #交易类型 小程序取值如下：JSAPI
+    bodyData += '<sign>' + sign + '</sign>'
+    bodyData += '</xml>'   #封装xml完成
+    orders_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder' #微信统一下单的api 需要服务器去请求
+    respone = requests.post(orders_url,bodyData.encode("utf-8"),headers={'Content-Type': 'application/xml'}) 
+    print(respone.text)
     return JsonResponse({'s':'a'})
-
-
-
-
-
-
 
 
 
