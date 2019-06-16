@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as pub
-import connect,send_to_django
+import connect
+import get
 HOST = "localhost"
 
 Host = "120.77.156.184"
@@ -62,13 +63,12 @@ def on_message(client,userdata,msg):
                     'garage_type' : 1,
                     'running_state' : message[0],
                     'exist_car' : all_exist_car,
-                    'door_state' : "",
+                    'door_state' : "1",
                     'side_control' : message[17],
                 }
                 get.send_to_django(dict2)
         else:
             print("warning:数据重叠错误！")
-    #取数据库的车库类型匹对
 
 
 client = mqtt.Client()
