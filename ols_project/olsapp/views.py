@@ -485,6 +485,17 @@ def balance_over(request):
     })
     
 
+import requests
+def determine_money(request):
+    appid = "wx1f4d8f20fadf2d8e"
+    secret = "65fc833b87550d97525f6250914eebcc"
+    code = request.GET.get("code")
+    grant_type = "authorization_code"
+    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type="+authorization_code
+    print(code)
+    res = requests.get(url)
+    print(res.json())
+    return JsonResponse({'s':'a'})
 
 
 
