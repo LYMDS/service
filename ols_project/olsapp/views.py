@@ -377,12 +377,18 @@ def camera_post(request):
     cam_id = request.POST['cam_id']             #相机ID 相机ID号根据配置决定是使用MAC还是UID
     picture = request.POST['picture']           #全景图，BASE64编码为避免Http传输时URL编码意外改变图片的BASE64编码，作了特殊的替换：'+'替换为'-'，'/'替换为'_'，'='替换为'.'
     closeup_pic = request.POST['closeup_pic']   #每张车牌的特写照
+    print(Type, plate_num, plate_color, car_logo, car_color, vehicle_type, start_time, park_id, cam_id)
 
     garage = Garage_info_table.objects.get(garage_code=park_id)
-    state = status2list(garage.side_control)                #返回前端控制的数组
-    parking_side = decipher_side(state,garage.door_state)   #返回一个车位号
-    which_side = Garage_parking_state_table.objects.get(garage_num=garage.garage_num,parking_num=parking_side)#找出那个车位
 
+    if garage.garage_type == 0:
+        state = status2list(garage.side_control)                #返回前端控制的数组
+        parking_side = decipher_side(state,garage.door_state)   #返回一个车位号
+    elif garage.garage_type == 1:
+        parking_side = ord(garage.side_control) - 96
+
+    which_side = Garage_parking_state_table.objects.get(garage_num=garage.garage_num,
+                                                        parking_num=parking_side)  # 找出那个车位
     if which_side.exist_car == 0:
         which_side.car_id = plate_num
         which_side.car_logo = car_logo
@@ -392,7 +398,10 @@ def camera_post(request):
         base64_to_img(picture, park_id)
         base64_to_img(closeup_pic, park_id + str(parking_side))
 
-    print(Type,plate_num,plate_color,car_logo,car_color,vehicle_type,start_time,park_id,cam_id)
+
+
+
+
     return JsonResponse({'s':'sdsada'})
 
 
@@ -404,7 +413,7 @@ def pay_algorithm(tspan,wattage):#财务算法
     total = charge_cost + parked_cost
     red = total/10
     wallet = total - red
-    return [wallet, red, charge_cost, parked_cost, total]
+    return [wallet, red, charge_cost, parked_cost, total]#分别为：钱包、红包、充电花费、停车花费、总金额
 
 def mqtt_to_django(request):
     garage = request.GET.get('garage')#直接就是主键
@@ -420,14 +429,15 @@ def mqtt_to_django(request):
     which_gar.save()
     side = which_gar.garage_parking_state_table_set.all().order_by('parking_num')
     for i in range(side.count()):
+        write_data = Garage_parking_state_table.objects.filter(state_num=side[i].state_num)
+
         if side[i].exist_car == int(have[i]):
             continue
+
         elif side[i].exist_car == 0 and have[i] == '1':#车停好
-            side[i].exist_car = 1
-            side[i].parking_start_time = datetime.datetime.now()
-            side[i].save()
+            write_data.update(exist_car=1,parking_start_time=datetime.datetime.now())
+
         elif side[i].exist_car == 1 and have[i] == '0':#车开走
-            side[i].exist_car = 0
             start_time = side[i].parking_start_time
             howlong = time_span(start_time).minutes
             wattage = side[i].charge_wattage
@@ -435,6 +445,7 @@ def mqtt_to_django(request):
             payer = User_info_table.objects.get(user_num=side[i].user_num)
             payer.prepaid_wallet -= pay[0]
             payer.red_packet -= pay[1]
+            payer.save()
             financial_data = Parking_financial_table()
             financial_data.garage_num = which_gar
             financial_data.user_num = payer
@@ -447,7 +458,15 @@ def mqtt_to_django(request):
             financial_data.parking_end_time = datetime.datetime.now()
             financial_data.red_packet_expense = pay[1]
             financial_data.save()
-            side[i].save()
+            write_data.update(exist_car=0,
+                              parking_start_time=None,
+                              car_id='无车牌',
+                              car_logo='未知',
+                              car_color='未知',
+                              car_type='未知',
+                              charge_wattage=0,
+                              charge_power=0,
+                              charge_voltage=0)
     return JsonResponse({"code":"ok"})
 
 """
