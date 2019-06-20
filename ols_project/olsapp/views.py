@@ -19,7 +19,6 @@ def gain_code():
 
 from .models import User_info_table
 def getCode(request):
-
     phone = request.GET['phone']
     print(phone)
     code = gain_code()
@@ -287,26 +286,128 @@ def information(request):
 
 def status2list(status):
     dic = {
-            'a':[2,1,2,0,2,2,2,0,2,2,0,2,2,0,2,2,2,2],
-            'b':[2,1,2,2,2,0,2,0,2,2,0,2,2,0,2,2,2,2],
-            'c':[2,1,2,2,0,2,0,2,2,2,0,2,2,0,2,2,2,2],
-            'd':[2,1,2,2,0,2,2,2,0,2,0,2,2,0,2,2,2,2],
-            'e':[2,1,2,2,0,2,2,0,2,0,2,2,2,0,2,2,2,2],
-            'f':[2,1,2,2,0,2,2,0,2,2,2,0,2,0,2,2,2,2],
-            'g':[2,1,2,2,0,2,2,0,2,2,0,2,0,2,2,2,2,2],
-            'h':[2,1,2,2,0,2,2,0,2,2,0,2,2,2,0,2,2,2],
-            'i':[1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2,2,2],
-            'j':[2,1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2,2],
-            'k':[2,2,1,2,2,0,2,2,0,2,2,0,2,2,0,2,2,2]
+            'a':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [0, 2, 2],
+                 [2, 1, 2]],
+            'b':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 2, 0],
+                 [2, 1, 2]],
+            'c':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [0, 2, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'd':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 2, 0],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'e':[[2, 2, 2],
+                 [2, 0, 2],
+                 [0, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'f':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 2, 0],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'g':[[2, 2, 2],
+                 [0, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'h':[[2, 2, 2],
+                 [2, 2, 0],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'i':[[2, 2, 2],
+                 [0, 2, 2],
+                 [0, 2, 2],
+                 [0, 2, 2],
+                 [0, 2, 2],
+                 [1, 2, 2]],
+            'j':[[2, 2, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 0, 2],
+                 [2, 1, 2]],
+            'k':[[2, 2, 2],
+                 [2, 2, 0],
+                 [2, 2, 0],
+                 [2, 2, 0],
+                 [2, 2, 0],
+                 [2, 2, 1]]
     }
     return dic[status]
 
+import numpy as np
 def ascii_dirft_num(char):
     return ord(char) - 97
 def dirft(olist,i):#该算法不允许溢出左右移位，溢出则是原数组
     return olist[-i:]+olist[:-i]
+def subscript(n,RL):
+    def section(n,i,or_so):
+        if i == 1:
+            index0 = np.arange(n,0,-i)
+        else:
+            index0 = np.arange(0,n,-i)
+        index1 = np.full(n,1+or_so*i)
+        index1[0] = 1
+        return np.column_stack((index0,index1))
+    upper_part = section(n,1,RL)
+    lower_part = section(n,-1,RL)
+    res = np.vstack((upper_part,lower_part))
+    return res.tolist()
     
 def garage_msg(request): # 前端需求的显示控制码
+    which_gar = request.GET.get("garage_code")
+    garage = Garage_info_table.objects.get(garage_code = which_gar)
+    park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
+    status = garage.side_control  # 拿出控制码
+    if garage.garage_type == 0: # 升降横移
+        control = status2list(status)   # 升降横移的专用显示转换
+        print(control)
+        ready_load = []
+        for i in park_msg:
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]     # 模拟车牌号先
+            ready_load.append(load)
+        #该算法需要自底而上，从左至右遇到2填装数据
+        m = 0
+        for i in range(5,-1,-1):
+            for j in range(3):
+                if control[i][j] == 2:
+                    control[i][j] = ready_load[m]
+                    m+=1
+    elif garage.garage_type == 1: # 垂直循环车库的显示转换算法,基本可以通用
+        n = int(park_msg.count()/2)
+        con_list = subscript(n,1)#状态 'a' 时的填装下标，其他的都是相对于本列表来移位
+        dirft_num = ascii_dirft_num(status)
+        con_list = dirft(con_list,dirft_num)#取对应的循环移位控制码
+        control = np.zeros((n+1,3),dtype=int).tolist()
+        k = 0
+        for i in park_msg:
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
+            index = con_list[k]
+            control[index[0]][index[1]] = load
+            k+=1
+    return JsonResponse({"gar_msg": control})
+
+def garage_msg1(request): # 前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
@@ -328,13 +429,14 @@ def garage_msg(request): # 前端需求的显示控制码
         con_list = [4, 6, 9, 12, 16, 14, 11, 8]#状态 'a' 时的填装下标，其他的都是相对于本列表来移位
         dirft_num = ascii_dirft_num(status)
         con_list = dirft(con_list,dirft_num)#取对应的循环移位控制码
-        control = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        control = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         k = 0
         for i in park_msg:
             load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
             control[con_list[k]] = load
             k+=1
     return JsonResponse({"gar_msg": control})
+
     
 from django.http import FileResponse
 def download(request):#传送图片给客户端的方法
@@ -397,11 +499,6 @@ def camera_post(request):
         which_side.save()
         base64_to_img(picture, park_id)
         base64_to_img(closeup_pic, park_id + str(parking_side))
-
-
-
-
-
     return JsonResponse({'s':'sdsada'})
 
 
