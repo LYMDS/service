@@ -76,8 +76,8 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     parking_start_time = models.DateTimeField(null=True)#开始停车时间
     charge_wattage = models.DecimalField(max_digits=5,decimal_places=2)#充电瓦数
     charge_state = models.IntegerField()#充电状态
-    charge_power = models.DecimalField(max_digits=3,decimal_places=1,default=1.8)#充电桩的电功率
-    charge_voltage = models.DecimalField(max_digits=4,decimal_places=1,default=233.8)#充电桩的电压
+    charge_power = models.DecimalField(max_digits=3,decimal_places=1)#充电桩的电功率
+    charge_voltage = models.DecimalField(max_digits=4,decimal_places=1)#充电桩的电压
     lock_state = models.BooleanField()#车位与用户的锁定态
     charge_key = models.CharField(max_length=32)#充电桩的KEY
     control_state = models.NullBooleanField()#充电桩控制态
@@ -90,3 +90,20 @@ class Recharge_record_table(models.Model):#充值记录表
     recharge_num = models.DecimalField(max_digits=3,decimal_places=0)#充值数额
     red_packet = models.DecimalField(max_digits=3,decimal_places=0)#赠送红包
     recharge_time = models.DateTimeField(auto_now_add=True)#充值时间
+
+class Investors_table(models.Model):
+    class Meta():
+        db_table = 'investors_table'
+    investment_num = models.AutoField(primary_key=True)#投资商编号（主键）
+    garage = models.ManyToManyField(Garage_info_table)#多对多关联库机信息表
+    super_user = models.CharField(max_length=32)#超级用户名
+    password = models.CharField(max_length=32)#密码
+
+class Supervisors_table(models.Model):
+    class Meta():
+        db_table = 'supervisors_table'
+    supervisor_num = models.AutoField(primary_key=True)#管理用户编号
+    investor_num = models.ForeignKey('Investors_table',on_delete=models.CASCADE)#关联投资商编号（外键）
+    admin_user = models.CharField(max_length=32)#管理用户账号
+    password = models.CharField(max_length=32)#密码
+    admin_type = models.SmallIntegerField()#用户类型
