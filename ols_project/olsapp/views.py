@@ -284,6 +284,7 @@ def information(request):
         'all':end_list
     })
 
+import numpy as np
 def status2list(status):
     dic = {
             'a':[[2, 2, 2],
@@ -355,7 +356,7 @@ def status2list(status):
     }
     return dic[status]
 
-import numpy as np
+
 def ascii_dirft_num(char):
     return ord(char) - 97
 def dirft(olist,i):#该算法不允许溢出左右移位，溢出则是原数组
@@ -456,15 +457,35 @@ def base64_to_img(base64_str,file_name):#Base64特殊图片保存算法
     with open("./static/upfile/%s.jpg"%file_name, "wb") as f:
         f.write(base64.b64decode(base64_str))
 
+# def decipher_side(side_code,door_state):
+#     m = 0
+#     for i in door_state:
+#         if i == "1":
+#             for j in range(0,16,3):
+#                 k = m + j
+#                 if side_code[k] == 2:
+#                     return side_code[0:k+1].count(2)
+#         m += 1
+
 def decipher_side(side_code,door_state):#升降横移的位状态转译算法
-    m = 0
-    for i in door_state:
-        if i == "1":
-            for j in range(0,16,3):
-                k = m + j
-                if side_code[k] == 2:
-                    return side_code[0:k+1].count(2)
-        m += 1
+    alist = np.array(side_code)
+    shape = alist.shape
+    height = shape[0]
+    width  = shape[1]
+    for i in range(width):
+        if door_state[i] == '1':
+            for j in range(height-2,-1,-1):
+                if alist[j,i] == 2:
+                    break
+            break
+    side_num = 0
+    for m in range(height-1,-1,-1):
+        if m != j:
+            side_num += side_code[m].count(2)
+        else:
+            side_num += side_code[m][0:i+1].count(2)
+            break
+    return side_num
 
 @csrf_exempt   
 def camera_post(request):
