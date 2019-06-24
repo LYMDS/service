@@ -687,7 +687,7 @@ def reg_investor(request):
         request.session.create()
     permit = request.session.get('admin_permission',False)
     sessionid = request.session.session_key
-    request.session.set_expiry(900)
+    request.session.set_expiry(30)
     return render(request,'reg.html',{'session_id': sessionid,
                                       'permission': permit})
 
