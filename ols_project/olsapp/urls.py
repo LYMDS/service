@@ -34,4 +34,8 @@ urlpatterns = [
     url(r'^camera_post/$',views.camera_post),
     url(r'^mqtt_receive/$',views.mqtt_to_django),
     url(r'^balance_over/$',views.balance_over),
-    url(r'^determine_money/$',views.determine_money),]
+    url(r'^determine_money/$',views.determine_money),
+    url(r'^reg_investor/$',views.reg_investor),
+
+
+]
