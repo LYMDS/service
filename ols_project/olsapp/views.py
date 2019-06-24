@@ -683,6 +683,8 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 def reg_investor(request):
+    if not request.session.session_key:
+        request.session.create()
     permit = request.session.get('admin_permission',False)
     sessionid = request.session.session_key
     request.session.set_expiry(900)
