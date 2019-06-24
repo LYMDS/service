@@ -683,9 +683,11 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 def reg_investor(request):
-    cookies = request.COOKIES
-    print(cookies)
-    render(request,'reg.html',{'session_id': cookies})
+    permit = request.session.get('admin_permission',False)
+    sessionid = request.session.session_key
+    request.session.set_expiry(900)
+    return render(request,'reg.html',{'session_id': sessionid,
+                                      'permission': permit})
 
 
 
