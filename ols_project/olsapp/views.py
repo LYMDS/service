@@ -683,7 +683,7 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 def reg_investor(request):
-    if not request.session.session_key:
+    if not request.session.session_key:#防止session过期后session为空
         request.session.create()
     permit = request.session.get('admin_permission',False)
     sessionid = request.session.session_key
