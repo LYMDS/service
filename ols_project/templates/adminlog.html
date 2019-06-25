@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+    <form name="my form" action="/show/" method="post">
+    <div class="logCon">
+        <div class="line"><span>账户类型</span>
+        <input class="bt_input" type="text" name="Node" list="list1"/>
+        <datalist id="list1">
+            <option value="E1"></option>
+            <option value="E2"></option>
+            <option value="E3"></option>
+            <option value="E4"></option>
+            <option value="E5"></option>
+            <option value="E6"></option>
+        </datalist></div>
+    </div>
+        {% csrf_token %}
+        <input class="logingBut" type="submit" value="确认"/>
+    </form>
+    </div>
+</body>
+</html>
+
