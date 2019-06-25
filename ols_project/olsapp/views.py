@@ -694,6 +694,9 @@ def reg_investor(request):
 def admin_login(request):
     return render(request,'adminlog.html')
 
+def ajax(request):
+    return JsonResponse({'a':1})
+
 
 
 

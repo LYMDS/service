@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^charge_msg/$',views.charge_msg),
     url(r'^exception/$',views.exception),
     url(r'^except_upload/$',views.upload),	
-    url(r'^charge_test/$',views.show_charge),#测试视图
+    url(r'^charge_test/$',views.show_charge),
     url(r'^charge_t/$',views.write_state),
     url(r'^information/$',views.information),
     url(r'^garage_msg/$',views.garage_msg),
@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^determine_money/$',views.determine_money),
     url(r'^reg_investor/$',views.reg_investor),
     url(r'^admin_login$',views.admin_login),
+    url(r'^ajax/$', views.ajax),
 
 
 ]
