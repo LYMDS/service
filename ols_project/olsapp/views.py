@@ -695,6 +695,10 @@ def admin_login(request):
     return render(request,'adminlog.html')
 
 def ajax(request):
+    user = request.POST.get('username')
+    password = request.POST.get('password')
+    role = request.POST.get('role')
+    print(user, password, role)
     return JsonResponse({'a':1})
 
 

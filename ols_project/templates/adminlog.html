@@ -7,13 +7,14 @@
     <title>管理员登录</title>
     <link rel="stylesheet" href="{% static 'css/adminlog.css' %}">
     <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/adminlog.js' %}"></script>
-
     <!--<script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../static/js/adminlog.js"></script>-->
 </head>
 <body>
-    <div class="logCon">
+    <div class="logCon"><form id='login'>
+        {% csrf_token %}
         <div>
             <span>账号：</span>
             <input id="user" type="text" name="username"/>
@@ -25,11 +26,12 @@
         </div>
 
         <div class="line"><span>账户类型：</span>
-            <input type="radio" name="role" id="super" value="高层管理"/>
+            <input type="radio" name="role" id="super" value="Super"/>
             <label for="super">高层管理</label>
-            <input type="radio" name="role" id="admin" value="执行管理"/>
+            <input type="radio" name="role" id="admin" value="Admin"/>
             <label for="admin">执行管理</label>
         </div>
+        </form>
         <input class="log_But" type="button" value="登录"/>
     </div>
 
