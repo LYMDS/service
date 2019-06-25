@@ -691,6 +691,9 @@ def reg_investor(request):
     return render(request,'reg.html',{'session_id': sessionid,
                                       'permission': permit})
 
+def admin_login(request):
+    return render(request,'adminlog.html')
+
 
 
 

@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^balance_over/$',views.balance_over),
     url(r'^determine_money/$',views.determine_money),
     url(r'^reg_investor/$',views.reg_investor),
+    url(r'^admin_login$',views.admin_login),
 
 
 ]
