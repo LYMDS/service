@@ -16,6 +16,21 @@ $(document).ready(function () {
     });
 
     $("#but").button();
+    $("#but").bind("click", function () {
+        console.log('我是一个按钮');
+        $("#dialog").dialog("open");
 
+    });
+    
+    $("#dialog").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        model: true,
+        title: '温馨提示！',
+        show: 'slide',
+        hide: 'slide',
+
+    });
 
 });
