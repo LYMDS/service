@@ -17,28 +17,35 @@
     <script type="text/javascript" src="../static/js/adminlog.js"></script>-->
 </head>
 <body>
-    <div class="logCon"><form id='login'>
-        {% csrf_token %}
-        <div>
-            <span>账号：</span>
-            <input id="user" type="text" name="username"/>
-        </div>
+    <div id="bgbox">
+        <div id="img_box"><img src="{% static 'img/Adminlogin.jpg' %}"></div>
+        <div class="logCon">
+            <form id='login'>
+            {% csrf_token %}
+            <div>
+                <span>账号：</span>
+                <input id="user" type="text" name="username"/>
+            </div>
 
-        <div>
-            <span>密码：</span>
-            <input id="password" type="password" name="password"/>
-        </div>
+            <div>
+                <span>密码：</span>
+                <input id="password" type="password" name="password"/>
+            </div>
 
-        <div class="line"><span>账户类型：</span>
-            <input type="radio" name="role" id="super" value="Super"/>
-            <label for="super">高层管理</label>
-            <input type="radio" name="role" id="admin" value="Admin"/>
-            <label for="admin">执行管理</label>
+            <div class="line"><span>账户类型：</span>
+                <input type="radio" name="role" id="super" value="Super" checked="true"/>
+                <label for="super">高层管理</label>
+                <input type="radio" name="role" id="admin" value="Admin"/>
+                <label for="admin">执行管理</label>
+            </div>
+            </form>
+            <div id="but">登录</div>
         </div>
-        </form>
-        <input class="log_But" type="button" value="登录"/>
     </div>
-    <div id="but">登录</div>
+
+
+
+
     <div id='dialog'></div>
 </body>
 </html>
