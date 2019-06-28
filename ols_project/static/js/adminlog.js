@@ -1,9 +1,10 @@
 var csrftoken = $.cookie("csrftoken");
 $(document).ready(function () {
-    $(".log_But").bind("click",function () {
+    $("#but").button();
+    $("#but").bind("click",function () {
         $.ajax({
             type: 'post',
-            url: '/ajax/',
+            url: '/ajax/',//测试的视图
             data: $("#login").serialize(),
             dataType: 'json',
             success: function (res,state) {
@@ -15,14 +16,8 @@ $(document).ready(function () {
         });
     });
 
-    $("#but").button();
-    $("#but").bind("click", function () {
-        console.log('我是一个按钮');
-        $("#dialog").dialog("open");
-
-    });
-    
     $("#dialog").dialog({
+        //对话框设置
         autoOpen: false,
         height: 300,
         width: 350,
@@ -30,7 +25,5 @@ $(document).ready(function () {
         title: '温馨提示！',
         show: 'slide',
         hide: 'slide',
-
     });
-
 });
