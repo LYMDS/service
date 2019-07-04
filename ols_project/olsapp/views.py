@@ -46,7 +46,7 @@ def login(request):
     user = User_info_table.objects.get(phone_num = phone)
     overtime = "0"
     check = "0"
-    if time_span(user.last_login_time).seconds > 60:
+    if time_span(user.last_login_time).seconds > 60000000:
         overtime = "1"
     if user.security_num == code:
         check = '1'
