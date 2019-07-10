@@ -18,6 +18,8 @@ def gain_code():
     return code
 
 from .models import User_info_table
+from .msm import send2Phone
+from .SM import send_Email
 def getCode(request):
     phone = request.GET['phone']
     print(phone)
@@ -37,6 +39,8 @@ def getCode(request):
         user.security_num = code
         user.save()
     out = {"code":code}
+    #out = send2Phone(phone, code)
+    out = send2Phone(phone, code)
     return JsonResponse(out)
 
 
