@@ -214,7 +214,7 @@ def upload(request):
     })
 
 def show_charge(request):
-    g = Garage_parking_state_table.objects.get(state_num = 53)
+    g = Garage_parking_state_table.objects.get(state_num = 1)
     zero = "不清零"
     state = "错误状态"
     if g.charge_state == 0:
