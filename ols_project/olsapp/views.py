@@ -704,6 +704,29 @@ def ajax(request):
     role = request.POST.get('role')
     print(user, password, role)
     return JsonResponse({'a':1})
+    
+import cookielib
+
+def investor_reg(request):   
+    if not request.session.session_key:      #如果不存在授权标识
+        request.session.creat()              #创建会话
+        permit = request.session.get('admin_permission',False)    #生成False授权标识
+        sessionid = request.session.session_key                   #获取用户的随机字符串，生成sessionid
+    else:                                    #如果存在授权标识
+        permit = request.session.get('admin_permission')          #获取授权状态
+    request.session.set_expiry(30)                                #设置过期时间为30天
+    if permit:                               #如果已经授权
+        return render(request,'investor_reg.html',{'session_id':sessionid, 'permission': permit})  #正常访问页面
+    else:                                    #如果没有授权
+        sessionid = request.COOKIES.get('sessionid')
+        response = HttpResponse('请联系管理员授权')
+        return response
+        
+from django.contrib.sessions.models import Session
+def permit():
+    Key = "jglkhtifjfk"
+    session = Session.objects.get(session_key = Key)
+    permit = session.get_decode().get('')
 
 
 
