@@ -5,7 +5,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             url: '/ajax/',//测试的视图
-            data: $("#login").serialize(),
+            data: $("#reg_form").serialize(),
             dataType: 'json',
             success: function (res,state) {
                 console.log(res);

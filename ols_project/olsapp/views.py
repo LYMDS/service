@@ -686,14 +686,22 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
+import json
 def reg_investor(request):
+    or_ajax = request.is_ajax()
     if not request.session.session_key:#防止session过期后session为空
         request.session.create()
     permit = request.session.get('admin_permission',False)
     sessionid = request.session.session_key
     request.session.set_expiry(30)
-    return render(request,'reg.html',{'session_id': sessionid,
-                                      'permission': permit})
+    data = {
+        'session_id': sessionid,
+        'permission': permit
+    }
+    if or_ajax:
+        return JsonResponse(data)
+    else:
+        return render(request,'reg.html',{'json_data': json.dumps(data)})
 
 def admin_login(request):
     return render(request,'adminlog.html')
