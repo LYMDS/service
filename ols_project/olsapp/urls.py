@@ -19,6 +19,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^investor_reg/$',view.investor_reg),#不要加到头上来
     url(r'^getCode/$',views.getCode),
     url(r'^login/$',views.login),
     url(r'^onLaunch/$',views.check_time),
@@ -38,6 +39,7 @@ urlpatterns = [
     url(r'^reg_investor/$',views.reg_investor),
     url(r'^admin_login$',views.admin_login),
     url(r'^ajax/$', views.ajax),
+    
 
 
 ]
