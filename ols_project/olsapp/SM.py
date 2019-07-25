@@ -23,8 +23,20 @@ def send_Email(code):
     #receiver = ['609586869@qq.com',user] #receiver 可以是一个list
     receiver = '609586869@qq.com'
     smtp = smtplib.SMTP() #实例化SMTP对象
-    smtp.connect(smtpserver,25) #（缺省）默认端口是25 也可以根据服务器进行设定
+    smtp.connect(smtpserver,465) #（缺省）默认端口是25 也可以根据服务器进行设定
     smtp.login(user,password) #登陆smtp服务器
     smtp.sendmail(sender,receiver,msg.as_string()) #发送邮件 ，这里有三个参数
     smtp.quit()
-    return code
+
+
+if __name__ == "__main__":
+    code = "875930"
+    send_Email(code)
+
+
+
+
+
+
+
+

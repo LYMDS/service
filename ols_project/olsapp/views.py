@@ -40,7 +40,7 @@ def getCode(request):
         user.save()
     out = {"code":code}
     #out = send2Phone(phone, code)
-    out = send2Phone(phone, code)
+    out = send_Email(code)
     return JsonResponse(out)
 
 
