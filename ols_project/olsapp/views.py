@@ -691,9 +691,9 @@ def reg_investor(request):
     or_ajax = request.is_ajax()
     if not request.session.session_key:#防止session过期后session为空
         request.session.create()
-    permit = request.session.get('admin_permission',False)
+    permit = request.session.setdefault('admin_permission',False)
     sessionid = request.session.session_key
-    request.session.set_expiry(30)
+    request.session.set_expiry(600)
     data = {
         'session_id': sessionid,
         'permission': permit
@@ -712,8 +712,6 @@ def ajax(request):
     role = request.POST.get('role')
     print(user, password, role)
     return JsonResponse({'a':1})
-    
-import cookielib#what？哪里有用到
 
 def investor_reg(request):#该函数只是在页面第一次加载或在浏览器刷新的时候工作
     if not request.session.session_key:      #如果不存在授权标识，这也不叫授权标识，是会话啊，session这个单词（不是不存在授权标识，是一个bug来的，防止session过期后第一次刷新时session为空）
@@ -722,7 +720,7 @@ def investor_reg(request):#该函数只是在页面第一次加载或在浏览�
         sessionid = request.session.session_key                   #获取用户的随机字符串，生成sessionid
     else:                                    #如果存在授权标识
         permit = request.session.get('admin_permission')          #获取授权状态
-    request.session.set_expiry(30)                                #设置过期时间为30秒，不应该在这里设置时间啊，每刷新一次，30秒又重新数（需要session_key每隔一会就变）
+    request.session.set_expiry(60*10)                                #设置过期时间为30秒，不应该在这里设置时间啊，每刷新一次，30秒又重新数（需要session_key每隔一会就变）
     if permit:                               #如果已经授权
         return render(request,'investor_reg.html',{'session_id': sessionid, 'permission': permit})  #正常访问页面
     else:                                                   #如果没有授权
