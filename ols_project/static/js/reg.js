@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log(json_data);
+
     var csrftoken = $.cookie("csrftoken");
 	var app = new Vue({
         el : "#dataframe",
@@ -8,14 +8,13 @@ $(document).ready(function(){
             session_id : json_data['session_id']
         }
 	});
-    $("#but").bind("click",function () {
+    $("#refush").bind("click",function () { //刷新
         $.ajax({
             type: 'post',
-            url: '/reg_investor/',
-            data: $("#login").serialize(),
+            url: '/reg_show/',
+            data: null,
             dataType: 'json',
             success: function (res,state) {
-                console.log(res);
                 app.$data.session_id = res['session_id'];
                 app.$data.permission = res['permission'];
             },
@@ -24,4 +23,20 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#submit").bind("click",function () {   //提交
+        $.ajax({
+            type: 'post',
+            url: '/reg_investor/',
+            data: $("#reg_form").serialize(),
+            dataType: 'json',
+            success: function (res,state) {
+                if(res['status'] == true){window.location.href="/admin_login/";}
+            },
+            beforeSend: function (XmlHttpRequest) {
+                XmlHttpRequest.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        });
+    });
+
 })

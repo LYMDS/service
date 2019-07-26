@@ -687,7 +687,7 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 import json
-def reg_investor(request):
+def reg_show(request):
     or_ajax = request.is_ajax()
     if not request.session.session_key:#防止session过期后session为空
         request.session.create()
@@ -703,15 +703,24 @@ def reg_investor(request):
     else:
         return render(request,'reg.html',{'json_data': json.dumps(data)})
 
+from .models import Investors_table,Supervisors_table
+def reg_investor(request):
+    status = False
+    company  = request.POST.get('company')
+    uesrname = request.POST.get('username')
+    password = request.POST.get('password')
+    if request.session.get('admin_permission',False) == True:
+        new_investor = Investor_table()
+        new_investor.investor_name = company
+        new_investor.super_user = uesrname
+        new_investor.password = hashlib.md5(password).hexdigest()
+        new_investor.save()
+        status = True
+    return JsonResponse({"status":status})
+
 def admin_login(request):
     return render(request,'adminlog.html')
 
-def ajax(request):
-    user = request.POST.get('username')
-    password = request.POST.get('password')
-    role = request.POST.get('role')
-    print(user, password, role)
-    return JsonResponse({'a':1})
 
 def investor_reg(request):#该函数只是在页面第一次加载或在浏览器刷新的时候工作
     if not request.session.session_key:      #如果不存在授权标识，这也不叫授权标识，是会话啊，session这个单词（不是不存在授权标识，是一个bug来的，防止session过期后第一次刷新时session为空）
@@ -727,11 +736,7 @@ def investor_reg(request):#该函数只是在页面第一次加载或在浏览�
         sessionid = request.COOKIES.get('sessionid')#这句不是放这里，当用户有session_id且已经授权，以你当前代码就会出错，编译器会告诉你：'session_id' is not define
         return render(request,'investor_reg.html',{'session_id': sessionid, 'permission': permit}) #完全可以一句话，为何要if else来判断，如何显示的判断交给前端页面
         
-from django.contrib.sessions.models import Session
-def permit():#这部分不用你写
-    Key = "jglkhtifjfk"
-    session = Session.objects.get(session_key = Key)
-    permit = session.get_decode().get('')
+
 
 
 

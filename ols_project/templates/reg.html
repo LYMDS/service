@@ -10,7 +10,6 @@
     <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/reg.js' %}"></script>
-
 </head>
 
 
@@ -19,11 +18,11 @@
     <div id="dataframe">
         <div v-if="permission">
             <form id="reg_form">
-                <p>投资商名：<input type="text" name="name"></p>
-                <p>账号：<input type="text" name="reg_num"></p>
+                <p>投资商名：<input type="text" name="company"></p>
+                <p>账号：<input type="text" name="username"></p>
                 <p>密码：<input type="password" name="password"></p>
             </form>
-            <p><input id="but" type="button" value="提交"></p>
+            <p><input id="submit" type="button" value="提交"></p>
         </div>
         <div v-else>
             <p>您的授权码为：{{ session_id }}</p>
