@@ -22,7 +22,7 @@
                 <p>账号：<input type="text" name="username"></p>
                 <p>密码：<input type="password" name="password"></p>
             </form>
-            <p><input id="submit" type="button" value="提交"></p>
+            <p><input id="submit" type="button" value="提交" onclick="submit_form();"></p>
         </div>
         <div v-else>
             <p>您的授权码为：{{ session_id }}</p>

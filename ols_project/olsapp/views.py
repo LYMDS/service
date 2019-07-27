@@ -710,10 +710,10 @@ def reg_investor(request):
     uesrname = request.POST.get('username')
     password = request.POST.get('password')
     if request.session.get('admin_permission',False) == True:
-        new_investor = Investor_table()
+        new_investor = Investors_table()
         new_investor.investor_name = company
         new_investor.super_user = uesrname
-        new_investor.password = hashlib.md5(password).hexdigest()
+        new_investor.password = hashlib.md5(password.encode()).hexdigest()
         new_investor.save()
         status = True
     return JsonResponse({"status":status})

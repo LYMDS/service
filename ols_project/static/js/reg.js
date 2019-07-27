@@ -1,6 +1,5 @@
-$(document).ready(function(){
-
-    var csrftoken = $.cookie("csrftoken");
+var csrftoken = $.cookie("csrftoken");
+$(document).ready(function(){   
 	var app = new Vue({
         el : "#dataframe",
         data : {
@@ -18,20 +17,7 @@ $(document).ready(function(){
                 app.$data.session_id = res['session_id'];
                 app.$data.permission = res['permission'];
                 if(res['permission'] == true){
-                    $("#submit").bind("click",function () {   //提交
-                        $.ajax({
-                            type: 'post',
-                            url: '/reg_investor/',
-                            data: $("#reg_form").serialize(),
-                            dataType: 'json',
-                            success: function (res,state) {
-                                if(res['status'] == true){window.location.href="/admin_login/";}
-                            },
-                            beforeSend: function (XmlHttpRequest) {
-                                XmlHttpRequest.setRequestHeader("X-CSRFToken", csrftoken);
-                            }
-                        });
-                    });
+                    
                 }
             },
             beforeSend: function (XmlHttpRequest) {
@@ -40,4 +26,21 @@ $(document).ready(function(){
         });
     });
 
-})
+});
+
+function submit_form(){
+      //提交
+                        $.ajax({
+                            type: 'post',
+                            url: '/reg_investor/',
+                            data: $("#reg_form").serialize(),
+                            dataType: 'json',
+                            success: function (res,state) {
+                                console.log(res);
+                            },
+                            beforeSend: function (XmlHttpRequest) {
+                                XmlHttpRequest.setRequestHeader("X-CSRFToken", csrftoken);
+                            }
+                        });
+                    
+}
