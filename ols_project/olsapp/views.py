@@ -722,20 +722,6 @@ def admin_login(request):
     return render(request,'adminlog.html')
 
 
-def investor_reg(request):#该函数只是在页面第一次加载或在浏览器刷新的时候工作
-    if not request.session.session_key:      #如果不存在授权标识，这也不叫授权标识，是会话啊，session这个单词（不是不存在授权标识，是一个bug来的，防止session过期后第一次刷新时session为空）
-        request.session.creat()              #创建会话
-        permit = request.session.get('admin_permission',False)    #生成False授权标识
-        sessionid = request.session.session_key                   #获取用户的随机字符串，生成sessionid
-    else:                                    #如果存在授权标识
-        permit = request.session.get('admin_permission')          #获取授权状态
-    request.session.set_expiry(60*10)                                #设置过期时间为30秒，不应该在这里设置时间啊，每刷新一次，30秒又重新数（需要session_key每隔一会就变）
-    if permit:                               #如果已经授权
-        return render(request,'investor_reg.html',{'session_id': sessionid, 'permission': permit})  #正常访问页面
-    else:                                                   #如果没有授权
-        sessionid = request.COOKIES.get('sessionid')#这句不是放这里，当用户有session_id且已经授权，以你当前代码就会出错，编译器会告诉你：'session_id' is not define
-        return render(request,'investor_reg.html',{'session_id': sessionid, 'permission': permit}) #完全可以一句话，为何要if else来判断，如何显示的判断交给前端页面
-        
 
 
 
