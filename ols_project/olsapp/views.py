@@ -705,17 +705,27 @@ def reg_show(request):
 
 from .models import Investors_table,Supervisors_table
 def reg_investor(request):
-    status = False
+    status = "404"
     company  = request.POST.get('company')
-    uesrname = request.POST.get('username')
+    username = request.POST.get('username')
     password = request.POST.get('password')
     if request.session.get('admin_permission',False) == True:
-        new_investor = Investors_table()
-        new_investor.investor_name = company
-        new_investor.super_user = uesrname
-        new_investor.password = hashlib.md5(password.encode()).hexdigest()
-        new_investor.save()
-        status = True
+        check_same = Investors_table().objects.filter(super_user=username)
+        if check_same.count() == 0:
+            new_investor = Investors_table()
+            new_investor.investor_name = company
+            new_investor.super_user = username
+            new_investor.password = hashlib.md5(password.encode()).hexdigest()
+            new_investor.save()
+            status = "200"
+            request.session.pop('admin_permission')
+        else:
+            status = "500"
+    """
+    404 : 未经管理员授权
+    500 : 账号名已存在
+    200 : 完成注册动作
+    """
     return JsonResponse({"status":status})
 
 def admin_login(request):

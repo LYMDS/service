@@ -37,5 +37,5 @@ urlpatterns = [
     url(r'^determine_money/$',views.determine_money),
     url(r'^reg_investor/$',views.reg_investor),
     url(r'^reg_show/$',views.reg_show),
-    url(r'^admin_login$',views.admin_login),
+    url(r'^admin_login/$',views.admin_login),
 ]
