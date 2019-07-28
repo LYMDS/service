@@ -710,7 +710,7 @@ def reg_investor(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     if request.session.get('admin_permission',False) == True:
-        check_same = Investors_table().objects.filter(super_user=username)
+        check_same = Investors_table.objects.filter(super_user=username)
         if check_same.count() == 0:
             new_investor = Investors_table()
             new_investor.investor_name = company
@@ -719,6 +719,7 @@ def reg_investor(request):
             new_investor.save()
             status = "200"
             request.session.pop('admin_permission')
+            request.session.clear_expired()
         else:
             status = "500"
     """
