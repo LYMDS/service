@@ -95,6 +95,7 @@ class Investors_table(models.Model):
     class Meta():
         db_table = 'investors_table'
     investment_num = models.AutoField(primary_key=True)#投资商编号（主键）
+    investor_name = models.CharField(max_length=20)
     garage = models.ManyToManyField(Garage_info_table,null=True)#多对多关联库机信息表
     super_user = models.CharField(max_length=32)#超级用户名
     password = models.CharField(max_length=32)#密码
