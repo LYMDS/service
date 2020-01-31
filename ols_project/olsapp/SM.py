@@ -27,24 +27,9 @@ def send_Email(code):
     smtp.login(user,password) #登陆smtp服务器
     smtp.sendmail(sender,receiver,msg.as_string()) #发送邮件 ，这里有三个参数
     smtp.quit()
-<<<<<<< HEAD
-
-
-if __name__ == "__main__":
-    code = "875930"
-    send_Email(code)
-
-
-
-
-
-
-
-
-=======
     return code
+
 if __name__ == "__main__":
     code = "875930"
     a = send_Email(code)
     print(a)
->>>>>>> say
