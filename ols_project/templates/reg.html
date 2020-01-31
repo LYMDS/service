@@ -5,11 +5,32 @@
     <meta charset="UTF-8">
     <title>投资商注册</title>
 	<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+    <script>var json_data = {{ json_data | safe }};</script>
+    <script type="text/javascript" src="{% static 'js/vue.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/reg.js' %}"></script>
 </head>
 
 
 <body>
-    <p>{{ session_id }}</p>
-    <p>{{ permission }}</p>
+    {% verbatim %}<!--禁用Django渲染-->
+    <div id="dataframe">
+        <div v-if="permission">
+            <form id="reg_form">
+                <p>投资商名：<input type="text" name="company"></p>
+                <p>账号：<input type="text" name="username"></p>
+                <p>密码：<input type="password" name="password"></p>
+            </form>
+            <p><input id="submit" type="button" value="提交" onclick="submit_form();"></p>
+        </div>
+        <div v-else>
+            <p>您的授权码为：{{ session_id }}</p>
+            <p>请尽快联系管理员！</p>
+            <input id="refush" type="button" value="刷新">
+        </div>
+    </div>
+    {% endverbatim %}<!--禁用Django渲染-->
 </body>
+
+

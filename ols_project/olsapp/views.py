@@ -50,7 +50,7 @@ def login(request):
     user = User_info_table.objects.get(phone_num = phone)
     overtime = "0"
     check = "0"
-    if time_span(user.last_login_time).seconds > 60:
+    if time_span(user.last_login_time).seconds > 60000000:
         overtime = "1"
     if user.security_num == code:
         check = '1'
@@ -686,24 +686,54 @@ def determine_money(request):
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-def reg_investor(request):
+import json
+def reg_show(request):
+    or_ajax = request.is_ajax()
     if not request.session.session_key:#防止session过期后session为空
         request.session.create()
-    permit = request.session.get('admin_permission',False)
+    permit = request.session.setdefault('admin_permission',False)
     sessionid = request.session.session_key
-    request.session.set_expiry(30)
-    return render(request,'reg.html',{'session_id': sessionid,
-                                      'permission': permit})
+    request.session.set_expiry(600)
+    data = {
+        'session_id': sessionid,
+        'permission': permit
+    }
+    if or_ajax:
+        return JsonResponse(data)
+    else:
+        return render(request,'reg.html',{'json_data': json.dumps(data)})
+
+from .models import Investors_table,Supervisors_table
+def reg_investor(request):
+    status = "404"
+    company  = request.POST.get('company')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    if request.session.get('admin_permission',False) == True:
+        check_same = Investors_table.objects.filter(super_user=username)
+        if check_same.count() == 0:
+            new_investor = Investors_table()
+            new_investor.investor_name = company
+            new_investor.super_user = username
+            new_investor.password = hashlib.md5(password.encode()).hexdigest()
+            new_investor.save()
+            status = "200"
+            request.session.pop('admin_permission')
+            request.session.clear_expired()
+        else:
+            status = "500"
+    """
+    404 : 未经管理员授权
+    500 : 账号名已存在
+    200 : 完成注册动作
+    """
+    return JsonResponse({"status":status})
 
 def admin_login(request):
     return render(request,'adminlog.html')
 
-def ajax(request):
-    user = request.POST.get('username')
-    password = request.POST.get('password')
-    role = request.POST.get('role')
-    print(user, password, role)
-    return JsonResponse({'a':1})
+
+
 
 
 
