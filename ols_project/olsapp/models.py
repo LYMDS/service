@@ -81,6 +81,8 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     lock_state = models.BooleanField()#车位与用户的锁定态
     charge_key = models.CharField(max_length=32)#充电桩的KEY
     control_state = models.NullBooleanField()#充电桩控制态
+    matrix_side_x = models.IntegerField(default=-1)#平面车库矩阵X坐标
+    matrix_side_y = models.IntegerField(default=-1)#平面车库矩阵Y坐标
     
 
 class Recharge_record_table(models.Model):#充值记录表

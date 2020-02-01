@@ -40,7 +40,7 @@ def getCode(request):
         user.save()
     out = {"code":code}
     #out = send2Phone(phone, code)
-    out = send_Email(code)
+    #out = send_Email(code)
     return JsonResponse(out)
 
 
@@ -410,6 +410,18 @@ def garage_msg(request): # 前端需求的显示控制码
             index = con_list[k]
             control[index[0]][index[1]] = load
             k+=1
+    elif garage.garage_type == 2:
+        max_x = 0
+        max_y = 0
+        for i in park_msg:
+            if i.matrix_side_x > max_x:
+                max_x = i.matrix_side_x
+            if i.matrix_side_y > max_y:
+                max_y = i.matrix_side_y
+        control = np.zeros((max_y + 1, max_x + 1), dtype=int).tolist()
+        for i in park_msg:
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
+            control[i.matrix_side_y][i.matrix_side_x] = load
     return JsonResponse({"gar_msg": control})
 
 def garage_msg1(request): # 前端需求的显示控制码
@@ -619,6 +631,8 @@ def dsad(request):
 #用户余额查询
 def balance_over(request):
     user = request.GET.get("user_num")
+    print(user)
+    print(type(user))
     user = User_info_table.objects.get(user_num = user)
     return JsonResponse({
         "money": user.prepaid_wallet,
