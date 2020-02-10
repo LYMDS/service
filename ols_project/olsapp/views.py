@@ -381,6 +381,7 @@ def subscript(n,RL):
     
 def garage_msg(request): # 前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
+    user_num = request.GET.get("user_num")
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
     status = garage.side_control  # 拿出控制码
@@ -420,7 +421,7 @@ def garage_msg(request): # 前端需求的显示控制码
                 max_y = i.matrix_side_y
         control = np.zeros((max_y + 1, max_x + 1), dtype=int).tolist()
         for i in park_msg:
-            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
+            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id, i.user_num]
             control[i.matrix_side_y][i.matrix_side_x] = load
     return JsonResponse({
         "gar_msg": control,
