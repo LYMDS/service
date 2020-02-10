@@ -410,7 +410,7 @@ def garage_msg(request): # 前端需求的显示控制码
             index = con_list[k]
             control[index[0]][index[1]] = load
             k+=1
-    elif garage.garage_type == 2:
+    elif garage.garage_type == 2: # 平面车库的显示
         max_x = 0
         max_y = 0
         for i in park_msg:
@@ -422,7 +422,10 @@ def garage_msg(request): # 前端需求的显示控制码
         for i in park_msg:
             load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id]
             control[i.matrix_side_y][i.matrix_side_x] = load
-    return JsonResponse({"gar_msg": control})
+    return JsonResponse({
+        "gar_msg": control,
+        "gar_type": garage.garage_type
+    })
 
 def garage_msg1(request): # 前端需求的显示控制码
     which_gar = request.GET.get("garage_code")

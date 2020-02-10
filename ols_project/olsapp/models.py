@@ -83,7 +83,9 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     control_state = models.NullBooleanField()#充电桩控制态
     matrix_side_x = models.IntegerField(default=-1)#平面车库矩阵X坐标
     matrix_side_y = models.IntegerField(default=-1)#平面车库矩阵Y坐标
-    
+    bluetooth_id = models.CharField(max_length=50,null=True,default=None)#蓝牙设备ID
+    bluetooth_password = models.CharField(max_length=10,null=True,default=None)#蓝牙连接码
+    is_subscribe = models.BooleanField(default=False)#是否预约
 
 class Recharge_record_table(models.Model):#充值记录表
     class Meta():
