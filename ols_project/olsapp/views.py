@@ -381,10 +381,11 @@ def subscript(n,RL):
     
 def garage_msg(request): # 前端需求的显示控制码
     which_gar = request.GET.get("garage_code")
-    user_num = request.GET.get("user_num")
+    user_num = int(request.GET.get("user_num"))
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
     status = garage.side_control  # 拿出控制码
+    subscribe = False  # 本人是否有预约
     if garage.garage_type == 0: # 升降横移
         control = status2list(status)   # 升降横移的专用显示转换
         print(control)
@@ -421,11 +422,23 @@ def garage_msg(request): # 前端需求的显示控制码
                 max_y = i.matrix_side_y
         control = np.zeros((max_y + 1, max_x + 1), dtype=int).tolist()
         for i in park_msg:
-            load = [i.parking_num, i.exist_car, i.charge_state, i.lock_state, i.car_id, i.user_num]
+            load = [
+                i.parking_num, 
+                i.exist_car, 
+                i.charge_state, 
+                i.lock_state, 
+                i.car_id, 
+                1 if i.is_subscribe else 0
+            ]
+            if i.is_subscribe and i.user_num is not None and i.user_num.user_num == user_num:
+                load[5] = 2
+                load.append(i.bluetooth_password)
+                subscribe = True
             control[i.matrix_side_y][i.matrix_side_x] = load
     return JsonResponse({
         "gar_msg": control,
-        "gar_type": garage.garage_type
+        "gar_type": garage.garage_type,
+        "subscribe": subscribe
     })
 
 def garage_msg1(request): # 前端需求的显示控制码
