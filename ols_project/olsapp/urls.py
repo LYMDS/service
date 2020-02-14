@@ -38,4 +38,8 @@ urlpatterns = [
     url(r'^reg_investor/$',views.reg_investor),
     url(r'^reg_show/$',views.reg_show),
     url(r'^admin_login/$',views.admin_login),
+    url(r'^sub_parking/$',views.sub_parking),
+    url(r'^cancel_sub/$',views.cancel_sub),
+    url(r'^get_bluetooth_mess/$',views.get_bluetooth_mess),
+
 ]

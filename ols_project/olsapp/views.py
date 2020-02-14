@@ -380,12 +380,16 @@ def subscript(n,RL):
     return res.tolist()
     
 def garage_msg(request): # 前端需求的显示控制码
+    print(request.META)
+    print(request.META["REMOTE_ADDR"])
     which_gar = request.GET.get("garage_code")
     user_num = int(request.GET.get("user_num"))
     garage = Garage_info_table.objects.get(garage_code = which_gar)
     park_msg = Garage_parking_state_table.objects.filter(garage_num=garage).order_by("parking_num")
     status = garage.side_control  # 拿出控制码
     subscribe = False  # 本人是否有预约
+    bluetooth_password = None
+    sub_park_num = None
     if garage.garage_type == 0: # 升降横移
         control = status2list(status)   # 升降横移的专用显示转换
         print(control)
@@ -432,13 +436,52 @@ def garage_msg(request): # 前端需求的显示控制码
             ]
             if i.is_subscribe and i.user_num is not None and i.user_num.user_num == user_num:
                 load[5] = 2
-                load.append(i.bluetooth_password)
+                bluetooth_password = i.bluetooth_password
+                sub_park_num = i.parking_num
                 subscribe = True
             control[i.matrix_side_y][i.matrix_side_x] = load
     return JsonResponse({
         "gar_msg": control,
         "gar_type": garage.garage_type,
-        "subscribe": subscribe
+        "subscribe": subscribe,
+        "bluetooth_password": bluetooth_password,
+        "sub_park_num": sub_park_num
+    })
+
+def sub_parking(request):
+    gar_code = request.GET.get("garage_code")
+    user_num = int(request.GET.get("user_num"))
+    side_num = int(request.GET.get("car_side_num"))
+    garage = Garage_info_table.objects.get(garage_code=gar_code)
+    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    is_subscribe = park_side.is_subscribe
+    if is_subscribe:
+        return JsonResponse({"option": False})
+    nowtime = datetime.datetime.now()
+    result = Garage_parking_state_table.objects.filter(state_num=park_side.state_num, is_subscribe=is_subscribe).update(is_subscribe=True, user_num=user_num, parking_start_time=nowtime, bluetooth_password=gain_code())
+    if result == 0:
+        return JsonResponse({"option": False})
+    return JsonResponse({"option": True})
+
+def cancel_sub(request):
+    gar_code = request.GET.get("garage_code")
+    user_num = int(request.GET.get("user_num"))
+    side_num = int(request.GET.get("car_side_num"))
+    garage = Garage_info_table.objects.get(garage_code=gar_code)
+    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    park_side.is_subscribe = False
+    park_side.bluetooth_password = gain_code()
+    park_side.save()
+    return JsonResponse({})
+
+def get_bluetooth_mess(request):
+    gar_code = request.GET.get("garage_code")
+    side_num = int(request.GET.get("car_side_num"))   
+    garage = Garage_info_table.objects.get(garage_code=gar_code)
+    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    return JsonResponse({
+        "ID": park_side.bluetooth_id,
+        "PA": park_side.bluetooth_password
     })
 
 def garage_msg1(request): # 前端需求的显示控制码

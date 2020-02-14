@@ -1,1 +1,110 @@
-﻿
+﻿*** Starting uWSGI 2.0.18 (64bit) on [Fri Feb 14 17:57:41 2020] ***
+compiled with version: 5.4.0 20160609 on 23 April 2019 09:05:08
+os: Linux-4.4.0-143-generic #169-Ubuntu SMP Thu Feb 7 07:56:38 UTC 2019
+nodename: iZwz9c88sbllf3xisnpxb9Z
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/Desktop/Django/ols_project
+writing pidfile to /root/Desktop/Django/ols_project/pid/uwsgi-8000.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/Desktop/Django/ols_project
+your processes number limit is 7833
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 7
+uwsgi socket 0 bound to TCP address 127.0.0.1:43969 (port auto-assigned) fd 6
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+Python main interpreter initialized at 0xa9b110
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364520 bytes (355 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xa9b110 pid: 13975 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 13975)
+spawned uWSGI worker 1 (pid: 13977, cores: 1)
+spawned uWSGI worker 2 (pid: 13978, cores: 1)
+spawned uWSGI worker 3 (pid: 13979, cores: 1)
+spawned uWSGI worker 4 (pid: 13980, cores: 1)
+spawned uWSGI http 1 (pid: 13981)
+Not Found: /
+[pid: 13977|app: 0|req: 1/1] 120.77.156.184 () {36 vars in 621 bytes} [Fri Feb 14 18:05:14 2020] GET / => generated 6252 bytes in 611 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 13980|app: 0|req: 1/2] 120.77.156.184 () {34 vars in 548 bytes} [Fri Feb 14 18:05:15 2020] GET /favicon.ico => generated 6303 bytes in 147 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 2/3] 120.77.156.184 () {36 vars in 633 bytes} [Fri Feb 14 18:05:40 2020] GET /admin/ => generated 0 bytes in 17 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 13980|app: 0|req: 2/4] 120.77.156.184 () {36 vars in 670 bytes} [Fri Feb 14 18:05:40 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 119 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13977|app: 0|req: 3/5] 120.77.156.184 () {38 vars in 735 bytes} [Fri Feb 14 18:05:40 2020] GET /static/admin/css/base.css => generated 6345 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13980|app: 0|req: 3/6] 120.77.156.184 () {38 vars in 737 bytes} [Fri Feb 14 18:05:40 2020] GET /static/admin/css/login.css => generated 6348 bytes in 15 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13979|app: 0|req: 1/7] 120.77.156.184 () {38 vars in 747 bytes} [Fri Feb 14 18:05:40 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 150 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 4/8] 120.77.156.184 () {38 vars in 719 bytes} [Fri Feb 14 18:05:56 2020] GET /show => generated 0 bytes in 0 msecs (HTTP/1.0 301) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 13978|app: 0|req: 1/9] 120.77.156.184 () {38 vars in 721 bytes} [Fri Feb 14 18:05:56 2020] GET /show/ => generated 3693 bytes in 383 msecs (HTTP/1.0 200) 5 headers in 292 bytes (1 switches on core 0)
+Not Found: /static/js/test.js
+[pid: 13977|app: 0|req: 5/10] 120.77.156.184 () {38 vars in 685 bytes} [Fri Feb 14 18:05:56 2020] GET /static/js/test.js => generated 6321 bytes in 11 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/css/test.css
+[pid: 13980|app: 0|req: 4/11] 120.77.156.184 () {38 vars in 704 bytes} [Fri Feb 14 18:05:56 2020] GET /static/css/test.css => generated 6327 bytes in 7 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13979|app: 0|req: 2/12] 120.77.156.184 () {42 vars in 698 bytes} [Fri Feb 14 18:05:58 2020] GET /show/ => generated 3693 bytes in 21 msecs (HTTP/1.0 200) 5 headers in 292 bytes (1 switches on core 0)
+Not Found: /static/css/test.css
+[pid: 13977|app: 0|req: 6/13] 120.77.156.184 () {42 vars in 681 bytes} [Fri Feb 14 18:05:58 2020] GET /static/css/test.css => generated 6327 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/js/test.js
+[pid: 13980|app: 0|req: 5/14] 120.77.156.184 () {42 vars in 662 bytes} [Fri Feb 14 18:05:58 2020] GET /static/js/test.js => generated 6321 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 13979|app: 0|req: 3/15] 120.77.156.184 () {40 vars in 615 bytes} [Fri Feb 14 18:05:58 2020] GET /favicon.ico => generated 6303 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 7/16] 120.77.156.184 () {38 vars in 723 bytes} [Fri Feb 14 18:07:23 2020] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 13980|app: 0|req: 6/17] 120.77.156.184 () {38 vars in 760 bytes} [Fri Feb 14 18:07:23 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 14 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13977|app: 0|req: 8/18] 120.77.156.184 () {38 vars in 736 bytes} [Fri Feb 14 18:07:23 2020] GET /static/admin/css/base.css => generated 6345 bytes in 20 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13979|app: 0|req: 4/19] 120.77.156.184 () {38 vars in 738 bytes} [Fri Feb 14 18:07:23 2020] GET /static/admin/css/login.css => generated 6348 bytes in 16 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13980|app: 0|req: 7/20] 120.77.156.184 () {38 vars in 748 bytes} [Fri Feb 14 18:07:23 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 9/21] 120.77.156.184 () {38 vars in 723 bytes} [Fri Feb 14 18:09:17 2020] GET /admin/ => generated 0 bytes in 1 msecs (HTTP/1.0 302) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 13979|app: 0|req: 5/22] 120.77.156.184 () {38 vars in 760 bytes} [Fri Feb 14 18:09:17 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 49 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13977|app: 0|req: 10/23] 120.77.156.184 () {38 vars in 736 bytes} [Fri Feb 14 18:09:17 2020] GET /static/admin/css/base.css => generated 6345 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13980|app: 0|req: 8/24] 120.77.156.184 () {38 vars in 738 bytes} [Fri Feb 14 18:09:17 2020] GET /static/admin/css/login.css => generated 6348 bytes in 12 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13979|app: 0|req: 6/25] 120.77.156.184 () {38 vars in 748 bytes} [Fri Feb 14 18:09:17 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 9 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 11/26] 120.77.156.184 () {36 vars in 889 bytes} [Fri Feb 14 18:09:33 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 52 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13980|app: 0|req: 9/27] 120.77.156.184 () {38 vars in 897 bytes} [Fri Feb 14 18:09:33 2020] GET /static/admin/css/base.css => generated 6345 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13977|app: 0|req: 12/28] 120.77.156.184 () {38 vars in 899 bytes} [Fri Feb 14 18:09:33 2020] GET /static/admin/css/login.css => generated 6348 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13980|app: 0|req: 10/29] 120.77.156.184 () {38 vars in 909 bytes} [Fri Feb 14 18:09:33 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 13977|app: 0|req: 13/30] 120.77.156.184 () {38 vars in 925 bytes} [Fri Feb 14 18:09:33 2020] GET /favicon.ico => generated 6303 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13980|app: 0|req: 11/31] 120.77.156.184 () {38 vars in 978 bytes} [Fri Feb 14 18:09:39 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 18 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13979|app: 0|req: 7/32] 120.77.156.184 () {38 vars in 899 bytes} [Fri Feb 14 18:09:40 2020] GET /static/admin/css/login.css => generated 6348 bytes in 14 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13977|app: 0|req: 14/33] 120.77.156.184 () {38 vars in 909 bytes} [Fri Feb 14 18:09:40 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 21 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13978|app: 0|req: 2/34] 120.77.156.184 () {38 vars in 897 bytes} [Fri Feb 14 18:09:40 2020] GET /static/admin/css/base.css => generated 6345 bytes in 22 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 13980|app: 0|req: 12/35] 120.77.156.184 () {38 vars in 925 bytes} [Fri Feb 14 18:09:40 2020] GET /favicon.ico => generated 6303 bytes in 5 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 13977|app: 0|req: 15/36] 120.77.156.184 () {42 vars in 737 bytes} [Fri Feb 14 18:10:58 2020] GET /admin/login/?next=/admin/ => generated 1821 bytes in 14 msecs (HTTP/1.0 200) 7 headers in 395 bytes (1 switches on core 0)
+Not Found: /static/admin/css/base.css
+[pid: 13980|app: 0|req: 13/37] 120.77.156.184 () {42 vars in 713 bytes} [Fri Feb 14 18:10:58 2020] GET /static/admin/css/base.css => generated 6345 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/responsive.css
+[pid: 13979|app: 0|req: 8/38] 120.77.156.184 () {42 vars in 725 bytes} [Fri Feb 14 18:10:58 2020] GET /static/admin/css/responsive.css => generated 6363 bytes in 6 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /static/admin/css/login.css
+[pid: 13977|app: 0|req: 16/39] 120.77.156.184 () {42 vars in 715 bytes} [Fri Feb 14 18:10:58 2020] GET /static/admin/css/login.css => generated 6348 bytes in 10 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 13980|app: 0|req: 14/40] 120.77.156.184 () {40 vars in 615 bytes} [Fri Feb 14 18:10:58 2020] GET /favicon.ico => generated 6303 bytes in 7 msecs (HTTP/1.0 404) 3 headers in 102 bytes (1 switches on core 0)
