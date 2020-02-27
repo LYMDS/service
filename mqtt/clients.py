@@ -76,6 +76,7 @@ client.username_pw_set("olswxmqtt","olswxappmqtt32219")
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(HOST,1883,60)
+#应该去数据库查出所有主题
 client.subscribe("C/gds100001/P",2)
 '''
 
