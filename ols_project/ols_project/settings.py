@@ -141,3 +141,4 @@ NEVER_REDIS_TIMEOUT=365*24*60*60
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]#指定static资源唯一存储路經
 MDEIA_ROOT = os.path.join(BASE_DIR,r'static/upfile')#上传文件存储
+STATIC_ROOT = "/home/olsproject/static"

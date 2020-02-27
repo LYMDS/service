@@ -38,7 +38,7 @@ def getCode(request):
         user.user_type = "用户"
         user.security_num = code
         user.save()
-    out = {"code":code}
+    out = {"code":code,"zhang":"sadasdkhasdkjahasjgdkasdasddakhdasksjdjlaskjdlasskdjsalkdjlkhksjdfgkashdlsajdlaskjdleioiuqprooieyuityieurtyierutdf hbjshfiu"}
     #out = send2Phone(phone, code)
     #out = send_Email(code)
     return JsonResponse(out)
@@ -806,7 +806,8 @@ def reg_investor(request):
 def admin_login(request):
     return render(request,'adminlog.html')
 
-
+def index(request):
+    return render(request,'index.html')
 
 
 
