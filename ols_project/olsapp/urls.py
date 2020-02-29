@@ -42,5 +42,6 @@ urlpatterns = [
     url(r'^sub_parking/$',views.sub_parking),
     url(r'^cancel_sub/$',views.cancel_sub),
     url(r'^get_bluetooth_mess/$',views.get_bluetooth_mess),
+    url(r'^car_locker/$', views.car_locker),
 
 ]

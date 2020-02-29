@@ -808,3 +808,22 @@ def admin_login(request):
 
 def index(request):
     return render(request,'index.html')
+
+def car_locker(request):
+    sys = request.GET.get("sys")#系统状态
+    psw = request.GET.get("psw")#密码
+    gar_code = request.GET.get("gc")#车库编码
+    side_num = request.GET.get("csn")#车位号
+    exist_car = request.GET.get("iec")#是否有车
+    sub_msg = request.GET.get("ism")#预约信息
+    print(sys)
+    print(psw)
+    print(gar_code)
+    print(side_num)
+    print(exist_car)
+    print(sub_msg)
+    return JsonResponse({
+        "ism": 0,
+        "psw": psw
+    })
+
