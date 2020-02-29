@@ -810,12 +810,7 @@ def index(request):
     return render(request,'index.html')
 
 def car_locker(request):
-<<<<<<< HEAD
-    print(request.get_full_path())
-    sys = request.GET.get("sys")#系统状态
-=======
     sys = int(request.GET.get("sys"))#系统状态
->>>>>>> d0c20cc0ef366ac874138c002e743f2b52fb10b2
     psw = request.GET.get("psw")#密码
     gar_code = request.GET.get("gc")#车库编码
     side_num = int(request.GET.get("csn"))#车位号
