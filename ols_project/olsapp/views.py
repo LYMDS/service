@@ -810,20 +810,23 @@ def index(request):
     return render(request,'index.html')
 
 def car_locker(request):
-    sys = request.GET.get("sys")#系统状态
+    sys = int(request.GET.get("sys"))#系统状态
     psw = request.GET.get("psw")#密码
     gar_code = request.GET.get("gc")#车库编码
-    side_num = request.GET.get("csn")#车位号
-    exist_car = request.GET.get("iec")#是否有车
-    sub_msg = request.GET.get("ism")#预约信息
-    print(sys)
-    print(psw)
-    print(gar_code)
-    print(side_num)
-    print(exist_car)
-    print(sub_msg)
+    side_num = int(request.GET.get("csn"))#车位号
+    exist_car = bool(int(request.GET.get("iec")))#是否有车
+    sub_msg = bool(int(request.GET.get("ism")))#预约信息
+    garage = Garage_info_table.objects.get(garage_code=gar_code)
+    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    if sys == 0:#系统状态为待机
+        park_side.bluetooth_password = psw
+    if sys == 2 and sub_msg and park_side.is_subscribe and time_span(park_side.parking_start_time).seconds > 1800:#系统状态为无车有预约\下位机已经预约\超时
+        park_side.is_subscribe = False
+    park_side.cell_sys_state = sys
+    park_side.exist_car = exist_car
+    park_side.save()
     return JsonResponse({
-        "ism": 0,
-        "psw": psw
+        "ism": park_side.is_subscribe,
+        "psw": park_side.bluetooth_password
     })
 
