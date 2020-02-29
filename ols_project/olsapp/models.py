@@ -86,6 +86,7 @@ class Garage_parking_state_table(models.Model):#库机车位状态表
     bluetooth_id = models.CharField(max_length=50,null=True,default=None)#蓝牙设备ID
     bluetooth_password = models.CharField(max_length=10,null=True,default=None)#蓝牙连接码
     is_subscribe = models.BooleanField(default=False)#是否预约
+    cell_sys_state = models.IntegerField(default=0)#单元系统状态（平面车库的每台下位机）
 
 class Recharge_record_table(models.Model):#充值记录表
     class Meta():
