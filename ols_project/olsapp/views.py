@@ -514,7 +514,7 @@ def get_bluetooth_mess(request):
                     and event['database'] == 'olsdatabase'
                     and event['table'] == 'garage_parking_state_table'
                     and event['after']['parking_num'] == side_num
-                    and event['after']['garage_num'] == garage.garage_num
+                    and event['after']['garage_num_id'] == garage.garage_num
                     and event['before']['is_subscribe'] == False
                     and event['after']['is_subscribe'] == True
                     and event['after']['cell_sys_state'] == 1):
