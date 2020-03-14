@@ -512,7 +512,7 @@ def get_bluetooth_mess(request):
                 print(event)
                 if (time_span(event['after']['parking_start_time']).seconds < 120
                     and event['database'] == 'olsdatabase'
-                    and event['table'] == 'Garage_parking_state_table'
+                    and event['table'] == 'garage_parking_state_table'
                     and event['after']['parking_num'] == side_num
                     and event['after']['garage_num'] == garage.garage_num
                     and event['before']['is_subscribe'] == False
