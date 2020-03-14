@@ -474,11 +474,57 @@ def cancel_sub(request):
     park_side.save()
     return JsonResponse({})
 
+
+from pymysqlreplication import BinLogStreamReader
+from pymysqlreplication.row_event import (
+    DeleteRowsEvent,
+    UpdateRowsEvent,
+    WriteRowsEvent
+)
 def get_bluetooth_mess(request):
     gar_code = request.GET.get("garage_code")
     side_num = int(request.GET.get("car_side_num"))   
     garage = Garage_info_table.objects.get(garage_code=gar_code)
     park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    if not park_side.is_subscribe:
+        connectionSet = {
+            'host': 'localhost',
+            'port': 3306,
+            'user': 'root',
+            'password': '609586869'
+        }
+
+        stream = BinLogStreamReader(connection_settings=connectionSet,
+                                    server_id=100,
+                                    blocking=True,
+                                    only_events=[
+                                        UpdateRowsEvent
+                                    ])
+
+        for binlogevent in stream:
+            #binlogevent.dump()
+            stop_sign = False
+            for row in binlogevent.rows:
+                event = {
+                    'database': binlogevent.schema,
+                    'table': binlogevent.table,
+                    'before': row["before_values"],
+                    'after': row["after_values"]
+                }
+                print(event)
+                if (time_span(event['after']['parking_start_time']).seconds < 120
+                    and event['database'] == 'olsdatabase'
+                    and event['table'] == 'Garage_parking_state_table'
+                    and event['after']['parking_num'] == side_num
+                    and event['after']['garage_num'] == garage.garage_num
+                    and event['before']['is_subscribe'] == False
+                    and event['after']['is_subscribe'] == True
+                    and event['after']['cell_sys_state'] == 1):
+                    stop_sign = True
+                    break
+            if stop_sign:
+                break
+        stream.close()
     return JsonResponse({
         "ID": park_side.bluetooth_id,
         "PA": park_side.bluetooth_password
