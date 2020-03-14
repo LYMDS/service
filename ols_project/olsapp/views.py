@@ -380,8 +380,6 @@ def subscript(n,RL):
     return res.tolist()
     
 def garage_msg(request): # 前端需求的显示控制码
-    print(request.META)
-    print(request.META["REMOTE_ADDR"])
     which_gar = request.GET.get("garage_code")
     user_num = int(request.GET.get("user_num"))
     garage = Garage_info_table.objects.get(garage_code = which_gar)
@@ -495,7 +493,7 @@ def get_bluetooth_mess(request):
         }
 
         stream = BinLogStreamReader(connection_settings=connectionSet,
-                                    server_id=100,
+                                    server_id=560,
                                     blocking=True,
                                     only_events=[
                                         UpdateRowsEvent
