@@ -517,7 +517,7 @@ def get_bluetooth_mess(request):
                     and event['after']['garage_num_id'] == garage.garage_num
                     and event['before']['is_subscribe'] == False
                     and event['after']['is_subscribe'] == True
-                    and event['after']['cell_sys_state'] == 1):
+                    and event['after']['cell_sys_state'] == 2):
                     stop_sign = True
                     break
             if stop_sign:
@@ -870,7 +870,7 @@ def car_locker(request):
     park_side.exist_car = exist_car
     park_side.save()
     return JsonResponse({
-        "ism": park_side.is_subscribe,
-        "psw": park_side.bluetooth_password
+        "__ism": 1 if park_side.is_subscribe else 0,
+        "__psw": park_side.bluetooth_password
     })
 
