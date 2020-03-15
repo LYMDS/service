@@ -487,11 +487,12 @@ def get_bluetooth_mess(request):
     park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
     if not park_side.is_subscribe:
         nowtime = datetime.datetime.now()
+        random_code = gain_code()
         result = Garage_parking_state_table.objects.filter(state_num=park_side.state_num,
                                                            is_subscribe=False).update(is_subscribe=True,
                                                                                              user_num=user_num,
                                                                                              parking_start_time=nowtime,
-                                                                                             bluetooth_password=gain_code())
+                                                                                             bluetooth_password=random_code)
         if result == 0:
             return JsonResponse({"status": False})
         #预约成功
@@ -531,10 +532,15 @@ def get_bluetooth_mess(request):
                     and event['before']['cell_sys_state'] == 1
                     and event['after']['cell_sys_state'] == 2):
                     stop_sign = True
+
                     break
             if stop_sign:
                 break
         stream.close()
+        return JsonResponse({
+            "ID": park_side.bluetooth_id,
+            "PA": random_code
+        })
     return JsonResponse({
         "ID": park_side.bluetooth_id,
         "PA": park_side.bluetooth_password
