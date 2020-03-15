@@ -481,10 +481,21 @@ from pymysqlreplication.row_event import (
 )
 def get_bluetooth_mess(request):
     gar_code = request.GET.get("garage_code")
-    side_num = int(request.GET.get("car_side_num"))   
+    side_num = int(request.GET.get("car_side_num"))
+    user_num = int(request.GET.get("user_num"))
     garage = Garage_info_table.objects.get(garage_code=gar_code)
     park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
     if not park_side.is_subscribe:
+        nowtime = datetime.datetime.now()
+        result = Garage_parking_state_table.objects.filter(state_num=park_side.state_num,
+                                                           is_subscribe=is_subscribe).update(is_subscribe=True,
+                                                                                             user_num=user_num,
+                                                                                             parking_start_time=nowtime,
+                                                                                             bluetooth_password=gain_code())
+        if result == 0:
+            return JsonResponse({"status": False})
+        #预约成功
+        #开启数据库Update监控
         connectionSet = {
             'host': 'localhost',
             'port': 3306,
@@ -515,8 +526,9 @@ def get_bluetooth_mess(request):
                     and event['table'] == 'garage_parking_state_table'
                     and event['after']['parking_num'] == side_num
                     and event['after']['garage_num_id'] == garage.garage_num
-                    and event['before']['is_subscribe'] == False
+                    and event['before']['is_subscribe'] == True
                     and event['after']['is_subscribe'] == True
+                    and event['before']['cell_sys_state'] == 1
                     and event['after']['cell_sys_state'] == 2):
                     stop_sign = True
                     break
@@ -526,6 +538,28 @@ def get_bluetooth_mess(request):
     return JsonResponse({
         "ID": park_side.bluetooth_id,
         "PA": park_side.bluetooth_password
+    })
+
+
+def car_locker(request):
+    sys = int(request.GET.get("sys"))#系统状态
+    psw = request.GET.get("psw")#密码
+    gar_code = request.GET.get("gc")#车库编码
+    side_num = int(request.GET.get("csn"))#车位号
+    exist_car = bool(int(request.GET.get("iec")))#是否有车
+    sub_msg = bool(int(request.GET.get("ism")))#预约信息
+    garage = Garage_info_table.objects.get(garage_code=gar_code)
+    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
+    if sys == 0:#系统状态为待机
+        park_side.bluetooth_password = psw
+    if sys == 2 and sub_msg and park_side.is_subscribe and time_span(park_side.parking_start_time).seconds > 1800:#系统状态为无车有预约\下位机已经预约\超时
+        park_side.is_subscribe = False
+    park_side.cell_sys_state = sys
+    park_side.exist_car = exist_car
+    park_side.save()
+    return JsonResponse({
+        "__ism": 1 if park_side.is_subscribe else 0,
+        "__psw": park_side.bluetooth_password
     })
 
 def garage_msg1(request): # 前端需求的显示控制码
@@ -853,24 +887,5 @@ def admin_login(request):
 def index(request):
     return render(request,'index.html')
 
-def car_locker(request):
-    sys = int(request.GET.get("sys"))#系统状态
-    psw = request.GET.get("psw")#密码
-    gar_code = request.GET.get("gc")#车库编码
-    side_num = int(request.GET.get("csn"))#车位号
-    exist_car = bool(int(request.GET.get("iec")))#是否有车
-    sub_msg = bool(int(request.GET.get("ism")))#预约信息
-    garage = Garage_info_table.objects.get(garage_code=gar_code)
-    park_side = Garage_parking_state_table.objects.get(garage_num=garage, parking_num=side_num)
-    if sys == 0:#系统状态为待机
-        park_side.bluetooth_password = psw
-    if sys == 2 and sub_msg and park_side.is_subscribe and time_span(park_side.parking_start_time).seconds > 1800:#系统状态为无车有预约\下位机已经预约\超时
-        park_side.is_subscribe = False
-    park_side.cell_sys_state = sys
-    park_side.exist_car = exist_car
-    park_side.save()
-    return JsonResponse({
-        "__ism": 1 if park_side.is_subscribe else 0,
-        "__psw": park_side.bluetooth_password
-    })
+
 
