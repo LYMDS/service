@@ -488,7 +488,7 @@ def get_bluetooth_mess(request):
     if not park_side.is_subscribe:
         nowtime = datetime.datetime.now()
         result = Garage_parking_state_table.objects.filter(state_num=park_side.state_num,
-                                                           is_subscribe=is_subscribe).update(is_subscribe=True,
+                                                           is_subscribe=False).update(is_subscribe=True,
                                                                                              user_num=user_num,
                                                                                              parking_start_time=nowtime,
                                                                                              bluetooth_password=gain_code())
