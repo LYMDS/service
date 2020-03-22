@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dwebsocket',
     'testmqttapp',
     'olsapp',
 ]
@@ -106,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#允许每一个单独的视图使用websocket
+WEBSOCKET_ACCEPT_ALL = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

@@ -479,6 +479,8 @@ from pymysqlreplication.row_event import (
     UpdateRowsEvent,
     WriteRowsEvent
 )
+from dwebsocket.decorators import accept_websocket
+@accept_websocket
 def get_bluetooth_mess(request):
     gar_code = request.GET.get("garage_code")
     side_num = int(request.GET.get("car_side_num"))
