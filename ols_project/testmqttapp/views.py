@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 import json
-from .models import Test_log
+from .models import *
 import os
 import paho.mqtt.publish as pub
 from django.conf import settings
@@ -57,7 +57,7 @@ def connect(request):
 def hb_connect(request):
     weight = request.GET.get('weight')
     data = HB_Hardware()
-    data.weight = weight
+    data.weight = float(weight)
     data.save()
     return JsonResponse({"status":"ok"})
 	
