@@ -24,4 +24,5 @@ urlpatterns = [
 	url(r'^save/$',views.showsave),
 	url(r'^savefile/$',views.savefile),
     url(r'^connect/$',views.connect),
+    url(r'^hb/connect/$', views.hb_connect)
 ]

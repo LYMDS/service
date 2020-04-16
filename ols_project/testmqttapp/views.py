@@ -53,6 +53,13 @@ def showsave(request):
 
 def connect(request):
     return JsonResponse({"name":"我是你爸爸","type":123.2321})
+
+def hb_connect(request):
+    weight = request.GET.get('weight')
+    data = HB_Hardware()
+    data.weight = weight
+    data.save()
+    return JsonResponse({"status":"ok"})
 	
 
 
