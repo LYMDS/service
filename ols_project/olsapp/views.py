@@ -482,6 +482,13 @@ from pymysqlreplication.row_event import (
 from dwebsocket.decorators import accept_websocket
 @accept_websocket
 def get_bluetooth_mess(request):
+    if request.is_websocket():
+        str1 = request.websocket.wait()
+        print(str1)
+    print(request.is_websocket())
+    print(request.websocket)
+    return JsonResponse({})
+    '''
     gar_code = request.GET.get("garage_code")
     side_num = int(request.GET.get("car_side_num"))
     user_num = int(request.GET.get("user_num"))
@@ -547,7 +554,7 @@ def get_bluetooth_mess(request):
         "ID": park_side.bluetooth_id,
         "PA": park_side.bluetooth_password
     })
-
+    '''
 
 def car_locker(request):
     sys = int(request.GET.get("sys"))#系统状态
