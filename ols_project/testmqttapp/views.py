@@ -59,7 +59,8 @@ def hb_connect(request):
     weight = request.GET.get('weight')
     data = HB_Hardware()
     data.weight = float(weight)
-    data.time_now = datetime.datetime.now() + datetime.timedelta(hours=16)
+    now = datetime.datetime.now()
+    data.time_now = now
     data.save()
     return JsonResponse({"status":"ok"})
 
