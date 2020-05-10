@@ -59,19 +59,13 @@ def hb_connect(request):
     weight = request.GET.get('weight')
     data = HB_Hardware()
     data.weight = float(weight)
+    data.time_now = datetime.datetime.now() + datetime.timedelta(hours=8)
     data.save()
     return JsonResponse({"status":"ok"})
 
 def hb_show(request):
-    hardware = HB_Hardware.objects.all()
-    data = []
-    for i in hardware:
-        item = {
-            'weight': i.weight,
-            'time': i.time_now + datetime.timedelta(hours=8)
-        }
-        data.append(item)
-    return JsonResponse({'data': data})
+    hardware = HB_Hardware.objects.all().order_by("-time_now")
+    return JsonResponse({'data': hardware})
 
 
 
