@@ -62,6 +62,9 @@ def hb_connect(request):
     now = datetime.datetime.now()
     data.time_now = now
     data.save()
+
+    print(now)
+    print(now+datetime.timedelta(hours=8))
     return JsonResponse({"status":"ok"})
 
 def hb_show(request):
