@@ -60,7 +60,17 @@ def hb_connect(request):
     data.weight = float(weight)
     data.save()
     return JsonResponse({"status":"ok"})
-	
+
+def hb_show(request):
+    hardware = HB_Hardware.objects.all()
+    data = []
+    for i in hardware:
+        item = {
+            'weight': i.weight,
+            'time': time_now
+        }
+        data.append(item)
+    return JsonResponse({'data': data})
 
 
 

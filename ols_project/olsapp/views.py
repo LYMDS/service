@@ -38,7 +38,7 @@ def getCode(request):
         user.user_type = "用户"
         user.security_num = code
         user.save()
-    out = {"code":code,"zhang":"sadasdkhasdkjahasjgdkasdasddakhdasksjdjlaskjdlasskdjsalkdjlkhksjdfgkashdlsajdlaskjdleioiuqprooieyuityieurtyierutdf hbjshfiu"}
+    out = {"code":code}
     #out = send2Phone(phone, code)
     #out = send_Email(code)
     return JsonResponse(out)

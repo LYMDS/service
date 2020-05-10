@@ -9,7 +9,7 @@ class User_info_table(models.Model):#用户信息表
     red_packet = models.DecimalField(max_digits=6,decimal_places=2)#红包 max=9999.99
     register_time = models.DateField(auto_now_add=True)#注册时间（在生成用户的时候自动添加，无需管理）
     user_type = models.CharField(max_length=3)#用户类型（用户、管理员、投资商、维保员）
-    last_login_time = models.DateTimeField(auto_now=True)#最后登录时间（最后一次修改时间，暂时不知道SELECT和UPDATE）
+    last_login_time = models.DateTimeField(auto_now=True)#最后登录时间
     security_num = models.CharField(max_length=6)#验证码
 
 class Garage_info_table(models.Model):#库机信息表

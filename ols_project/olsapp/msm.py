@@ -21,4 +21,5 @@ def send2Phone(mobile_num,random_code):
     return content        # 返回{""""}
     
 if __name__ == "__main__":
-    msm('17324080646','456321')
+    data = send2Phone('15323035991','946582')
+    print(data)
