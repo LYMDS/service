@@ -6,6 +6,7 @@ import os
 import paho.mqtt.publish as pub
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt#引入csrf验证装饰器
+import datetime
 
 HOST="120.77.156.184"
 U_P={"username":"olswxmqtt",
@@ -67,7 +68,7 @@ def hb_show(request):
     for i in hardware:
         item = {
             'weight': i.weight,
-            'time': time_now
+            'time': i.time_now + datetime.timedelta(hours=8)
         }
         data.append(item)
     return JsonResponse({'data': data})
