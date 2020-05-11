@@ -1,0 +1,31 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物联网电子秤</title>
+    <link rel="stylesheet" href="{% static 'css/hb.css' %}">
+    <script type="text/javascript" src="{% static 'js/vue.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hb.js' %}"></script>
+</head>
+<body>
+    {% verbatim %}<!--禁用Django渲染-->
+        <div id="dataframe">
+            <table>
+                <th>物联网电子秤</th>
+                <tr v-for="i in hardwarelist">
+                    <td>{{ i.weight }}</td>
+                    <td>{{ i.time }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+    {% endverbatim %}<!--禁用Django渲染-->
+</body>
+</html>
