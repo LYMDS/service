@@ -18,6 +18,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (res,state) {
                 app.$data.hardwarelist = res['data'];
+                console.log(res['data']);
             },
             beforeSend: function (XmlHttpRequest) {
                 XmlHttpRequest.setRequestHeader("X-CSRFToken", csrftoken);
