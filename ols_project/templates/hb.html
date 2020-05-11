@@ -10,16 +10,38 @@
     <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
 {#    <script type="text/javascript" src="{% static 'js/hb.js' %}"></script>#}
-    <script>
-        var csrftoken = $.cookie("csrftoken");
+    <style>
+
+    </style>
+</head>
+<body>
+    {% verbatim %}<!--禁用Django渲染-->
+        <div id="dataframe">
+            <table>
+                <th>物联网电子秤</th>
+                <tr>
+                    <td>重量</td>
+                    <td>时间</td>
+                </tr>
+                <tr v-for="(item,i) in hardwarelist">
+                    <td>{{ item.weight }}</td>
+                    <td>{{ item.time }}</td>
+                </tr>
+            </table>
+
+        </div>
+    {% endverbatim %}<!--禁用Django渲染-->
+</body>
+<script>
+var csrftoken = $.cookie("csrftoken");
 $(document).ready(function(){
-	var app = new Vue({
+    var app = new Vue({
         el : "#dataframe",
         data : {
             hardwarelist: []
         }
-	});
-	var t1=window.setInterval(refreshCount, 1000);
+    });
+    var t1=window.setInterval(refreshCount, 1000);
     function refreshCount() {
         $.ajax({
             type: 'get',
@@ -36,20 +58,5 @@ $(document).ready(function(){
         });
     }
 });
-    </script>
-</head>
-<body>
-    {% verbatim %}<!--禁用Django渲染-->
-        <div id="dataframe">
-            <table>
-                <th>物联网电子秤</th>
-                <tr v-for="(item,i) in hardwarelist">
-                    <td>{{ item.weight }}</td>
-                    <td>{{ item.time }}</td>
-                </tr>
-            </table>
-
-        </div>
-    {% endverbatim %}<!--禁用Django渲染-->
-</body>
+</script>
 </html>
