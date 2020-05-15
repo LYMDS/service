@@ -568,6 +568,8 @@ def car_locker(request):
         park_side.bluetooth_password = psw
     if sys == 2 and sub_msg and park_side.is_subscribe and time_span(park_side.parking_start_time).seconds > 1800:#系统状态为无车有预约\下位机已经预约\超时
         park_side.is_subscribe = False
+    if sys == 5 and not sub_msg:
+        park_side.is_subscribe = sub_msg
     park_side.cell_sys_state = sys
     park_side.exist_car = exist_car
     park_side.save()
