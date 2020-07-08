@@ -540,7 +540,6 @@ def get_bluetooth_mess(request):
                     and event['before']['cell_sys_state'] == 1
                     and event['after']['cell_sys_state'] == 2):
                     stop_sign = True
-
                     break
             if stop_sign:
                 break
